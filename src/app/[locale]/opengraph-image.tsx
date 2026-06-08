@@ -1,4 +1,6 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { routing } from "@/i18n/routing";
 import { SITE, STATS } from "@/lib/site";
 
@@ -36,6 +38,8 @@ export default async function Image({
 }) {
   const { locale } = await params;
   const c = COPY[locale] ?? COPY.en;
+  const logo = await readFile(join(process.cwd(), "public/logos/logo-wordmark.png"));
+  const logoSrc = `data:image/png;base64,${logo.toString("base64")}`;
 
   return new ImageResponse(
     (
@@ -53,25 +57,8 @@ export default async function Image({
           fontFamily: "sans-serif",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-          <div
-            style={{
-              width: "64px",
-              height: "64px",
-              borderRadius: "16px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              background: "linear-gradient(135deg, #22d3ee, #0891b2)",
-              color: "#03121a",
-              fontSize: "40px",
-              fontWeight: 800,
-            }}
-          >
-            H
-          </div>
-          <div style={{ fontSize: "30px", fontWeight: 700 }}>{SITE.name}</div>
-        </div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={logoSrc} width={300} height={169} alt={SITE.name} />
 
         <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
           <div style={{ fontSize: "68px", fontWeight: 800, lineHeight: 1.05, maxWidth: "1000px" }}>

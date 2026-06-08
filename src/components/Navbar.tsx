@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { SITE } from "@/lib/site";
+import { SITE, assetUrl } from "@/lib/site";
 import { LocaleSwitch } from "./LocaleSwitch";
 
 export function Navbar() {
@@ -33,9 +33,10 @@ export function Navbar() {
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="grid h-7 w-7 place-items-center rounded-lg bg-gradient-to-br from-brand-400 to-brand-600 text-[13px] font-bold text-surface-950">
-            H
+        <Link href="/" className="flex items-center gap-2.5">
+          <span className="grid h-8 w-8 place-items-center overflow-hidden rounded-lg">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={assetUrl("/logos/logo-mark.png")} alt="" className="h-full w-full object-cover" />
           </span>
           <span className="text-sm font-semibold tracking-tight text-primary">
             {SITE.name}
