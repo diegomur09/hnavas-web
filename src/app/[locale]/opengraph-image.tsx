@@ -1,9 +1,15 @@
 import { ImageResponse } from "next/og";
+import { routing } from "@/i18n/routing";
 import { SITE, STATS } from "@/lib/site";
 
 export const alt = "HNavas Systems — Custom software, AWS cloud & AI automation in Denver";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+
+// Pre-render one image per locale at build time (required for output: export).
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
 const COPY: Record<string, { role: string; tagline: string }> = {
   en: {
@@ -47,7 +53,6 @@ export default async function Image({
           fontFamily: "sans-serif",
         }}
       >
-        {/* Brand row */}
         <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
           <div
             style={{
@@ -68,7 +73,6 @@ export default async function Image({
           <div style={{ fontSize: "30px", fontWeight: 700 }}>{SITE.name}</div>
         </div>
 
-        {/* Headline */}
         <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
           <div style={{ fontSize: "68px", fontWeight: 800, lineHeight: 1.05, maxWidth: "1000px" }}>
             {c.tagline}
@@ -78,7 +82,6 @@ export default async function Image({
           </div>
         </div>
 
-        {/* Stats row */}
         <div style={{ display: "flex", gap: "56px" }}>
           {STATS.map((s) => (
             <div key={s.labelKey} style={{ display: "flex", flexDirection: "column" }}>

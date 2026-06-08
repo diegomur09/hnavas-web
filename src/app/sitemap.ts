@@ -1,6 +1,9 @@
 import type { MetadataRoute } from "next";
 import { SITE, LOCALES } from "@/lib/site";
 
+// Required for `output: export` — emit a static sitemap.xml at build.
+export const dynamic = "force-static";
+
 // Both locales are real, indexable URLs (localePrefix: "always"), cross-linked
 // with hreflang alternates so Google serves the right language per searcher.
 export default function sitemap(): MetadataRoute.Sitemap {
