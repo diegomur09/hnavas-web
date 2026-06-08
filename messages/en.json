@@ -1,0 +1,242 @@
+{
+  "Nav": {
+    "services": "Services",
+    "work": "Work",
+    "about": "About",
+    "contact": "Contact",
+    "cta": "Start a project",
+    "switchTo": "Español"
+  },
+  "Hero": {
+    "badge": "Bilingual · AWS-native · Denver, CO",
+    "title": "Software that ships,",
+    "titleAccent": "infrastructure that scales.",
+    "subtitle": "I design and build production full-stack apps, AI automation and serverless AWS systems — for businesses that need real results, in English or Spanish.",
+    "ctaPrimary": "Start a project",
+    "ctaSecondary": "See the work",
+    "chatHint": "Or just ask my AI agent 👇"
+  },
+  "Stats": {
+    "lambdas": "Lambda functions in production",
+    "tables": "DynamoDB tables",
+    "apis": "live APIs",
+    "years": "years shipping for clients"
+  },
+  "Platforms": {
+    "eyebrow": "Tools & platforms",
+    "title": "Built on a stack that scales",
+    "subtitle": "The platforms and technologies I ship with every day — from AWS serverless to fast no-code and low-code."
+  },
+  "Agent": {
+    "title": "Talk to my AI agent",
+    "subtitle": "It knows my work and can scope your project in seconds.",
+    "placeholder": "Ask about pricing, timelines, or what I can build…",
+    "send": "Send",
+    "greeting": "Hi! I'm Diego's AI agent. Tell me about your project — what are you trying to build?",
+    "starters": [
+      "Can you build a SaaS with payments?",
+      "I need to automate emails with AI",
+      "Do you work with AWS?",
+      "How much does a website cost?"
+    ],
+    "disclaimer": "AI agent — responses may be imperfect. For anything important, I'll connect you with Diego.",
+    "thinking": "Thinking…"
+  },
+  "Services": {
+    "eyebrow": "What I do",
+    "title": "Services",
+    "subtitle": "Every service is backed by something real I've already shipped to production.",
+    "fullstack": {
+      "title": "Custom Full-Stack & SaaS",
+      "desc": "End-to-end web apps and MVPs — real-time platforms, dashboards, internal tools. From idea to deployed product.",
+      "proof": "Backed by ScoreFlow (real-time, WebSocket, role-based access)."
+    },
+    "cloud": {
+      "title": "AWS-Native Architecture",
+      "desc": "Serverless design, cloud migration and cost optimization with Lambda, DynamoDB, API Gateway, S3 and CloudFront.",
+      "proof": "60+ Lambdas and 40 tables running in production today."
+    },
+    "ai": {
+      "title": "AI Automation",
+      "desc": "Personalized email pipelines, content generation, chatbots and lead-nurture flows built directly on Claude and OpenAI.",
+      "proof": "AI re-engagement system using Claude Haiku + SES on a daily cron."
+    },
+    "web": {
+      "title": "High-Performance Websites",
+      "desc": "Conversion-focused landing pages and redesigns tuned for Core Web Vitals in Next.js or WordPress.",
+      "proof": "~45% checkout conversion and major LCP improvements."
+    },
+    "mobile": {
+      "title": "Field, No-Code & Low-Code Apps",
+      "desc": "Apps that replace paper for construction, inspections and logistics — custom mobile (React Native) or fast no-code/low-code on AppSheet and Base44, with automated reporting.",
+      "proof": "AppSheet field app across 100+ properties with automatic PDF reports."
+    },
+    "integrations": {
+      "title": "Payments & CRM Integrations",
+      "desc": "Square payments, webhooks, Salesforce Experience Cloud and customer self-service portals connected end to end.",
+      "proof": "Square payments processed for 200+ customers."
+    },
+    "seo": {
+      "title": "Local SEO & Google Business",
+      "desc": "Local SEO, Google Business Profile and technical SEO/GEO so customers and AI assistants can find you.",
+      "proof": "A low-cost recurring entry point that compounds over time."
+    }
+  },
+  "Work": {
+    "eyebrow": "Selected work",
+    "title": "Things I've built",
+    "subtitle": "Real products in production — with real users, payments and uptime.",
+    "viewCase": "View case study",
+    "viewLive": "Visit live",
+    "all": "All projects",
+    "more": "More work",
+    "moreSubtitle": "A wider sample across SaaS, AI automation, field ops and low-code.",
+    "problem": "The problem",
+    "architecture": "Architecture",
+    "result": "Result",
+    "stack": "Stack"
+  },
+  "Projects": {
+    "scoreflow": {
+      "title": "ScoreFlow",
+      "category": "Real-time SaaS",
+      "summary": "A real-time judging platform for dance competitions — live scoreboards, multi-round scoring and role-based access for organizers, judges and competitors.",
+      "problem": "Dance competitions were scored on paper and spreadsheets, causing slow results, errors and no live experience for the audience.",
+      "architecture": "Next.js 16 SSR on Lambda with a CloudFront origin split (static to S3, dynamic to Lambda). A WebSocket API backed by a DynamoDB connection registry fans out live scores to scoreboards. FastAPI + AWS CDK backend with Cognito auth and fully isolated prod/QA environments.",
+      "result": "Ran a live event with 21 competitors and 9 judges, with 135 scores cast in real time — zero paper, isolated environments and no data bleed.",
+      "metrics": {
+        "competitors": "competitors live",
+        "judges": "judges",
+        "scores": "scores cast live"
+      }
+    },
+    "dynamic-bachata": {
+      "title": "Dynamic Bachata Platform",
+      "category": "Payments & growth",
+      "summary": "A full business platform for a dance studio — online payments, class bookings, automated email and an SEO-tuned site, backed by a 60+ endpoint serverless API.",
+      "problem": "A growing studio was running on manual signups and disconnected tools — no online payments, no booking system and weak search visibility.",
+      "architecture": "A Next.js front end on S3 + CloudFront over a 60+ endpoint AWS Lambda API (DynamoDB, Zod-validated), with Square payments, Amazon SES email and isolated prod/QA environments.",
+      "result": "Scaled from 0 to 200+ paying customers and $51K processed across 864 transactions in 9 months, with major LCP / Core Web Vitals gains.",
+      "metrics": {
+        "processed": "in payments processed",
+        "customers": "paying customers",
+        "transactions": "transactions"
+      }
+    },
+    "sky-weekender": {
+      "title": "Bachata Sky Weekender",
+      "category": "Events & conversion",
+      "summary": "A premium, high-converting event site for a 3-day Denver bachata weekender — ticket tiers, Stripe checkout and a cinematic, animated experience.",
+      "problem": "A flagship dance event needed a fast, premium site to sell weekend passes online and convey a boutique, high-end feel.",
+      "architecture": "A statically-exported Next.js 16 site on S3 + CloudFront with Framer Motion + Lenis, backed by an Express/Lambda API on DynamoDB and Stripe Checkout, deployed to prod and QA via GitHub Actions.",
+      "result": "A conversion-focused launch site reaching ~45% checkout conversion, with isolated prod/QA pipelines shipping on every push.",
+      "metrics": {
+        "conversion": "checkout conversion",
+        "event": "weekender",
+        "environments": "isolated"
+      }
+    },
+    "email-campaigns": {
+      "title": "Email Campaign Manager",
+      "category": "AI marketing automation",
+      "summary": "A full email-marketing platform — manage contacts, generate campaigns with AI and automate bulk delivery — built for a studio on AWS.",
+      "problem": "The studio needed real email marketing — segmented contacts, on-brand copy and bulk sends — without paying for a heavy SaaS suite.",
+      "architecture": "A React + Vite app on AWS Amplify behind a Cognito-secured HTTP API, with Node Lambdas drafting copy through OpenRouter AI and sending via Amazon SES — all on DynamoDB with prod/QA isolation.",
+      "result": "A self-serve marketing tool that drafts AI campaigns and delivers them in bulk — replacing a paid email SaaS with owned infrastructure.",
+      "metrics": {
+        "campaigns": "AI-generated",
+        "delivery": "email sends",
+        "environments": "isolated"
+      }
+    },
+    "bachata-crm": {
+      "title": "Dynamic Bachata CRM",
+      "category": "AI retention CRM",
+      "summary": "A studio CRM that tracks students, flags who has gone quiet and automatically wins them back with AI-written re-engagement emails.",
+      "metrics": {
+        "cron": "daily scan",
+        "atRisk": "at-risk window",
+        "personalized": "AI copy"
+      }
+    },
+    "petary": {
+      "title": "MyPetary Store",
+      "category": "Affiliate e-commerce",
+      "summary": "A bilingual Amazon-affiliate storefront for men's clothing, perfumes and accessories — a curated catalog with a clean shopping experience, monetized through the Amazon Associates program.",
+      "metrics": {
+        "affiliate": "Associates store",
+        "category": "menswear",
+        "bilingual": "EN/ES"
+      }
+    },
+    "ccc-field-app": {
+      "title": "CCC Field App",
+      "category": "No-code field ops",
+      "summary": "A no-code AppSheet field app that replaces paper across 100+ properties, capturing structured inspection data and generating PDF reports automatically.",
+      "metrics": {
+        "properties": "properties",
+        "platform": "no-code",
+        "pdf": "PDF reports"
+      }
+    },
+    "drilled-pier": {
+      "title": "Drilled Pier Field App",
+      "category": "Mobile / field ops",
+      "summary": "A custom Expo / React Native field-inspection app feeding an AWS Lambda backend that auto-generates structured PDF reports, with branch-mapped CI/CD.",
+      "metrics": {
+        "field": "data capture",
+        "pdf": "PDF reports",
+        "pipeline": "deploys"
+      }
+    },
+    "luxury-rides": {
+      "title": "Luxury Rides Denver",
+      "category": "Low-code site",
+      "summary": "A luxury car-service site built fast on Base44 (low-code) — proof I match the tool to the budget, from full custom builds to rapid low-code delivery.",
+      "metrics": {
+        "platform": "Base44",
+        "delivery": "rapid build"
+      }
+    },
+    "baychata": {
+      "title": "Baychata",
+      "category": "WordPress redesign",
+      "summary": "A full WordPress redesign with a plugin overhaul and performance tuning — cut LCP from 14.9s to 4.6s and lifted mobile PageSpeed from 46 to 72 by removing ~182 KiB of render-blocking CSS.",
+      "metrics": {
+        "platform": "WordPress",
+        "performance": "LCP gains",
+        "scope": "redesign"
+      }
+    }
+  },
+  "About": {
+    "eyebrow": "About",
+    "title": "Diego Navas Murcia",
+    "role": "Full-Stack & Cloud Engineer",
+    "body": "I'm a full-stack and cloud engineer based in Denver/Broomfield, Colorado, with three years building software that runs in production. I work natively with AWS — Lambda, DynamoDB, SES, S3, CloudFront, Cognito and API Gateway — and I build automation directly against the Claude and OpenAI APIs. I work fluently in English and Spanish, which means I can serve Denver's businesses and its Hispanic market without losing anything in translation.",
+    "stackTitle": "Core stack",
+    "differentiator": "Bilingual EN/ES · Denver-local · ships to production"
+  },
+  "Contact": {
+    "eyebrow": "Let's talk",
+    "title": "Tell me about your project",
+    "subtitle": "Send a few details and I'll get back to you — usually within a day.",
+    "name": "Name",
+    "emailLabel": "Email",
+    "project": "What do you want to build?",
+    "send": "Send message",
+    "sending": "Sending…",
+    "success": "Thanks! I'll be in touch shortly.",
+    "error": "Something went wrong. Please email me directly.",
+    "orChat": "Or chat with my AI agent above."
+  },
+  "Footer": {
+    "rights": "All rights reserved.",
+    "built": "Built with Next.js on AWS.",
+    "tagline": "Full-Stack & Cloud Engineer · Bilingual EN/ES · Denver, CO"
+  },
+  "Meta": {
+    "homeTitle": "Custom Software, AWS & AI Development — Denver",
+    "homeDescription": "Denver-based bilingual engineer building custom software, full-stack web apps, AWS cloud systems and AI automation. SaaS, MVPs and integrations that ship."
+  }
+}

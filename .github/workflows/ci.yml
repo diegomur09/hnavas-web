@@ -1,0 +1,43 @@
+name: CI
+
+# main = production, qa = testing environment.
+on:
+  push:
+    branches: [main, qa]
+  pull_request:
+    branches: [main, qa]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+
+  # --- Deploy (wire up once AWS infra + secrets exist) ---------------------
+  # deploy:
+  #   needs: build
+  #   if: github.event_name == 'push'
+  #   runs-on: ubuntu-latest
+  #   environment: ${{ github.ref_name == 'main' && 'production' || 'qa' }}
+  #   env:
+  #     # Per-environment: prod build points at the prod backend, qa at the qa backend.
+  #     NEXT_PUBLIC_AGENT_URL: ${{ vars.NEXT_PUBLIC_AGENT_URL }}
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-node@v4
+  #       with: { node-version: 22, cache: npm }
+  #     - run: npm ci && npm run build
+  #     - uses: aws-actions/configure-aws-credentials@v4
+  #       with:
+  #         role-to-assume: ${{ secrets.AWS_DEPLOY_ROLE }}
+  #         aws-region: us-east-1
+  #     # main -> prod bucket/distribution ; qa -> qa bucket/distribution
+  #     - run: |
+  #         aws s3 sync ./out s3://${{ vars.S3_BUCKET }} --delete
+  #         aws cloudfront create-invalidation --distribution-id ${{ vars.CLOUDFRONT_ID }} --paths "/*"

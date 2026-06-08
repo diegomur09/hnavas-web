@@ -1,0 +1,242 @@
+{
+  "Nav": {
+    "services": "Servicios",
+    "work": "Proyectos",
+    "about": "Sobre mí",
+    "contact": "Contacto",
+    "cta": "Iniciar proyecto",
+    "switchTo": "English"
+  },
+  "Hero": {
+    "badge": "Bilingüe · AWS-native · Denver, CO",
+    "title": "Software que se lanza,",
+    "titleAccent": "infraestructura que escala.",
+    "subtitle": "Diseño y construyo apps full-stack en producción, automatización con IA y sistemas serverless en AWS — para negocios que necesitan resultados reales, en inglés o español.",
+    "ctaPrimary": "Iniciar proyecto",
+    "ctaSecondary": "Ver proyectos",
+    "chatHint": "O pregúntale a mi agente de IA 👇"
+  },
+  "Stats": {
+    "lambdas": "funciones Lambda en producción",
+    "tables": "tablas DynamoDB",
+    "apis": "APIs activas",
+    "years": "años entregando para clientes"
+  },
+  "Platforms": {
+    "eyebrow": "Herramientas & plataformas",
+    "title": "Construido sobre un stack que escala",
+    "subtitle": "Las plataformas y tecnologías con las que entrego cada día — desde serverless en AWS hasta no-code y low-code rápidos."
+  },
+  "Agent": {
+    "title": "Habla con mi agente de IA",
+    "subtitle": "Conoce mi trabajo y puede definir tu proyecto en segundos.",
+    "placeholder": "Pregunta por precios, tiempos o qué puedo construir…",
+    "send": "Enviar",
+    "greeting": "¡Hola! Soy el agente de IA de Diego. Cuéntame sobre tu proyecto — ¿qué quieres construir?",
+    "starters": [
+      "¿Puedes construir un SaaS con pagos?",
+      "Necesito automatizar emails con IA",
+      "¿Trabajas con AWS?",
+      "¿Cuánto cuesta una página web?"
+    ],
+    "disclaimer": "Agente de IA — las respuestas pueden no ser perfectas. Para algo importante, te conecto con Diego.",
+    "thinking": "Pensando…"
+  },
+  "Services": {
+    "eyebrow": "Lo que hago",
+    "title": "Servicios",
+    "subtitle": "Cada servicio está respaldado por algo real que ya lancé a producción.",
+    "fullstack": {
+      "title": "Full-Stack & SaaS a medida",
+      "desc": "Apps web y MVPs completos — plataformas en tiempo real, dashboards, herramientas internas. De la idea al producto desplegado.",
+      "proof": "Respaldado por ScoreFlow (tiempo real, WebSocket, acceso por roles)."
+    },
+    "cloud": {
+      "title": "Arquitectura AWS-native",
+      "desc": "Diseño serverless, migración a la nube y optimización de costos con Lambda, DynamoDB, API Gateway, S3 y CloudFront.",
+      "proof": "60+ Lambdas y 40 tablas corriendo en producción hoy."
+    },
+    "ai": {
+      "title": "Automatización con IA",
+      "desc": "Pipelines de email personalizado, generación de contenido, chatbots y flujos de nurture construidos directo sobre Claude y OpenAI.",
+      "proof": "Sistema de re-engagement con IA usando Claude Haiku + SES en cron diario."
+    },
+    "web": {
+      "title": "Sitios de alto rendimiento",
+      "desc": "Landing pages y rediseños enfocados en conversión y optimizados para Core Web Vitals en Next.js o WordPress.",
+      "proof": "~45% de conversión en checkout y mejoras grandes de LCP."
+    },
+    "mobile": {
+      "title": "Apps de campo, no-code & low-code",
+      "desc": "Apps que reemplazan el papel en construcción, inspecciones y logística — móvil a medida (React Native) o rápidas en no-code/low-code con AppSheet y Base44, con reportes automáticos.",
+      "proof": "App de campo en AppSheet cubriendo 100+ propiedades con reportes PDF automáticos."
+    },
+    "integrations": {
+      "title": "Integraciones de pagos & CRM",
+      "desc": "Pagos con Square, webhooks, Salesforce Experience Cloud y portales de autoservicio conectados de punta a punta.",
+      "proof": "Pagos con Square procesados para 200+ clientes."
+    },
+    "seo": {
+      "title": "SEO local & Google Business",
+      "desc": "SEO local, Google Business Profile y SEO técnico/GEO para que clientes y asistentes de IA te encuentren.",
+      "proof": "Un punto de entrada recurrente y económico que crece con el tiempo."
+    }
+  },
+  "Work": {
+    "eyebrow": "Trabajo seleccionado",
+    "title": "Lo que he construido",
+    "subtitle": "Productos reales en producción — con usuarios, pagos y uptime reales.",
+    "viewCase": "Ver caso de estudio",
+    "viewLive": "Ver en vivo",
+    "all": "Todos los proyectos",
+    "more": "Más proyectos",
+    "moreSubtitle": "Una muestra más amplia: SaaS, automatización con IA, apps de campo y low-code.",
+    "problem": "El problema",
+    "architecture": "Arquitectura",
+    "result": "Resultado",
+    "stack": "Stack"
+  },
+  "Projects": {
+    "scoreflow": {
+      "title": "ScoreFlow",
+      "category": "SaaS en tiempo real",
+      "summary": "Una plataforma de jueceo en tiempo real para competencias de baile — marcadores en vivo, puntuación por rondas y acceso por roles para organizadores, jueces y competidores.",
+      "problem": "Las competencias se puntuaban en papel y hojas de cálculo, causando resultados lentos, errores y ninguna experiencia en vivo para el público.",
+      "architecture": "Next.js 16 con SSR en Lambda y un origin split en CloudFront (estático a S3, dinámico a Lambda). Una API WebSocket respaldada por un registro de conexiones en DynamoDB distribuye los puntajes en vivo a los marcadores. Backend FastAPI + AWS CDK con auth Cognito y entornos prod/QA totalmente aislados.",
+      "result": "Operó un evento en vivo con 21 competidores y 9 jueces, con 135 puntajes registrados en tiempo real — sin papel, entornos aislados y cero fuga de datos.",
+      "metrics": {
+        "competitors": "competidores en vivo",
+        "judges": "jueces",
+        "scores": "puntajes en vivo"
+      }
+    },
+    "dynamic-bachata": {
+      "title": "Plataforma Dynamic Bachata",
+      "category": "Pagos & crecimiento",
+      "summary": "Una plataforma de negocio completa para un estudio de baile — pagos en línea, reservas de clases, email automatizado y un sitio optimizado para SEO, respaldada por una API serverless de 60+ endpoints.",
+      "problem": "Un estudio en crecimiento operaba con inscripciones manuales y herramientas desconectadas — sin pagos en línea, sin sistema de reservas y con poca visibilidad en búsquedas.",
+      "architecture": "Un front end en Next.js sobre S3 + CloudFront sobre una API en AWS Lambda de 60+ endpoints (DynamoDB, validada con Zod), con pagos Square, email Amazon SES y entornos prod/QA aislados.",
+      "result": "Escaló de 0 a 200+ clientes pagos y $51K procesados en 864 transacciones en 9 meses, con mejoras importantes de LCP / Core Web Vitals.",
+      "metrics": {
+        "processed": "en pagos procesados",
+        "customers": "clientes pagos",
+        "transactions": "transacciones"
+      }
+    },
+    "sky-weekender": {
+      "title": "Bachata Sky Weekender",
+      "category": "Eventos & conversión",
+      "summary": "Un sitio de evento premium y de alta conversión para un weekender de bachata de 3 días en Denver — niveles de boletos, checkout con Stripe y una experiencia animada y cinematográfica.",
+      "problem": "Un evento de baile insignia necesitaba un sitio rápido y premium para vender pases en línea y transmitir una sensación boutique y de alta gama.",
+      "architecture": "Un sitio Next.js 16 exportado estático sobre S3 + CloudFront con Framer Motion + Lenis, respaldado por una API Express/Lambda sobre DynamoDB y Stripe Checkout, desplegado a prod y QA con GitHub Actions.",
+      "result": "Un sitio de lanzamiento enfocado en conversión alcanzando ~45% de conversión en checkout, con pipelines prod/QA aislados que despliegan en cada push.",
+      "metrics": {
+        "conversion": "conversión en checkout",
+        "event": "weekender",
+        "environments": "aislados"
+      }
+    },
+    "email-campaigns": {
+      "title": "Email Campaign Manager",
+      "category": "Automatización de marketing con IA",
+      "summary": "Una plataforma completa de email marketing — gestiona contactos, genera campañas con IA y automatiza el envío masivo — construida para un estudio sobre AWS.",
+      "problem": "El estudio necesitaba email marketing real — contactos segmentados, copy de marca y envíos masivos — sin pagar por una suite SaaS pesada.",
+      "architecture": "Una app React + Vite en AWS Amplify detrás de una HTTP API protegida con Cognito, con Lambdas en Node que redactan copy vía OpenRouter AI y envían por Amazon SES — todo sobre DynamoDB con aislamiento prod/QA.",
+      "result": "Una herramienta de marketing self-serve que redacta campañas con IA y las entrega de forma masiva — reemplazando un SaaS de email de pago con infraestructura propia.",
+      "metrics": {
+        "campaigns": "generadas por IA",
+        "delivery": "envíos de email",
+        "environments": "aislados"
+      }
+    },
+    "bachata-crm": {
+      "title": "Dynamic Bachata CRM",
+      "category": "CRM de retención con IA",
+      "summary": "Un CRM de estudio que rastrea estudiantes, detecta quién se ha alejado y los recupera automáticamente con emails de re-engagement escritos por IA.",
+      "metrics": {
+        "cron": "escaneo diario",
+        "atRisk": "ventana de riesgo",
+        "personalized": "copy con IA"
+      }
+    },
+    "petary": {
+      "title": "MyPetary Store",
+      "category": "E-commerce de afiliados",
+      "summary": "Una tienda bilingüe de afiliados de Amazon de ropa, perfumes y accesorios para hombre — un catálogo curado con una experiencia de compra limpia, monetizada con el programa Amazon Associates.",
+      "metrics": {
+        "affiliate": "tienda Associates",
+        "category": "moda masculina",
+        "bilingual": "EN/ES"
+      }
+    },
+    "ccc-field-app": {
+      "title": "CCC Field App",
+      "category": "Operaciones de campo no-code",
+      "summary": "Una app de campo no-code en AppSheet que reemplaza el papel en 100+ propiedades, capturando datos de inspección estructurados y generando reportes PDF automáticamente.",
+      "metrics": {
+        "properties": "propiedades",
+        "platform": "no-code",
+        "pdf": "reportes PDF"
+      }
+    },
+    "drilled-pier": {
+      "title": "Drilled Pier Field App",
+      "category": "Móvil / operaciones de campo",
+      "summary": "Una app de inspección de campo a medida en Expo / React Native que alimenta un backend AWS Lambda que auto-genera reportes PDF estructurados, con CI/CD mapeado por rama.",
+      "metrics": {
+        "field": "captura de datos",
+        "pdf": "reportes PDF",
+        "pipeline": "deploys"
+      }
+    },
+    "luxury-rides": {
+      "title": "Luxury Rides Denver",
+      "category": "Sitio low-code",
+      "summary": "Un sitio de servicio de autos de lujo construido rápido en Base44 (low-code) — prueba de que ajusto la herramienta al presupuesto, desde builds 100% a medida hasta entrega rápida en low-code.",
+      "metrics": {
+        "platform": "Base44",
+        "delivery": "build rápido"
+      }
+    },
+    "baychata": {
+      "title": "Baychata",
+      "category": "Rediseño WordPress",
+      "summary": "Un rediseño completo en WordPress con renovación de plugins y optimización de rendimiento — bajó el LCP de 14.9s a 4.6s y subió el PageSpeed móvil de 46 a 72 eliminando ~182 KiB de CSS bloqueante.",
+      "metrics": {
+        "platform": "WordPress",
+        "performance": "mejoras LCP",
+        "scope": "rediseño"
+      }
+    }
+  },
+  "About": {
+    "eyebrow": "Sobre mí",
+    "title": "Diego Navas Murcia",
+    "role": "Ingeniero Full-Stack & Cloud",
+    "body": "Soy ingeniero full-stack y cloud basado en Denver/Broomfield, Colorado, con tres años construyendo software que corre en producción. Trabajo de forma nativa con AWS — Lambda, DynamoDB, SES, S3, CloudFront, Cognito y API Gateway — y construyo automatización directamente contra las APIs de Claude y OpenAI. Trabajo con fluidez en inglés y español, lo que significa que puedo atender a los negocios de Denver y a su mercado hispano sin perder nada en la traducción.",
+    "stackTitle": "Stack principal",
+    "differentiator": "Bilingüe EN/ES · local en Denver · entrega a producción"
+  },
+  "Contact": {
+    "eyebrow": "Hablemos",
+    "title": "Cuéntame sobre tu proyecto",
+    "subtitle": "Envíame algunos detalles y te respondo — normalmente en un día.",
+    "name": "Nombre",
+    "emailLabel": "Email",
+    "project": "¿Qué quieres construir?",
+    "send": "Enviar mensaje",
+    "sending": "Enviando…",
+    "success": "¡Gracias! Te contactaré pronto.",
+    "error": "Algo salió mal. Escríbeme directamente por favor.",
+    "orChat": "O chatea con mi agente de IA arriba."
+  },
+  "Footer": {
+    "rights": "Todos los derechos reservados.",
+    "built": "Construido con Next.js sobre AWS.",
+    "tagline": "Ingeniero Full-Stack & Cloud · Bilingüe EN/ES · Denver, CO"
+  },
+  "Meta": {
+    "homeTitle": "Desarrollo de Software, AWS e IA — Denver",
+    "homeDescription": "Ingeniero bilingüe en Denver: software a medida, apps web full-stack, sistemas en AWS y automatización con IA. SaaS, MVPs e integraciones listas para producción."
+  }
+}
