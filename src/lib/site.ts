@@ -9,6 +9,8 @@ export const SITE = {
   location: "Denver / Broomfield, CO",
   email: "hnavasystems@gmail.com",
   url: "https://hnavasystems.com",
+  // Public Cal.com booking link (same one the AI agent shares).
+  calendarUrl: "https://cal.com/diego-navas-murcia-6a7b9n",
   // Bilingual reach is the core differentiator vs generic agencies.
   languages: ["English", "Español"],
 } as const;

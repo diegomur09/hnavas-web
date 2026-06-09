@@ -228,7 +228,8 @@
     "sending": "Enviando…",
     "success": "¡Gracias! Te contactaré pronto.",
     "error": "Algo salió mal. Escríbeme directamente por favor.",
-    "orChat": "O chatea con mi agente de IA arriba."
+    "orChat": "O chatea con mi agente de IA arriba.",
+    "bookCall": "Agendar una llamada"
   },
   "Footer": {
     "rights": "Todos los derechos reservados.",

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { SITE } from "@/lib/site";
 
@@ -11,6 +11,7 @@ type Status = "idle" | "sending" | "success" | "error";
 
 export function Contact() {
   const t = useTranslations("Contact");
+  const locale = useLocale();
   const [status, setStatus] = useState<Status>("idle");
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -32,7 +33,7 @@ export function Contact() {
         const res = await fetch(`${CONTACT_URL}/contact`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, email, project }),
+          body: JSON.stringify({ name, email, project, locale }),
         });
         if (!res.ok) throw new Error(`contact-${res.status}`);
       } else {
@@ -61,10 +62,24 @@ export function Contact() {
 
           <a
             href={`mailto:${SITE.email}`}
-            className="data-mono mt-6 inline-block text-sm text-secondary transition hover:text-brand-300"
+            className="data-mono mt-6 block text-sm text-secondary transition hover:text-brand-300"
           >
             {SITE.email}
           </a>
+
+          <a
+            href={SITE.calendarUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-ghost mt-5 inline-flex items-center gap-2 px-4 py-2.5 text-sm"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="18" rx="2" />
+              <path d="M16 2v4M8 2v4M3 10h18" />
+            </svg>
+            {t("bookCall")}
+          </a>
+
           <p className="mt-4 text-xs text-subtle">{t("orChat")}</p>
         </div>
 

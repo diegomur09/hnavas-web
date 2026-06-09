@@ -228,7 +228,8 @@
     "sending": "Sending…",
     "success": "Thanks! I'll be in touch shortly.",
     "error": "Something went wrong. Please email me directly.",
-    "orChat": "Or chat with my AI agent above."
+    "orChat": "Or chat with my AI agent above.",
+    "bookCall": "Book a call"
   },
   "Footer": {
     "rights": "All rights reserved.",
