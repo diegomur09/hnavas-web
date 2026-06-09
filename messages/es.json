@@ -242,12 +242,35 @@
     "success": "¡Gracias! Te contactaré pronto.",
     "error": "Algo salió mal. Escríbeme directamente por favor.",
     "orChat": "O chatea con mi agente de IA arriba.",
-    "bookCall": "Agendar una llamada"
+    "bookCall": "Agendar una llamada",
+    "consent": "Al enviar, aceptas nuestra",
+    "privacyLink": "Política de Privacidad"
   },
   "Footer": {
     "rights": "Todos los derechos reservados.",
     "built": "Construido con Next.js sobre AWS.",
-    "tagline": "Ingeniero Full-Stack & Cloud · Bilingüe EN/ES · Denver, CO"
+    "tagline": "Ingeniero Full-Stack & Cloud · Bilingüe EN/ES · Denver, CO",
+    "privacy": "Política de Privacidad"
+  },
+  "Privacy": {
+    "title": "Política de Privacidad",
+    "updated": "Última actualización: junio de 2026",
+    "intro": "Este sitio es operado por Diego Navas Murcia (HNavas Systems) en Denver, Colorado. Aquí está, en lenguaje claro, qué recoge el sitio y cómo se maneja.",
+    "collectTitle": "Qué recogemos",
+    "collectBody": "Solo lo que tú nos das: tu nombre, email y los detalles del proyecto o mensajes que envías por el formulario de contacto o el chat de IA. El chat también guarda un ID anónimo y aleatorio en tu navegador para reconocerte si vuelves. No usamos cookies de rastreo, analítica ni trackers publicitarios.",
+    "useTitle": "Cómo lo usamos",
+    "useBody": "Para responder tu consulta, definir y agendar el trabajo, y dar seguimiento. El chat de IA usa tus mensajes para responderte y para recordar el contexto de tu proyecto si vuelves.",
+    "storeTitle": "Dónde se guarda y seguridad",
+    "storeBody": "En Amazon Web Services, encriptado en tránsito (HTTPS) y en reposo. La memoria del chat vive en una base de datos DynamoDB; tu mensaje también nos llega por correo. Las llaves de API viven solo en el servidor, nunca en tu navegador.",
+    "thirdTitle": "Servicios de terceros",
+    "thirdBody": "Usamos algunos proveedores de confianza que pueden procesar tu información: OpenAI (genera las respuestas del chat), Amazon Web Services (hosting, base de datos, correo) y Google (la bandeja donde recibimos tu mensaje). Si agendas por nuestro link de reservas, eso lo maneja Cal.com bajo su propia política. Nunca vendemos ni alquilamos tus datos.",
+    "retainTitle": "Cuánto lo conservamos",
+    "retainBody": "El perfil de memoria del chat expira solo tras unos 90 días de inactividad. Los correos que nos envías se conservan hasta que pidas eliminarlos.",
+    "choicesTitle": "Tus opciones",
+    "choicesBody": "Escríbenos cuando quieras para ver o eliminar los datos que tenemos sobre ti. También puedes borrar el ID anónimo del chat limpiando el almacenamiento de tu navegador.",
+    "contactTitle": "Contacto",
+    "contactBody": "¿Dudas sobre este aviso o tus datos? Escríbenos y te ayudamos.",
+    "back": "← Volver al inicio"
   },
   "Meta": {
     "homeTitle": "Desarrollo de Software, AWS e IA — Denver",

@@ -242,12 +242,35 @@
     "success": "Thanks! I'll be in touch shortly.",
     "error": "Something went wrong. Please email me directly.",
     "orChat": "Or chat with my AI agent above.",
-    "bookCall": "Book a call"
+    "bookCall": "Book a call",
+    "consent": "By sending this, you agree to our",
+    "privacyLink": "Privacy Policy"
   },
   "Footer": {
     "rights": "All rights reserved.",
     "built": "Built with Next.js on AWS.",
-    "tagline": "Full-Stack & Cloud Engineer · Bilingual EN/ES · Denver, CO"
+    "tagline": "Full-Stack & Cloud Engineer · Bilingual EN/ES · Denver, CO",
+    "privacy": "Privacy Policy"
+  },
+  "Privacy": {
+    "title": "Privacy Policy",
+    "updated": "Last updated: June 2026",
+    "intro": "This site is operated by Diego Navas Murcia (HNavas Systems) in Denver, Colorado. Here's what the site collects and how it's handled, in plain language.",
+    "collectTitle": "What we collect",
+    "collectBody": "Only what you give us: your name, email and the project details or messages you send through the contact form or the AI chat. The chat also stores a random, anonymous ID in your browser so it can recognize you on a return visit. We don't use tracking cookies, analytics or advertising trackers.",
+    "useTitle": "How we use it",
+    "useBody": "To reply to your inquiry, scope and schedule work, and follow up. The AI chat uses your messages to answer you and to remember your project's context for a return visit.",
+    "storeTitle": "Where it's stored & security",
+    "storeBody": "On Amazon Web Services, encrypted in transit (HTTPS) and at rest. The chat's memory lives in a DynamoDB database; your message also reaches us by email. API keys stay only on the server, never in your browser.",
+    "thirdTitle": "Third-party services",
+    "thirdBody": "We rely on a few trusted providers that may process your information: OpenAI (generates the chat replies), Amazon Web Services (hosting, database, email), and Google (the inbox where we receive your message). If you book through our scheduling link, that's handled by Cal.com under their own policy. We never sell or rent your data.",
+    "retainTitle": "How long we keep it",
+    "retainBody": "The chat's memory profile auto-expires after about 90 days of inactivity. Emails you send are kept until you ask us to delete them.",
+    "choicesTitle": "Your choices",
+    "choicesBody": "Email us anytime to see or delete the data we hold about you. You can also clear the chat's anonymous ID by clearing your browser storage.",
+    "contactTitle": "Contact",
+    "contactBody": "Questions about this notice or your data? Email us and we'll help.",
+    "back": "← Back to home"
   },
   "Meta": {
     "homeTitle": "Custom Software, AWS & AI Development — Denver",

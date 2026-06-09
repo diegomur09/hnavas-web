@@ -1,8 +1,9 @@
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
 import { SITE, assetUrl } from "@/lib/site";
 
 export async function Footer() {
   const t = await getTranslations("Footer");
+  const locale = await getLocale();
   const year = new Date().getFullYear();
 
   return (
@@ -32,6 +33,12 @@ export async function Footer() {
             © {year} {SITE.name}. {t("rights")}
           </p>
           <p className="mt-1">{t("built")}</p>
+          <a
+            href={`/${locale}/privacy`}
+            className="mt-1 inline-block text-secondary transition hover:text-brand-300"
+          >
+            {t("privacy")}
+          </a>
         </div>
       </div>
     </footer>

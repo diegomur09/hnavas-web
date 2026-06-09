@@ -119,6 +119,17 @@ export function Contact() {
           {status === "error" && (
             <p className="text-sm text-down">{t("error")}</p>
           )}
+
+          <p className="text-[11px] leading-relaxed text-subtle">
+            {t("consent")}{" "}
+            <a
+              href={`/${locale}/privacy`}
+              className="text-secondary underline transition hover:text-brand-300"
+            >
+              {t("privacyLink")}
+            </a>
+            .
+          </p>
         </motion.form>
       </div>
     </section>
