@@ -36,8 +36,8 @@ export async function Work() {
         {/* Lead case study — full width, with the problem → architecture → result story */}
         <LeadCard project={lead} t={t} tp={tp} />
 
-        {/* Remaining featured projects — compact cards */}
-        <div className="grid gap-4 lg:grid-cols-2">
+        {/* Remaining featured projects — full-width rows: text left, screenshot right */}
+        <div className="grid gap-4">
           {rest.map((p) => (
             <CompactCard key={p.slug} project={p} t={t} tp={tp} />
           ))}
@@ -102,6 +102,44 @@ function LiveLink({ href, label }: { href: string; label: string }) {
       {label}
       <ArrowUpRight />
     </a>
+  );
+}
+
+// Projects that have a screenshot in /public/screenshots (slug.webp).
+const SCREENSHOTS = new Set([
+  "scoreflow",
+  "dynamic-bachata",
+  "sky-weekender",
+  "email-campaigns",
+  "petary",
+  "ccc-field-app",
+  "luxury-rides",
+  "baychata",
+]);
+const shot = (slug: string) =>
+  SCREENSHOTS.has(slug) ? assetUrl(`/screenshots/${slug}.webp`) : undefined;
+
+// Project preview in a subtle browser-style frame. Lazy-loaded + explicit
+// dimensions so it never hurts LCP/CLS (the cards sit below the fold).
+function ScreenshotFrame({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div className="overflow-hidden rounded-xl border border-white/10 bg-surface-850 shadow-[0_18px_50px_-24px_rgba(0,0,0,0.8)]">
+      <div className="flex items-center gap-1.5 border-b border-white/8 bg-white/4 px-3 py-2">
+        <span className="h-2 w-2 rounded-full bg-white/15" />
+        <span className="h-2 w-2 rounded-full bg-white/15" />
+        <span className="h-2 w-2 rounded-full bg-white/15" />
+      </div>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={src}
+        alt={`${alt} — screenshot`}
+        width={900}
+        height={560}
+        loading="lazy"
+        decoding="async"
+        className="block h-auto w-full"
+      />
+    </div>
   );
 }
 
@@ -186,6 +224,9 @@ function LeadCard({ project, t, tp }: { project: Project; t: Tr; tp: Tr }) {
       </div>
 
       <div className="flex flex-col gap-6 lg:border-l lg:border-white/6 lg:pl-8">
+        {shot(project.slug) && (
+          <ScreenshotFrame src={shot(project.slug)!} alt={tp(`${project.slug}.title`)} />
+        )}
         <Metrics project={project} tp={tp} />
 
         <div>
@@ -217,38 +258,49 @@ function Detail({ label, body }: { label: string; body: string }) {
 }
 
 function CompactCard({ project, t, tp }: { project: Project; t: Tr; tp: Tr }) {
+  const ss = shot(project.slug);
   return (
-    <article className="glass-card glass-card-hover flex flex-col p-6">
-      <div className="flex items-start gap-3.5">
-        <ProjectLogo project={project} alt={tp(`${project.slug}.title`)} />
-        <div className="min-w-0">
-          <div className="flex items-center gap-3">
-            <span className="data-mono text-xs uppercase tracking-widest text-brand-400">
-              {tp(`${project.slug}.category`)}
-            </span>
-            <span className="data-mono text-xs text-subtle">{project.year}</span>
+    <article className="glass-card glass-card-hover flex flex-col gap-6 p-6 md:flex-row md:items-start">
+      {/* Left: the story */}
+      <div className="flex min-w-0 flex-1 flex-col">
+        <div className="flex items-start gap-3.5">
+          <ProjectLogo project={project} alt={tp(`${project.slug}.title`)} />
+          <div className="min-w-0">
+            <div className="flex items-center gap-3">
+              <span className="data-mono text-xs uppercase tracking-widest text-brand-400">
+                {tp(`${project.slug}.category`)}
+              </span>
+              <span className="data-mono text-xs text-subtle">{project.year}</span>
+            </div>
+            <h3 className="mt-1 text-lg font-semibold text-primary">
+              {tp(`${project.slug}.title`)}
+            </h3>
           </div>
-          <h3 className="mt-1 text-lg font-semibold text-primary">
-            {tp(`${project.slug}.title`)}
-          </h3>
         </div>
+
+        <p className="mt-4 text-sm leading-relaxed text-body">
+          {tp(`${project.slug}.summary`)}
+        </p>
+
+        <div className="mt-5">
+          <Metrics project={project} tp={tp} />
+        </div>
+
+        <div className="mt-5">
+          <StackTags stack={project.stack} />
+        </div>
+
+        {project.liveUrl && (
+          <div className="mt-5 pt-1">
+            <LiveLink href={project.liveUrl} label={t("viewLive")} />
+          </div>
+        )}
       </div>
 
-      <p className="mt-4 text-sm leading-relaxed text-body">
-        {tp(`${project.slug}.summary`)}
-      </p>
-
-      <div className="mt-5">
-        <Metrics project={project} tp={tp} />
-      </div>
-
-      <div className="mt-5">
-        <StackTags stack={project.stack} />
-      </div>
-
-      {project.liveUrl && (
-        <div className="mt-5 border-t border-white/6 pt-4">
-          <LiveLink href={project.liveUrl} label={t("viewLive")} />
+      {/* Right: the screenshot */}
+      {ss && (
+        <div className="md:w-[42%] md:shrink-0">
+          <ScreenshotFrame src={ss} alt={tp(`${project.slug}.title`)} />
         </div>
       )}
     </article>
@@ -261,8 +313,15 @@ function MiniCard({ project, t, tp }: { project: Project; t: Tr; tp: Tr }) {
   // dark card than squeezed into the small square tile.
   const wide = project.logo && project.logoWide;
 
+  const ss = shot(project.slug);
+
   return (
     <article className="glass-card glass-card-hover flex flex-col p-5">
+      {ss && (
+        <div className="mb-4">
+          <ScreenshotFrame src={ss} alt={title} />
+        </div>
+      )}
       {wide ? (
         <>
           {/* eslint-disable-next-line @next/next/no-img-element */}
