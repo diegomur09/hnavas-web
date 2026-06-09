@@ -7,6 +7,24 @@ import { motion, AnimatePresence } from "framer-motion";
 type Msg = { role: "user" | "assistant"; content: string };
 
 const AGENT_URL = process.env.NEXT_PUBLIC_AGENT_URL;
+const VISITOR_KEY = "hnavas_visitor_id";
+
+// A stable, anonymous id stored in the browser so the agent can recognize a
+// returning visitor across sessions. Created on first use; SSR-safe (no-op on
+// the server). Not personal data — just a random UUID.
+function getVisitorId(): string | undefined {
+  if (typeof window === "undefined") return undefined;
+  try {
+    let id = localStorage.getItem(VISITOR_KEY);
+    if (!id) {
+      id = crypto.randomUUID();
+      localStorage.setItem(VISITOR_KEY, id);
+    }
+    return id;
+  } catch {
+    return undefined; // private mode / storage blocked → just no memory
+  }
+}
 
 export function AgentChat() {
   const t = useTranslations("Agent");
@@ -37,7 +55,7 @@ export function AgentChat() {
     setBusy(true);
 
     try {
-      const reply = await callAgent(next, locale);
+      const reply = await callAgent(next, locale, getVisitorId());
       setMessages((m) => [...m, { role: "assistant", content: reply }]);
     } catch {
       setMessages((m) => [
@@ -151,12 +169,12 @@ function Dot({ delay = 0 }: { delay?: number }) {
 
 // Calls the deployed agent backend. Throws if not configured/unavailable so
 // the UI can fall back to a friendly canned reply.
-async function callAgent(messages: Msg[], locale: string): Promise<string> {
+async function callAgent(messages: Msg[], locale: string, visitorId?: string): Promise<string> {
   if (!AGENT_URL) throw new Error("agent-not-configured");
   const res = await fetch(`${AGENT_URL}/chat`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ messages, locale }),
+    body: JSON.stringify({ messages, locale, visitorId }),
   });
   if (!res.ok) throw new Error(`agent-${res.status}`);
   const data = (await res.json()) as { reply?: string };
