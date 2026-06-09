@@ -7,7 +7,7 @@ export const SITE = {
   role: "Full-Stack & Cloud Engineer",
   tagline: "Production AWS apps, AI automation, and software that ships.",
   location: "Denver / Broomfield, CO",
-  email: "diegomurcia2@gmail.com",
+  email: "hnavasystems@gmail.com",
   url: "https://hnavasystems.com",
   // Bilingual reach is the core differentiator vs generic agencies.
   languages: ["English", "Español"],

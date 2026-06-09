@@ -39,7 +39,7 @@
       "Do you work with AWS?",
       "How much does a website cost?"
     ],
-    "disclaimer": "AI agent — responses may be imperfect. For anything important, I'll connect you with Diego.",
+    "disclaimer": "AI agent — responses may be imperfect, and it remembers our chats to pick up where we left off next time. For anything important, I'll connect you with Diego.",
     "thinking": "Thinking…"
   },
   "Services": {
