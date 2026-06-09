@@ -9,20 +9,49 @@ technical SEO.
 
 | | |
 |---|---|
-| Production site | `https://hnavasystems.com` *(CloudFront — coming soon)* |
+| Production site | https://hnavasystems.com ✅ live |
 | Frontend repo | https://github.com/diegomur09/hnavas-web |
 | Backend / API repo | https://github.com/diegomur09/hnavas-api |
-| API (QA) | `https://tfpo7fqoszogi2qtznsxuhblb40kmyzt.lambda-url.us-east-1.on.aws` |
-| API (Production) | `https://vvbwtcwlds3irp4ubw2b4cumaq0oumrl.lambda-url.us-east-1.on.aws` |
+| API (QA) | https://tfpo7fqoszogi2qtznsxuhblb40kmyzt.lambda-url.us-east-1.on.aws/health |
+| API (Production) | https://vvbwtcwlds3irp4ubw2b4cumaq0oumrl.lambda-url.us-east-1.on.aws/health |
 
 ## What it does
 
 - **Bilingual EN/ES** (next-intl) — `/en` and `/es` are both real, indexable routes.
-- **AI chat agent** in the hero — talks to the backend API; falls back to built-in
-  demo replies if the backend is offline.
-- **Project portfolio** with real brand logos + metrics, services, and a contact form.
+- **AI chat agent** in the hero (see below) — a real sales agent, not a canned bot.
+- **Project portfolio** with real brand logos + metrics, services, and a contact form
+  that emails leads straight to Diego (same path as the agent).
 - **Technical SEO** — sitemap, robots, web manifest, per-locale Open Graph images,
-  and JSON-LD structured data (Person + ProfessionalService).
+  and JSON-LD structured data (Person + ProfessionalService). Verified in Google
+  Search Console.
+
+## The AI agent 🤖
+
+The chat in the hero is a production AI agent (backend in
+[`hnavas-api`](https://github.com/diegomur09/hnavas-api)) — it doesn't just reply,
+it **knows**, **acts**, and **remembers**:
+
+- **🧠 Knows the real work (RAG).** Answers are grounded in Diego's actual content
+  via retrieval-augmented generation, so it cites real projects, stacks and numbers
+  instead of making things up — and says "I'm not sure" when something is out of scope.
+- **🛠️ Takes real actions (function calling).** The model proposes a tool call; the
+  backend validates and runs it with server-side credentials the model never sees:
+  - `crear_lead` — captures a lead and **emails** it to Diego + a branded confirmation
+    to the visitor (Amazon SES).
+  - `agendar_reunion` — books a meeting request, confirms by email and shares the
+    **Cal.com** booking link.
+  - `consultar_github` — pulls Diego's live public GitHub activity.
+- **💾 Remembers returning visitors.** A distilled per-visitor profile is stored in
+  **DynamoDB** (with a TTL), so a returning visitor is greeted by name and the agent
+  picks up where they left off. RAG = shared knowledge; memory = per-person.
+- **🌐 Fully bilingual.** It mirrors whatever language the visitor types in, regardless
+  of the page locale.
+- **🔒 Safe & cheap.** API keys live only in the Lambda; per-IP rate limiting, a capped
+  history and short replies keep the token budget bounded. If the backend, RAG, a tool
+  or memory ever fails, the chat **degrades gracefully** and never breaks.
+
+> Built in phases: RAG (knowledge) → tools (actions) → memory → email/booking. Runs
+> on `gpt-4o-mini` with `text-embedding-3-small` for retrieval.
 
 ## System design
 

@@ -97,6 +97,19 @@
     "stack": "Stack"
   },
   "Projects": {
+    "ai-agent": {
+      "title": "Agente de Ventas IA",
+      "category": "IA · RAG · Tools",
+      "summary": "El agente de IA bilingüe de este mismo sitio — conoce mi trabajo real con RAG, captura leads, agenda reuniones y recuerda a los visitantes que regresan.",
+      "problem": "Una landing que solo lista servicios es pasiva. Quería un sitio que hablara activamente con los visitantes, respondiera con precisión sobre mi trabajo y convirtiera el interés en leads capturados y llamadas agendadas — sin que yo intervenga.",
+      "architecture": "Un front end estático en Next.js llama a un backend Node/Express en AWS Lambda. El agente corre sobre gpt-4o-mini con generación aumentada por recuperación (text-embedding-3-small sobre mi contenido real) para anclar las respuestas, herramientas de function-calling de OpenAI para acciones reales (captura de leads + email con Amazon SES, agendado de reuniones con Cal.com, consulta de GitHub en vivo) y memoria de largo plazo por visitante en DynamoDB. Las llaves viven solo en el servidor y cada capa degrada con gracia.",
+      "result": "Un agente bilingüe que responde con datos reales en vez de alucinar, envía leads y confirmaciones de reunión automáticamente y reconoce a los visitantes que vuelven — construido y lanzado a producción por fases.",
+      "metrics": {
+        "grounded": "anclado en datos reales",
+        "tools": "herramientas de acción",
+        "persistent": "memoria por visitante"
+      }
+    },
     "scoreflow": {
       "title": "ScoreFlow",
       "category": "SaaS en tiempo real",

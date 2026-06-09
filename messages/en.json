@@ -97,6 +97,19 @@
     "stack": "Stack"
   },
   "Projects": {
+    "ai-agent": {
+      "title": "AI Sales Agent",
+      "category": "AI · RAG · Tools",
+      "summary": "The bilingual AI agent on this very site — it knows my real work through RAG, captures leads, books meetings and remembers returning visitors.",
+      "problem": "A landing page that only lists services is passive. I wanted a site that actively talks to visitors, answers accurately about my work, and turns interest into captured leads and booked calls — without me in the loop.",
+      "architecture": "A static Next.js front end calls a Node/Express backend on AWS Lambda. The agent runs on gpt-4o-mini with retrieval-augmented generation (text-embedding-3-small over my real content) for grounding, OpenAI function-calling tools for real actions (lead capture + Amazon SES email, Cal.com meeting booking, live GitHub lookup), and per-visitor long-term memory in DynamoDB. API keys stay server-side and every layer degrades gracefully.",
+      "result": "A bilingual agent that answers from real data instead of hallucinating, emails leads and meeting confirmations automatically, and recognizes returning visitors — built and shipped to production in phases.",
+      "metrics": {
+        "grounded": "grounded in real data",
+        "tools": "action tools",
+        "persistent": "per-visitor memory"
+      }
+    },
     "scoreflow": {
       "title": "ScoreFlow",
       "category": "Real-time SaaS",

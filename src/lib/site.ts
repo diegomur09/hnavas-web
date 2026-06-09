@@ -94,7 +94,19 @@ export type Project = {
 };
 
 export const PROJECTS: Project[] = [
-  // ---- Featured: the four headline case studies ----
+  // ---- Featured case studies ----
+  {
+    slug: "ai-agent",
+    liveUrl: "https://hnavasystems.com",
+    featured: true,
+    year: "2026",
+    stack: ["Next.js 16", "Node.js", "AWS Lambda", "OpenAI", "RAG", "DynamoDB", "Amazon SES"],
+    metrics: [
+      { value: "RAG", labelKey: "grounded" },
+      { value: "4", labelKey: "tools" },
+      { value: "Memory", labelKey: "persistent" },
+    ],
+  },
   {
     slug: "scoreflow",
     liveUrl: "https://myscoreflow.com",
