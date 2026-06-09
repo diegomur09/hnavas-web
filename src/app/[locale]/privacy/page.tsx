@@ -11,7 +11,8 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Privacy" });
   return {
-    title: `${t("title")} — ${SITE.name}`,
+    // Brand suffix is added by the layout's title template — keep this bare.
+    title: t("title"),
     alternates: { canonical: `/${locale}/privacy`, languages: { en: "/en/privacy", es: "/es/privacy" } },
   };
 }
