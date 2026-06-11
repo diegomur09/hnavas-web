@@ -24,9 +24,9 @@ export default async function HomePage({
       <main>
         <Hero />
         <Stats />
-        <Platforms />
-        <Services />
         <Work />
+        <Services />
+        <Platforms />
         <About />
         <Contact />
       </main>

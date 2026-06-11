@@ -18,8 +18,8 @@ export function Navbar() {
   }, []);
 
   const links = [
-    { href: "#services", label: t("services") },
     { href: "#work", label: t("work") },
+    { href: "#services", label: t("services") },
     { href: "#about", label: t("about") },
     { href: "#contact", label: t("contact") },
   ];
