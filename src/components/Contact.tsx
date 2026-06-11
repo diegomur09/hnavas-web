@@ -3,9 +3,10 @@
 import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { motion } from "framer-motion";
+import { Link } from "@/i18n/navigation";
 import { SITE } from "@/lib/site";
-
-const CONTACT_URL = process.env.NEXT_PUBLIC_AGENT_URL;
+import { AGENT_URL } from "@/lib/config";
+import { sendContactForm } from "@/lib/api";
 
 type Status = "idle" | "sending" | "success" | "error";
 
@@ -29,13 +30,8 @@ export function Contact() {
     try {
       // Try the configured backend first; fall back to a mailto so the lead is
       // never lost even before the contact endpoint is live.
-      if (CONTACT_URL) {
-        const res = await fetch(`${CONTACT_URL}/contact`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, email, project, locale }),
-        });
-        if (!res.ok) throw new Error(`contact-${res.status}`);
+      if (AGENT_URL) {
+        await sendContactForm({ name, email, project, locale });
       } else {
         openMailto(name, email, project);
       }
@@ -92,8 +88,8 @@ export function Contact() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="glass-card space-y-4 p-7"
         >
-          <Field label={t("name")} name="name" type="text" />
-          <Field label={t("emailLabel")} name="email" type="email" />
+          <Field label={t("name")} name="name" type="text" placeholder={t("namePlaceholder")} />
+          <Field label={t("emailLabel")} name="email" type="email" placeholder={t("emailPlaceholder")} />
 
           <label className="block">
             <span className="text-sm text-secondary">{t("project")}</span>
@@ -101,6 +97,7 @@ export function Contact() {
               name="project"
               required
               rows={4}
+              placeholder={t("projectPlaceholder")}
               className="mt-1.5 w-full resize-none rounded-xl border border-white/10 bg-white/3 px-3.5 py-2.5 text-sm text-primary placeholder:text-subtle focus:border-brand-400/50 focus:outline-none"
             />
           </label>
@@ -122,12 +119,12 @@ export function Contact() {
 
           <p className="text-[11px] leading-relaxed text-subtle">
             {t("consent")}{" "}
-            <a
-              href={`/${locale}/privacy`}
+            <Link
+              href="/privacy"
               className="text-secondary underline transition hover:text-brand-300"
             >
               {t("privacyLink")}
-            </a>
+            </Link>
             .
           </p>
         </motion.form>
@@ -140,10 +137,12 @@ function Field({
   label,
   name,
   type,
+  placeholder,
 }: {
   label: string;
   name: string;
   type: string;
+  placeholder: string;
 }) {
   return (
     <label className="block">
@@ -151,6 +150,7 @@ function Field({
       <input
         name={name}
         type={type}
+        placeholder={placeholder}
         required
         className="mt-1.5 w-full rounded-xl border border-white/10 bg-white/3 px-3.5 py-2.5 text-sm text-primary placeholder:text-subtle focus:border-brand-400/50 focus:outline-none"
       />

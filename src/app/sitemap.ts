@@ -1,22 +1,12 @@
 import type { MetadataRoute } from "next";
-import { SITE, LOCALES } from "@/lib/site";
+import { SITE, LOCALES, SCREENSHOT_SLUGS } from "@/lib/site";
 
 // Required for `output: export` — emit a static sitemap.xml at build.
 export const dynamic = "force-static";
 
 // Project screenshots shown on the page — declared as an image sitemap so
 // Google can discover and index the project imagery (image SEO / GEO).
-const SCREENSHOT_SLUGS = [
-  "scoreflow",
-  "dynamic-bachata",
-  "sky-weekender",
-  "email-campaigns",
-  "petary",
-  "ccc-field-app",
-  "luxury-rides",
-  "baychata",
-];
-const SCREENSHOTS = SCREENSHOT_SLUGS.map(
+const SCREENSHOTS = [...SCREENSHOT_SLUGS].map(
   (slug) => `${SITE.url}/screenshots/${slug}.webp`,
 );
 

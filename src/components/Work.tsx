@@ -1,5 +1,5 @@
 import { getTranslations } from "next-intl/server";
-import { FEATURED_PROJECTS, MORE_PROJECTS, assetUrl, type Project } from "@/lib/site";
+import { FEATURED_PROJECTS, MORE_PROJECTS, assetUrl, getScreenshotUrl, type Project } from "@/lib/site";
 import { AnimatedSection } from "./AnimatedSection";
 import { SectionHeading } from "./Services";
 
@@ -24,7 +24,7 @@ function ArrowUpRight() {
 
 export async function Work() {
   const t = await getTranslations("Work");
-  const tp = await getTranslations("Projects");
+  const tProjects = await getTranslations("Projects");
 
   const [lead, ...rest] = FEATURED_PROJECTS;
 
@@ -34,12 +34,12 @@ export async function Work() {
 
       <div className="mt-12 space-y-4">
         {/* Lead case study — full width, with the problem → architecture → result story */}
-        <LeadCard project={lead} t={t} tp={tp} />
+        <LeadCard project={lead} t={t} tProjects={tProjects} />
 
         {/* Remaining featured projects — full-width rows: text left, screenshot right */}
         <div className="grid gap-4">
           {rest.map((p) => (
-            <CompactCard key={p.slug} project={p} t={t} tp={tp} />
+            <CompactCard key={p.slug} project={p} t={t} tProjects={tProjects} />
           ))}
         </div>
       </div>
@@ -51,7 +51,7 @@ export async function Work() {
 
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {MORE_PROJECTS.map((p) => (
-            <MiniCard key={p.slug} project={p} t={t} tp={tp} />
+            <MiniCard key={p.slug} project={p} t={t} tProjects={tProjects} />
           ))}
         </div>
       </div>
@@ -76,14 +76,14 @@ function StackTags({ stack }: { stack: string[] }) {
   );
 }
 
-function Metrics({ project, tp }: { project: Project; tp: Tr }) {
+function Metrics({ project, tProjects }: { project: Project; tProjects: Tr }) {
   return (
     <div className="flex flex-wrap gap-x-8 gap-y-3">
       {project.metrics.map((m) => (
         <div key={m.labelKey}>
           <div className="data-mono text-xl font-semibold text-primary">{m.value}</div>
           <div className="text-[11px] text-body">
-            {tp(`${project.slug}.metrics.${m.labelKey}`)}
+            {tProjects(`${project.slug}.metrics.${m.labelKey}`)}
           </div>
         </div>
       ))}
@@ -104,20 +104,6 @@ function LiveLink({ href, label }: { href: string; label: string }) {
     </a>
   );
 }
-
-// Projects that have a screenshot in /public/screenshots (slug.webp).
-const SCREENSHOTS = new Set([
-  "scoreflow",
-  "dynamic-bachata",
-  "sky-weekender",
-  "email-campaigns",
-  "petary",
-  "ccc-field-app",
-  "luxury-rides",
-  "baychata",
-]);
-const shot = (slug: string) =>
-  SCREENSHOTS.has(slug) ? assetUrl(`/screenshots/${slug}.webp`) : undefined;
 
 // Project preview in a subtle browser-style frame. Lazy-loaded + explicit
 // dimensions so it never hurts LCP/CLS (the cards sit below the fold).
@@ -191,43 +177,43 @@ function ProjectLogo({
   return null;
 }
 
-function LeadCard({ project, t, tp }: { project: Project; t: Tr; tp: Tr }) {
+function LeadCard({ project, t, tProjects }: { project: Project; t: Tr; tProjects: Tr }) {
   return (
     <article className="glass-card glass-card-hover grid gap-8 p-7 lg:grid-cols-[1.1fr_0.9fr] lg:p-9">
       <div>
         {project.logo && (
           <div className="mb-5">
-            <ProjectLogo project={project} alt={tp(`${project.slug}.title`)} />
+            <ProjectLogo project={project} alt={tProjects(`${project.slug}.title`)} />
           </div>
         )}
 
         <div className="flex items-center gap-3">
           <span className="data-mono text-xs uppercase tracking-widest text-brand-400">
-            {tp(`${project.slug}.category`)}
+            {tProjects(`${project.slug}.category`)}
           </span>
           <span className="data-mono text-xs text-subtle">{project.year}</span>
         </div>
 
         <h3 className="mt-3 text-2xl font-bold tracking-tight text-primary sm:text-3xl">
-          {tp(`${project.slug}.title`)}
+          {tProjects(`${project.slug}.title`)}
         </h3>
 
         <p className="mt-3 text-base leading-relaxed text-body">
-          {tp(`${project.slug}.summary`)}
+          {tProjects(`${project.slug}.summary`)}
         </p>
 
         <div className="mt-6 space-y-4">
-          <Detail label={t("problem")} body={tp(`${project.slug}.problem`)} />
-          <Detail label={t("architecture")} body={tp(`${project.slug}.architecture`)} />
-          <Detail label={t("result")} body={tp(`${project.slug}.result`)} />
+          <Detail label={t("problem")} body={tProjects(`${project.slug}.problem`)} />
+          <Detail label={t("architecture")} body={tProjects(`${project.slug}.architecture`)} />
+          <Detail label={t("result")} body={tProjects(`${project.slug}.result`)} />
         </div>
       </div>
 
       <div className="flex flex-col gap-6 lg:border-l lg:border-white/6 lg:pl-8">
-        {shot(project.slug) && (
-          <ScreenshotFrame src={shot(project.slug)!} alt={tp(`${project.slug}.title`)} />
+        {getScreenshotUrl(project.slug) && (
+          <ScreenshotFrame src={getScreenshotUrl(project.slug)!} alt={tProjects(`${project.slug}.title`)} />
         )}
-        <Metrics project={project} tp={tp} />
+        <Metrics project={project} tProjects={tProjects} />
 
         <div>
           <p className="data-mono mb-2 text-[11px] uppercase tracking-widest text-subtle">
@@ -257,33 +243,33 @@ function Detail({ label, body }: { label: string; body: string }) {
   );
 }
 
-function CompactCard({ project, t, tp }: { project: Project; t: Tr; tp: Tr }) {
-  const ss = shot(project.slug);
+function CompactCard({ project, t, tProjects }: { project: Project; t: Tr; tProjects: Tr }) {
+  const screenshot = getScreenshotUrl(project.slug);
   return (
     <article className="glass-card glass-card-hover flex flex-col gap-6 p-6 md:flex-row md:items-start">
       {/* Left: the story */}
       <div className="flex min-w-0 flex-1 flex-col">
         <div className="flex items-start gap-3.5">
-          <ProjectLogo project={project} alt={tp(`${project.slug}.title`)} />
+          <ProjectLogo project={project} alt={tProjects(`${project.slug}.title`)} />
           <div className="min-w-0">
             <div className="flex items-center gap-3">
               <span className="data-mono text-xs uppercase tracking-widest text-brand-400">
-                {tp(`${project.slug}.category`)}
+                {tProjects(`${project.slug}.category`)}
               </span>
               <span className="data-mono text-xs text-subtle">{project.year}</span>
             </div>
             <h3 className="mt-1 text-lg font-semibold text-primary">
-              {tp(`${project.slug}.title`)}
+              {tProjects(`${project.slug}.title`)}
             </h3>
           </div>
         </div>
 
         <p className="mt-4 text-sm leading-relaxed text-body">
-          {tp(`${project.slug}.summary`)}
+          {tProjects(`${project.slug}.summary`)}
         </p>
 
         <div className="mt-5">
-          <Metrics project={project} tp={tp} />
+          <Metrics project={project} tProjects={tProjects} />
         </div>
 
         <div className="mt-5">
@@ -298,28 +284,28 @@ function CompactCard({ project, t, tp }: { project: Project; t: Tr; tp: Tr }) {
       </div>
 
       {/* Right: the screenshot */}
-      {ss && (
+      {screenshot && (
         <div className="md:w-[42%] md:shrink-0">
-          <ScreenshotFrame src={ss} alt={tp(`${project.slug}.title`)} />
+          <ScreenshotFrame src={screenshot} alt={tProjects(`${project.slug}.title`)} />
         </div>
       )}
     </article>
   );
 }
 
-function MiniCard({ project, t, tp }: { project: Project; t: Tr; tp: Tr }) {
-  const title = tp(`${project.slug}.title`);
+function MiniCard({ project, t, tProjects }: { project: Project; t: Tr; tProjects: Tr }) {
+  const title = tProjects(`${project.slug}.title`);
   // Wide transparent lockups (e.g. Baychata) read better as a banner on the
   // dark card than squeezed into the small square tile.
   const wide = project.logo && project.logoWide;
 
-  const ss = shot(project.slug);
+  const screenshot = getScreenshotUrl(project.slug);
 
   return (
     <article className="glass-card glass-card-hover flex flex-col p-5">
-      {ss && (
+      {screenshot && (
         <div className="mb-4">
-          <ScreenshotFrame src={ss} alt={title} />
+          <ScreenshotFrame src={screenshot} alt={title} />
         </div>
       )}
       {wide ? (
@@ -327,7 +313,7 @@ function MiniCard({ project, t, tp }: { project: Project; t: Tr; tp: Tr }) {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={assetUrl(project.logo!)} alt={title} className="mb-3 h-11 w-auto self-start" loading="lazy" />
           <span className="data-mono text-[11px] uppercase tracking-widest text-brand-400">
-            {tp(`${project.slug}.category`)}
+            {tProjects(`${project.slug}.category`)}
           </span>
           <h4 className="mt-0.5 text-base font-semibold text-primary">{title}</h4>
         </>
@@ -341,7 +327,7 @@ function MiniCard({ project, t, tp }: { project: Project; t: Tr; tp: Tr }) {
           />
           <div className="min-w-0">
             <span className="data-mono text-[11px] uppercase tracking-widest text-brand-400">
-              {tp(`${project.slug}.category`)}
+              {tProjects(`${project.slug}.category`)}
             </span>
             <h4 className="mt-0.5 text-base font-semibold text-primary">{title}</h4>
           </div>
@@ -349,7 +335,7 @@ function MiniCard({ project, t, tp }: { project: Project; t: Tr; tp: Tr }) {
       )}
 
       <p className="mt-3 flex-1 text-sm leading-relaxed text-body">
-        {tp(`${project.slug}.summary`)}
+        {tProjects(`${project.slug}.summary`)}
       </p>
 
       <div className="mt-4 flex items-center justify-between gap-3">
