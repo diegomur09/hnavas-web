@@ -40,7 +40,8 @@
       "¿Cuánto cuesta una página web?"
     ],
     "disclaimer": "Agente de IA — las respuestas pueden no ser perfectas, y recuerda nuestras conversaciones para retomar donde quedamos la próxima vez. Para algo importante, te conecto con Diego.",
-    "thinking": "Pensando…"
+    "thinking": "Pensando…",
+    "error": "Lo siento — no pude conectar con el servidor. Inténtalo de nuevo en un momento o usa el formulario de contacto de abajo."
   },
   "Services": {
     "eyebrow": "Lo que hago",
@@ -235,8 +236,11 @@
     "title": "Cuéntame sobre tu proyecto",
     "subtitle": "Envíame algunos detalles y te respondo — normalmente en un día.",
     "name": "Nombre",
+    "namePlaceholder": "Tu nombre",
     "emailLabel": "Email",
+    "emailPlaceholder": "tu@empresa.com",
     "project": "¿Qué quieres construir?",
+    "projectPlaceholder": "Unas líneas sobre tu proyecto, tiempos u objetivos…",
     "send": "Enviar mensaje",
     "sending": "Enviando…",
     "success": "¡Gracias! Te contactaré pronto.",

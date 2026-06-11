@@ -58,6 +58,22 @@ export function assetUrl(path: string): string {
   return `${ASSET_BASE}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
+// Projects that have a screenshot in /public/screenshots (slug.webp).
+export const SCREENSHOT_SLUGS = new Set([
+  "scoreflow",
+  "dynamic-bachata",
+  "sky-weekender",
+  "email-campaigns",
+  "petary",
+  "ccc-field-app",
+  "luxury-rides",
+  "baychata",
+]);
+
+export function getScreenshotUrl(slug: string): string | undefined {
+  return SCREENSHOT_SLUGS.has(slug) ? assetUrl(`/screenshots/${slug}.webp`) : undefined;
+}
+
 export type ServiceId =
   | "fullstack"
   | "cloud"

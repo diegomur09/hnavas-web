@@ -40,7 +40,8 @@
       "How much does a website cost?"
     ],
     "disclaimer": "AI agent — responses may be imperfect, and it remembers our chats to pick up where we left off next time. For anything important, I'll connect you with Diego.",
-    "thinking": "Thinking…"
+    "thinking": "Thinking…",
+    "error": "Sorry — I couldn't reach the server just now. Please try again in a moment, or use the contact form below."
   },
   "Services": {
     "eyebrow": "What I do",
@@ -235,8 +236,11 @@
     "title": "Tell me about your project",
     "subtitle": "Send a few details and I'll get back to you — usually within a day.",
     "name": "Name",
+    "namePlaceholder": "Your name",
     "emailLabel": "Email",
+    "emailPlaceholder": "you@company.com",
     "project": "What do you want to build?",
+    "projectPlaceholder": "A few lines about your project, timeline, or goals…",
     "send": "Send message",
     "sending": "Sending…",
     "success": "Thanks! I'll be in touch shortly.",
