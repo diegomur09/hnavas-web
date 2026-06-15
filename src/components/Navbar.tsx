@@ -1,13 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { SITE, assetUrl } from "@/lib/site";
+import { useAuth } from "@/context/AuthContext";
 import { LocaleSwitch } from "./LocaleSwitch";
 
 export function Navbar() {
   const t = useTranslations("Nav");
+  const locale = useLocale();
+  const { user, isLoading, openAuth, logoutUser } = useAuth();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -17,11 +20,14 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Section anchors are prefixed with the home path so they also work when the
+  // navbar is rendered on a separate page (e.g. /about) — no broken anchors.
+  const home = `/${locale}`;
   const links = [
-    { href: "#work", label: t("work") },
-    { href: "#services", label: t("services") },
-    { href: "#about", label: t("about") },
-    { href: "#contact", label: t("contact") },
+    { href: `${home}#work`, label: t("work") },
+    { href: `${home}#services`, label: t("services") },
+    { href: "/about", label: t("about"), internal: true },
+    { href: `${home}#contact`, label: t("contact") },
   ];
 
   return (
@@ -44,25 +50,54 @@ export function Navbar() {
         </Link>
 
         <div className="hidden items-center gap-7 md:flex">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="text-sm text-secondary transition hover:text-primary"
-            >
-              {l.label}
-            </a>
-          ))}
+          {links.map((l) =>
+            l.internal ? (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="text-sm text-secondary transition hover:text-primary"
+              >
+                {l.label}
+              </Link>
+            ) : (
+              <a
+                key={l.href}
+                href={l.href}
+                className="text-sm text-secondary transition hover:text-primary"
+              >
+                {l.label}
+              </a>
+            ),
+          )}
         </div>
 
         <div className="flex items-center gap-3">
           <LocaleSwitch />
-          <a
-            href="#contact"
-            className="btn-primary hidden px-4 py-2 text-sm sm:inline-block"
-          >
-            {t("cta")}
-          </a>
+
+          {/* Auth controls — two header states (signed out / signed in). */}
+          {!isLoading &&
+            (user ? (
+              <>
+                <span className="hidden text-sm text-secondary sm:inline">
+                  {t("greeting", { name: user.name })}
+                </span>
+                <button
+                  type="button"
+                  onClick={logoutUser}
+                  className="btn-ghost px-4 py-2 text-sm"
+                >
+                  {t("signOut")}
+                </button>
+              </>
+            ) : (
+              <button
+                type="button"
+                onClick={() => openAuth("signin")}
+                className="btn-primary px-4 py-2 text-sm"
+              >
+                {t("signIn")}
+              </button>
+            ))}
         </div>
       </nav>
     </header>
