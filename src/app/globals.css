@@ -75,6 +75,18 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Tailwind's reset sets `cursor: default` on buttons, so every interactive
+   control (close icons, submit/save buttons, the logout button, the EN-ES
+   switch…) needs the pointer restored. One rule keeps it consistent instead of
+   adding `cursor-pointer` to each element. Disabled controls keep the default
+   arrow so they read as inactive. */
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+}
+
 body {
   background: var(--color-surface-900);
   color: var(--color-foreground);

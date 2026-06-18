@@ -42,7 +42,7 @@ export function Navbar() {
         <Link href="/" className="flex items-center gap-2.5">
           <span className="grid h-8 w-8 place-items-center overflow-hidden rounded-lg">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={assetUrl("/logos/logo-mark.png")} alt="" className="h-full w-full object-cover" />
+            <img src={assetUrl("/logos/logo-mark.png")} alt={`${SITE.name} logo`} className="h-full w-full object-cover" />
           </span>
           <span className="text-sm font-semibold tracking-tight text-primary">
             {SITE.name}

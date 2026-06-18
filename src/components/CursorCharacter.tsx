@@ -16,12 +16,15 @@ import { assetUrl } from "@/lib/site";
 export function CursorCharacter({
   className = "",
   src = "/diego-character.webp",
+  alt = "Diego Navas Murcia, founder of HNavas Systems",
   intensity = 1,
   priority = false,
   glow = true,
 }: {
   className?: string;
   src?: string;
+  /** Describes the figure for assistive tech / when the image fails to load. */
+  alt?: string;
   /** Scales the tilt/drift. 1 = default, lower = subtler. */
   intensity?: number;
   priority?: boolean;
@@ -89,7 +92,7 @@ export function CursorCharacter({
       <img
         ref={imgRef}
         src={assetUrl(src)}
-        alt=""
+        alt={alt}
         draggable={false}
         loading={priority ? "eager" : "lazy"}
         decoding="async"
