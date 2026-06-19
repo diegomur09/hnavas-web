@@ -30,6 +30,10 @@ jobs:
     env:
       # Per-environment: prod build points at the prod backend, qa at the qa backend.
       NEXT_PUBLIC_AGENT_URL: ${{ vars.NEXT_PUBLIC_AGENT_URL }}
+      # Auth UI flag. Production sets this var to "false" to hide the auth UI and
+      # show the "Start your project" CTA instead. QA leaves it unset → empty
+      # string → AUTH_ENABLED stays true → full sign in / sign up for review.
+      NEXT_PUBLIC_ENABLE_AUTH: ${{ vars.NEXT_PUBLIC_ENABLE_AUTH }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
