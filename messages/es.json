@@ -131,6 +131,19 @@
     "stack": "Stack"
   },
   "Projects": {
+    "local-templates": {
+      "title": "Plantillas Web para Negocios Locales",
+      "category": "Plantillas de conversión",
+      "summary": "Una biblioteca creciente de 60 demos de sitios web bilingües listos para lanzar, para negocios locales — restaurantes, barberías, salones de uñas, detallado de autos, limpieza y jardinería. Cada demo se personaliza para el negocio con menú/servicios, horarios, galería, reseñas y un flujo de contacto + llamar para ordenar.",
+      "problem": "Los negocios locales suelen no tener sitio web o tener uno lento y anticuado, y las plantillas genéricas no convierten ni hablan español.",
+      "architecture": "Un sistema de componentes reutilizable en Next.js con un modelo de datos por negocio, contenido bilingüe EN/ES, diseños mobile-first y hosting estático rápido — para crear un demo personalizado rápidamente para cualquier negocio nuevo.",
+      "result": "60 sitios demo en vivo en 6 industrias, cada uno listo para entregar a un cliente potencial como una vista previa personalizada.",
+      "metrics": {
+        "demos": "demos en vivo",
+        "industries": "industrias",
+        "bilingual": "bilingüe"
+      }
+    },
     "ai-agent": {
       "title": "Agente de Ventas IA",
       "category": "IA · RAG · Tools",

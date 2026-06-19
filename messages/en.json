@@ -131,6 +131,19 @@
     "stack": "Stack"
   },
   "Projects": {
+    "local-templates": {
+      "title": "Local Business Website Templates",
+      "category": "Conversion templates",
+      "summary": "A growing library of 60 ready-to-launch, bilingual website demos for local businesses — restaurants, barbershops, nail salons, auto detailing, cleaning and landscaping. Each demo is personalized for the business with menu/services, hours, gallery, reviews and a contact + call-to-order flow.",
+      "problem": "Local businesses often have no website or a slow, dated one, and generic templates don't convert or speak Spanish.",
+      "architecture": "A reusable Next.js component system with a per-business data model, bilingual EN/ES content, mobile-first layouts and fast static hosting — so a personalized demo can be spun up quickly for any new business.",
+      "result": "60 live demo sites across 6 industries, each ready to hand a prospective client as a personalized preview.",
+      "metrics": {
+        "demos": "live demos",
+        "industries": "industries",
+        "bilingual": "bilingual"
+      }
+    },
     "ai-agent": {
       "title": "AI Sales Agent",
       "category": "AI · RAG · Tools",

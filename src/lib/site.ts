@@ -176,6 +176,18 @@ export const PROJECTS: Project[] = [
       { value: "Prod+QA", labelKey: "environments" },
     ],
   },
+  {
+    slug: "local-templates",
+    liveUrl: "https://demo.hnavasystems.com",
+    featured: true,
+    year: "2026",
+    stack: ["Restaurants", "Barbershops", "Nail salons", "Auto detailing", "Home cleaning", "Landscaping"],
+    metrics: [
+      { value: "60", labelKey: "demos" },
+      { value: "6", labelKey: "industries" },
+      { value: "EN/ES", labelKey: "bilingual" },
+    ],
+  },
   // ---- More work: the wider sample shown in a compact strip ----
   {
     slug: "bachata-crm",
