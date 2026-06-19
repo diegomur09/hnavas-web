@@ -75,10 +75,13 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           <LocaleSwitch />
 
-          {/* Auth controls — two header states (signed out / signed in).
-              Hidden in production via the AUTH_ENABLED flag; shown on QA/local
-              where the full auth flow is reviewed. */}
-          {AUTH_ENABLED &&
+          {/* Header right side has two modes:
+              - QA/local (AUTH_ENABLED): the full auth flow — two states
+                (signed out → "Sign in", signed in → greeting + "Log out"),
+                which the TripleTen review evaluates.
+              - Production (auth disabled): a "Start your project" CTA that
+                scrolls to the contact section, no auth shown to real visitors. */}
+          {AUTH_ENABLED ? (
             !isLoading &&
             (user ? (
               <>
@@ -101,7 +104,12 @@ export function Navbar() {
               >
                 {t("signIn")}
               </button>
-            ))}
+            ))
+          ) : (
+            <a href={`${home}#contact`} className="btn-primary px-4 py-2 text-sm">
+              {t("cta")}
+            </a>
+          )}
         </div>
       </nav>
     </header>
