@@ -312,5 +312,43 @@
   "Meta": {
     "homeTitle": "Desarrollo de Software, AWS e IA — Denver",
     "homeDescription": "Ingeniero bilingüe en Denver: software a medida, apps web full-stack, sistemas en AWS y automatización con IA. SaaS, MVPs e integraciones listas para producción."
+  },
+  "City": {
+    "eyebrow": "Desarrollo de software local",
+    "title": "Desarrollo de software a medida en {city}",
+    "metaTitle": "Desarrollo de Software a Medida en {city}, CO | HNavas Systems",
+    "cta": "Inicia tu proyecto",
+    "areasLabel": "Zonas que atendemos",
+    "nearbyTitle": "También atendemos ciudades cercanas"
+  },
+  "Faq": {
+    "eyebrow": "Preguntas frecuentes",
+    "title": "Preguntas frecuentes",
+    "items": [
+      {
+        "q": "¿Qué tipo de software construyes?",
+        "a": "Aplicaciones web full-stack y SaaS a medida, sistemas en la nube y serverless de AWS, automatización con IA (chatbots, flujos de correo, captación de clientes), sitios web de alto rendimiento e integraciones con herramientas como Stripe, CRMs y agendamiento. Del MVP a producción."
+      },
+      {
+        "q": "¿Cuánto cuesta un proyecto?",
+        "a": "Depende del alcance. Un sitio web o una automatización puntual es un proyecto fijo más pequeño; una app a medida o un SaaS completo es mayor y suele hacerse por fases. Cuéntame qué necesitas por el formulario o el chat de IA y te doy un estimado claro — sin sorpresas."
+      },
+      {
+        "q": "¿Cuánto tiempo toma?",
+        "a": "Los sitios y automatizaciones pequeñas suelen entregarse en 1 a 3 semanas. Las apps a medida y los SaaS se definen por fases para que veas software funcionando pronto y seguido, en vez de esperar meses por una gran revelación."
+      },
+      {
+        "q": "¿Trabajas con empresas fuera de Denver?",
+        "a": "Sí. Estoy en el área metropolitana de Denver (Broomfield) y trabajo en persona con clientes locales cuando ayuda, pero entrego de forma remota en todo Colorado y EE. UU. — el proceso es el mismo en ambos casos."
+      },
+      {
+        "q": "¿Trabajas en inglés y español?",
+        "a": "Sí — soy completamente bilingüe. Puedo llevar todo el proyecto en inglés o español, y construir productos bilingües (como este sitio) para que llegues a más clientes."
+      },
+      {
+        "q": "¿Ofreces soporte continuo después del lanzamiento?",
+        "a": "Sí. Puedo mantener, monitorear y ampliar lo que construyo — incluida la infraestructura de AWS — para que tengas una sola persona responsable de todo el sistema, no una entrega a un desconocido."
+      }
+    ]
   }
 }
