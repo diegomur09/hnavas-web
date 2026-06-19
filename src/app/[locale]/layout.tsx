@@ -7,6 +7,7 @@ import { routing } from "@/i18n/routing";
 import { SITE } from "@/lib/site";
 import { AuthProvider } from "@/context/AuthContext";
 import { AuthModal } from "@/components/AuthModal";
+import { AUTH_ENABLED } from "@/lib/config";
 import "../globals.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -173,7 +174,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>
           <AuthProvider>
             {children}
-            <AuthModal />
+            {AUTH_ENABLED && <AuthModal />}
           </AuthProvider>
         </NextIntlClientProvider>
       </body>

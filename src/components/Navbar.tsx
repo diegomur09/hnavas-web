@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { SITE, assetUrl } from "@/lib/site";
 import { useAuth } from "@/context/AuthContext";
+import { AUTH_ENABLED } from "@/lib/config";
 import { LocaleSwitch } from "./LocaleSwitch";
 
 export function Navbar() {
@@ -74,8 +75,11 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           <LocaleSwitch />
 
-          {/* Auth controls — two header states (signed out / signed in). */}
-          {!isLoading &&
+          {/* Auth controls — two header states (signed out / signed in).
+              Hidden in production via the AUTH_ENABLED flag; shown on QA/local
+              where the full auth flow is reviewed. */}
+          {AUTH_ENABLED &&
+            !isLoading &&
             (user ? (
               <>
                 <span className="hidden text-sm text-secondary sm:inline">
