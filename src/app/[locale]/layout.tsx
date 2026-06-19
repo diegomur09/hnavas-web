@@ -27,6 +27,8 @@ export async function generateMetadata({
 
   return {
     metadataBase: new URL(SITE.url),
+    // Google Search Console site ownership (meta-tag verification method).
+    verification: { google: "yOHr8SLg3kmc5XTkVpEY05pPorrSW6C0xQGoVsLNib8" },
     title: {
       default: t("homeTitle"),
       template: `%s | ${SITE.name}`,
