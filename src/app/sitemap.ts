@@ -15,6 +15,7 @@ const SCREENSHOTS = [...SCREENSHOT_SLUGS].map(
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
   const homeLanguages = Object.fromEntries(LOCALES.map((l) => [l, `${SITE.url}/${l}`]));
+  const aboutLanguages = Object.fromEntries(LOCALES.map((l) => [l, `${SITE.url}/${l}/about`]));
   const privacyLanguages = Object.fromEntries(LOCALES.map((l) => [l, `${SITE.url}/${l}/privacy`]));
 
   const home = LOCALES.map((locale) => ({
@@ -26,6 +27,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     images: SCREENSHOTS,
   }));
 
+  const about = LOCALES.map((locale) => ({
+    url: `${SITE.url}/${locale}/about`,
+    lastModified,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+    alternates: { languages: aboutLanguages },
+  }));
+
   const privacy = LOCALES.map((locale) => ({
     url: `${SITE.url}/${locale}/privacy`,
     lastModified,
@@ -34,5 +43,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     alternates: { languages: privacyLanguages },
   }));
 
-  return [...home, ...privacy];
+  return [...home, ...about, ...privacy];
 }

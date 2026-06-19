@@ -1,13 +1,16 @@
 import { getTranslations } from "next-intl/server";
 import { SITE, STACK } from "@/lib/site";
 import { AnimatedSection } from "./AnimatedSection";
+import { CursorCharacter } from "./CursorCharacter";
 
 export async function About() {
   const t = await getTranslations("About");
 
   return (
-    <AnimatedSection id="about" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-24">
-      <div className="grid gap-12 lg:grid-cols-[1fr_0.85fr]">
+    <AnimatedSection id="about" className="relative mx-auto max-w-6xl scroll-mt-20 px-5 py-24">
+      <div className="grid items-stretch gap-12 lg:grid-cols-[1.45fr_1fr]">
+        {/* Left: statement + core stack, stacked */}
+        <div className="space-y-10">
         {/* Statement */}
         <div>
           <span className="data-mono text-xs uppercase tracking-widest text-brand-400">
@@ -55,6 +58,15 @@ export async function About() {
           <p className="mt-6 border-t border-white/6 pt-4 text-xs text-body">
             {SITE.location} · {SITE.languages.join(" / ")}
           </p>
+        </div>
+        </div>
+
+        {/* Right: "Soul Diego" — free-standing, follows the cursor */}
+        <div className="relative hidden min-h-[460px] lg:block">
+          <CursorCharacter
+            intensity={0.9}
+            className="absolute inset-x-0 bottom-0 h-full w-full"
+          />
         </div>
       </div>
     </AnimatedSection>

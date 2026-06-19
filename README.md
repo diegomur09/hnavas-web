@@ -9,11 +9,17 @@ technical SEO.
 
 | | |
 |---|---|
+| **Live demo — Stage 1 review** 👈 | **https://dpfbof69kqlws.cloudfront.net/en/** — has the **About** page + **Sign up / Sign in** modals, wired to the QA backend (registration + login work end to end). |
 | Production site | https://hnavasystems.com ✅ live |
 | Frontend repo | https://github.com/diegomur09/hnavas-web |
 | Backend / API repo | https://github.com/diegomur09/hnavas-api |
 | API (QA) | https://tfpo7fqoszogi2qtznsxuhblb40kmyzt.lambda-url.us-east-1.on.aws/health |
 | API (Production) | https://vvbwtcwlds3irp4ubw2b4cumaq0oumrl.lambda-url.us-east-1.on.aws/health |
+
+> **Reviewer note:** open the **Live demo** link above to test the second page
+> (`/about`) and the Sign up / Sign in popups against a live backend. Running
+> locally, the root `/` redirects to `/en`, and the chat/auth fall back to demo
+> mode unless `NEXT_PUBLIC_AGENT_URL` points at a running backend.
 
 ## What it does
 
