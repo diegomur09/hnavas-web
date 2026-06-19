@@ -131,6 +131,19 @@
     "stack": "Stack"
   },
   "Projects": {
+    "local-templates": {
+      "title": "Local Business Website Templates",
+      "category": "Conversion templates",
+      "summary": "A growing library of 60 ready-to-launch, bilingual website demos for local businesses — restaurants, barbershops, nail salons, auto detailing, cleaning and landscaping. Each demo is personalized for the business with menu/services, hours, gallery, reviews and a contact + call-to-order flow.",
+      "problem": "Local businesses often have no website or a slow, dated one, and generic templates don't convert or speak Spanish.",
+      "architecture": "A reusable Next.js component system with a per-business data model, bilingual EN/ES content, mobile-first layouts and fast static hosting — so a personalized demo can be spun up quickly for any new business.",
+      "result": "60 live demo sites across 6 industries, each ready to hand a prospective client as a personalized preview.",
+      "metrics": {
+        "demos": "live demos",
+        "industries": "industries",
+        "bilingual": "bilingual"
+      }
+    },
     "ai-agent": {
       "title": "AI Sales Agent",
       "category": "AI · RAG · Tools",
@@ -312,5 +325,43 @@
   "Meta": {
     "homeTitle": "Custom Software, AWS & AI Development — Denver",
     "homeDescription": "Denver-based bilingual engineer building custom software, full-stack web apps, AWS cloud systems and AI automation. SaaS, MVPs and integrations that ship."
+  },
+  "City": {
+    "eyebrow": "Local software development",
+    "title": "Custom software development in {city}",
+    "metaTitle": "Custom Software Development in {city}, CO | HNavas Systems",
+    "cta": "Start your project",
+    "areasLabel": "Areas served",
+    "nearbyTitle": "Also serving nearby cities"
+  },
+  "Faq": {
+    "eyebrow": "FAQ",
+    "title": "Frequently asked questions",
+    "items": [
+      {
+        "q": "What kind of software do you build?",
+        "a": "Custom full-stack web apps and SaaS, AWS cloud and serverless systems, AI automation (chatbots, email pipelines, lead nurture), high-performance websites, and integrations with tools like Stripe, CRMs and scheduling. From MVP to production."
+      },
+      {
+        "q": "How much does a project cost?",
+        "a": "It depends on scope. A focused website or automation is a smaller fixed project; a full custom app or SaaS is larger and usually phased. Tell me what you need through the contact form or the AI chat and I'll give you a clear estimate — no surprises."
+      },
+      {
+        "q": "How long does it take?",
+        "a": "Small sites and automations typically ship in 1–3 weeks. Custom apps and SaaS are scoped in phases so you see working software early and often, instead of waiting months for a big reveal."
+      },
+      {
+        "q": "Do you work with businesses outside Denver?",
+        "a": "Yes. I'm based in the Denver metro (Broomfield) and work with local clients in person when it helps, but I deliver remotely across Colorado and the US — the process is the same either way."
+      },
+      {
+        "q": "Do you work in both English and Spanish?",
+        "a": "Yes — I'm fully bilingual. I can run the whole project in English or Spanish, and build bilingual products (like this site) so you reach more customers."
+      },
+      {
+        "q": "Do you provide ongoing support after launch?",
+        "a": "Yes. I can maintain, monitor and extend what I build — including the AWS infrastructure — so you have one accountable person for the whole system, not a handoff to a stranger."
+      }
+    ]
   }
 }
