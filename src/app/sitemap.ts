@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { SITE, LOCALES, SCREENSHOT_SLUGS } from "@/lib/site";
+import { CITIES } from "@/lib/cities";
 
 // Required for `output: export` — emit a static sitemap.xml at build.
 export const dynamic = "force-static";
@@ -43,5 +44,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     alternates: { languages: privacyLanguages },
   }));
 
-  return [...home, ...about, ...privacy];
+  // Local-SEO city landing pages: one URL per locale, cross-linked by hreflang.
+  const cities = CITIES.flatMap((city) => {
+    const languages = Object.fromEntries(
+      LOCALES.map((l) => [l, `${SITE.url}/${l}/${city.slug}`]),
+    );
+    return LOCALES.map((locale) => ({
+      url: `${SITE.url}/${locale}/${city.slug}`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+      alternates: { languages },
+    }));
+  });
+
+  return [...home, ...about, ...privacy, ...cities];
 }
