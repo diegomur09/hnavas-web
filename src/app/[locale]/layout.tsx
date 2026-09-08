@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { SITE } from "@/lib/site";
 import { AuthProvider } from "@/context/AuthContext";
@@ -13,6 +13,12 @@ import "../globals.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+
+// Only these namespaces are read by client components (Navbar/LocaleSwitch,
+// AuthModal, Hero, Contact, AgentChat). Everything else is rendered on the
+// server, so shipping it to the browser only inflates the inlined RSC payload:
+// the full catalog is ~19 KB per page, these five are ~3 KB.
+const CLIENT_NAMESPACES = ["Nav", "Auth", "Hero", "Contact", "Agent"] as const;
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -164,6 +170,11 @@ export default async function LocaleLayout({
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
 
+  const messages = await getMessages();
+  const clientMessages = Object.fromEntries(
+    CLIENT_NAMESPACES.filter((ns) => ns in messages).map((ns) => [ns, messages[ns]]),
+  );
+
   return (
     <html
       lang={locale}
@@ -174,7 +185,7 @@ export default async function LocaleLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <NextIntlClientProvider>
+        <NextIntlClientProvider messages={clientMessages}>
           <MotionProvider>
             <AuthProvider>
               {children}
