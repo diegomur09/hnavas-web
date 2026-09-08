@@ -46,14 +46,45 @@ jobs:
         with:
           role-to-assume: ${{ vars.AWS_DEPLOY_ROLE }}
           aws-region: us-east-1
-      - name: Sync static export to S3
-        run: aws s3 sync ./out "s3://${{ vars.S3_BUCKET }}" --delete
+      # Assets go up before the HTML that references them, so there is never a
+      # window where a fresh page points at a chunk that is not on S3 yet.
+      # Build chunks are content-hashed, so they can be cached forever. No
+      # --delete here on purpose: keeping the previous build's chunks around
+      # means a visitor mid-navigation during a deploy does not hit a 404.
+      - name: Sync immutable build assets to S3
+        run: |
+          aws s3 sync ./out/_next/static "s3://${{ vars.S3_BUCKET }}/_next/static" \
+            --cache-control "public, max-age=31536000, immutable" --only-show-errors
+      # Every image and icon, wherever it sits in the export. These keep stable
+      # filenames (they are not hashed), so a week, not a year. Bump the
+      # filename when an image's content changes. Each file is handled by
+      # exactly one sync step, so no step ever overwrites another's header.
+      - name: Sync images to S3
+        run: |
+          aws s3 sync ./out "s3://${{ vars.S3_BUCKET }}" \
+            --exclude "*" \
+            --include "logos/*" --include "screenshots/*" \
+            --include "*.webp" --include "*.png" --include "*.svg" --include "*.ico" \
+            --exclude "_next/static/*" \
+            --cache-control "public, max-age=604800" --only-show-errors
+      # Everything else: HTML, sitemap, robots, llms.txt. Always revalidated so
+      # a deploy is visible immediately. --delete cleans up removed pages; the
+      # two prefixes above are excluded so their files are never pruned here.
+      - name: Sync HTML and metadata to S3
+        run: |
+          aws s3 sync ./out "s3://${{ vars.S3_BUCKET }}" --delete \
+            --exclude "_next/static/*" --exclude "logos/*" --exclude "screenshots/*" \
+            --exclude "*.webp" --exclude "*.png" --exclude "*.svg" --exclude "*.ico" \
+            --cache-control "public, max-age=0, must-revalidate" --only-show-errors
+      # REPLACE rewrites all metadata, so the cache header has to be restated
+      # here or these two objects would come back with none.
       - name: Fix Content-Type on extensionless metadata images
         run: |
           for loc in en es; do
             for img in opengraph-image twitter-image; do
               aws s3 cp "s3://${{ vars.S3_BUCKET }}/$loc/$img" "s3://${{ vars.S3_BUCKET }}/$loc/$img" \
-                --content-type image/png --metadata-directive REPLACE --only-show-errors
+                --content-type image/png --cache-control "public, max-age=604800" \
+                --metadata-directive REPLACE --only-show-errors
             done
           done
       - name: Invalidate CloudFront cache
