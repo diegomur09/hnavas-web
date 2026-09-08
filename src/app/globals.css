@@ -41,6 +41,17 @@
   --animate-shimmer: shimmer 28s linear infinite;
 }
 
+/* Entrance reveal for above-the-fold content. CSS, not framer-motion, on
+   purpose: the paint happens on the first frame instead of waiting for
+   hydration, so the hero never blocks LCP. The prefers-reduced-motion block
+   further down collapses these to ~0ms, which inline JS animations ignore. */
+.reveal {
+  animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.reveal-1 { animation-delay: 0.06s; }
+.reveal-2 { animation-delay: 0.12s; }
+.reveal-3 { animation-delay: 0.18s; }
+
 @keyframes fade-up {
   from {
     opacity: 0;
