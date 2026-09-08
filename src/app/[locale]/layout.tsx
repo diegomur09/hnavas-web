@@ -57,13 +57,13 @@ export async function generateMetadata({
     authors: [{ name: SITE.person, url: SITE.url }],
     creator: SITE.person,
     alternates: {
-      canonical: `/${locale}`,
-      languages: { en: "/en", es: "/es" },
+      canonical: `/${locale}/`,
+      languages: { en: "/en/", es: "/es/" },
     },
     openGraph: {
       type: "website",
       locale: locale === "es" ? "es_US" : "en_US",
-      url: `${SITE.url}/${locale}`,
+      url: `${SITE.url}/${locale}/`,
       siteName: SITE.name,
       title: t("homeTitle"),
       description: t("homeDescription"),

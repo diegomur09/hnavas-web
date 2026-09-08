@@ -38,13 +38,13 @@ export async function generateMetadata({
     title: t("metaTitle", { city: city.name }),
     description: copy.intro,
     alternates: {
-      canonical: `/${locale}/${city.slug}`,
-      languages: Object.fromEntries(LOCALES.map((l) => [l, `/${l}/${city.slug}`])),
+      canonical: `/${locale}/${city.slug}/`,
+      languages: Object.fromEntries(LOCALES.map((l) => [l, `/${l}/${city.slug}/`])),
     },
     openGraph: {
       title: t("metaTitle", { city: city.name }),
       description: copy.intro,
-      url: `${SITE.url}/${locale}/${city.slug}`,
+      url: `${SITE.url}/${locale}/${city.slug}/`,
       type: "website",
     },
   };
@@ -70,7 +70,7 @@ export default async function CityPage({
     "@type": "Service",
     serviceType: "Custom software development",
     name: t("metaTitle", { city: city.name }),
-    url: `${SITE.url}/${locale}/${city.slug}`,
+    url: `${SITE.url}/${locale}/${city.slug}/`,
     provider: {
       "@type": "ProfessionalService",
       name: SITE.name,

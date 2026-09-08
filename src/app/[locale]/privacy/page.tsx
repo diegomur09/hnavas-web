@@ -13,7 +13,7 @@ export async function generateMetadata({
   return {
     // Brand suffix is added by the layout's title template — keep this bare.
     title: t("title"),
-    alternates: { canonical: `/${locale}/privacy`, languages: { en: "/en/privacy", es: "/es/privacy" } },
+    alternates: { canonical: `/${locale}/privacy/`, languages: { en: "/en/privacy/", es: "/es/privacy/" } },
   };
 }
 
@@ -40,7 +40,7 @@ export default async function PrivacyPage({
   return (
     <>
       <main className="mx-auto max-w-3xl px-5 py-20">
-        <a href={`/${locale}`} className="text-sm text-brand-300 transition hover:text-brand-400">
+        <a href={`/${locale}/`} className="text-sm text-brand-300 transition hover:text-brand-400">
           {t("back")}
         </a>
 
