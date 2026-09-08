@@ -108,7 +108,7 @@
     "integrations": {
       "title": "Integraciones de pagos & CRM",
       "desc": "Pagos con Square, webhooks, Salesforce Experience Cloud y portales de autoservicio conectados de punta a punta.",
-      "proof": "Pagos con Square procesados para 200+ clientes."
+      "proof": "Pagos con Square procesados para 200+ clientes, y un portal de soporte en Salesforce Service Cloud construido para un cliente enterprise."
     },
     "seo": {
       "title": "SEO local & Google Business",
@@ -209,6 +209,16 @@
         "environments": "aislados"
       }
     },
+    "salesforce-portal": {
+      "title": "Portal de soporte en Salesforce",
+      "category": "Salesforce / Service Cloud",
+      "summary": "Una implementación de Salesforce Service Cloud y Experience Cloud para una empresa enterprise de tecnología para minería: los correos de soporte se convierten en casos automáticamente, los clientes los abren y siguen en un portal de autoservicio, y usuarios, colas y permisos se gestionan entre sandbox y producción, validado con un UAT guionizado antes del go-live.",
+      "metrics": {
+        "portal": "portal de clientes",
+        "caseCreation": "creación de casos",
+        "signOff": "aprobación del cliente"
+      }
+    },
     "bachata-crm": {
       "title": "Dynamic Bachata CRM",
       "category": "CRM de retención con IA",
@@ -273,7 +283,7 @@
     "eyebrow": "Sobre mí",
     "title": "Diego Navas Murcia",
     "role": "Ingeniero Full-Stack & Cloud",
-    "body": "Soy ingeniero full-stack y cloud basado en Denver/Broomfield, Colorado, con tres años construyendo software que corre en producción. Trabajo de forma nativa con AWS — Lambda, DynamoDB, SES, S3, CloudFront, Cognito y API Gateway — y construyo automatización directamente contra las APIs de Claude y OpenAI. Trabajo con fluidez en inglés y español, lo que significa que puedo atender a los negocios de Denver y a su mercado hispano sin perder nada en la traducción.",
+    "body": "Soy ingeniero full-stack y cloud basado en Denver/Broomfield, Colorado, con tres años construyendo software que corre en producción. Trabajo de forma nativa con AWS — Lambda, DynamoDB, SES, S3, CloudFront, Cognito y API Gateway — y construyo automatización directamente contra las APIs de Claude y OpenAI. Trabajo con fluidez en inglés y español, lo que significa que puedo atender a los negocios de Denver y a su mercado hispano sin perder nada en la traducción. Del lado enterprise, implemento Salesforce Service Cloud y Experience Cloud, conectando el correo de soporte, los casos y los portales de clientes en un solo flujo.",
     "stackTitle": "Stack principal",
     "differentiator": "Bilingüe EN/ES · local en Denver · entrega a producción"
   },

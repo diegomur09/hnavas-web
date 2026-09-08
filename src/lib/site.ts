@@ -25,8 +25,9 @@ export const STATS = [
 
 // Platforms / tech logo strip — the tools clients recognize.
 // Full-color brand SVGs live in /public/logos/tech (sourced from Devicon, MIT,
-// plus Stripe from Simple Icons). Platforms with no official mark fall back to a
-// wordmark tile (no `logo`).
+// plus Stripe and Salesforce from Simple Icons, and the Base44 mark lifted from
+// their own brand lockup). Every mark is square so the strip stays a uniform
+// grid; platforms with no official mark fall back to a wordmark tile (no `logo`).
 export const PLATFORMS: { name: string; logo?: string }[] = [
   { name: "AWS", logo: "aws.svg" },
   { name: "Next.js", logo: "nextjs.svg" },
@@ -36,10 +37,11 @@ export const PLATFORMS: { name: string; logo?: string }[] = [
   { name: "Node.js", logo: "nodejs.svg" },
   { name: "Python", logo: "python.svg" },
   { name: "Stripe", logo: "stripe.svg" },
+  { name: "Salesforce", logo: "salesforce.svg" },
   { name: "WordPress", logo: "wordpress.svg" },
   { name: "Vercel", logo: "vercel.svg" },
   { name: "GitHub", logo: "github.svg" },
-  { name: "Base44" },
+  { name: "Base44", logo: "base44.svg" },
   { name: "HTML5", logo: "html5.svg" },
   { name: "CSS3", logo: "css3.svg" },
 ];
@@ -190,6 +192,19 @@ export const PROJECTS: Project[] = [
   },
   // ---- More work: the wider sample shown in a compact strip ----
   {
+    // Enterprise Salesforce engagement. The client is not named publicly, so the
+    // card is deliberately anonymized: no logo, no live URL, no screenshot.
+    slug: "salesforce-portal",
+    featured: false,
+    year: "2026",
+    stack: ["Salesforce", "Service Cloud", "Experience Cloud", "Email-to-Case", "Flows", "Sandbox + Prod"],
+    metrics: [
+      { value: "Self-service", labelKey: "portal" },
+      { value: "Auto", labelKey: "caseCreation" },
+      { value: "UAT", labelKey: "signOff" },
+    ],
+  },
+  {
     slug: "bachata-crm",
     liveUrl: "https://app.hnavasystems.com",
     featured: false,
@@ -275,6 +290,7 @@ export const STACK: { group: string; items: string[] }[] = [
   { group: "Backend", items: ["FastAPI", "Python", "Node.js", "REST + WebSocket"] },
   { group: "Cloud / AWS", items: ["Lambda", "DynamoDB", "API Gateway", "S3 + CloudFront", "Cognito", "SES", "CDK"] },
   { group: "AI", items: ["Claude API", "OpenAI API", "EventBridge automation"] },
+  { group: "CRM", items: ["Salesforce Service Cloud", "Experience Cloud", "Email-to-Case", "Flows"] },
 ];
 
 export const LOCALES = ["en", "es"] as const;
