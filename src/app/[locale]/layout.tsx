@@ -7,6 +7,7 @@ import { routing } from "@/i18n/routing";
 import { SITE } from "@/lib/site";
 import { AuthProvider } from "@/context/AuthContext";
 import { AuthModal } from "@/components/AuthModal";
+import { MotionProvider } from "@/components/MotionProvider";
 import { AUTH_ENABLED } from "@/lib/config";
 import "../globals.css";
 
@@ -174,10 +175,12 @@ export default async function LocaleLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <NextIntlClientProvider>
-          <AuthProvider>
-            {children}
-            {AUTH_ENABLED && <AuthModal />}
-          </AuthProvider>
+          <MotionProvider>
+            <AuthProvider>
+              {children}
+              {AUTH_ENABLED && <AuthModal />}
+            </AuthProvider>
+          </MotionProvider>
         </NextIntlClientProvider>
       </body>
     </html>
