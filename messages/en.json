@@ -58,7 +58,18 @@
   "Platforms": {
     "eyebrow": "Tools & platforms",
     "title": "Built on a stack that scales",
-    "subtitle": "The platforms and technologies I ship with every day — from AWS serverless to fast no-code and low-code."
+    "subtitle": "The platforms and technologies we ship with every day, from AWS serverless to fast no-code and low-code."
+  },
+  "Studio": {
+    "eyebrow": "Denver software studio",
+    "title": "A studio built to ship production software",
+    "body": "HNavas Systems is a senior-led software studio in Denver. We design, build and run production systems across AWS cloud, AI automation and full-stack web, and we team up with trusted studios like DevMellio when a build calls for more hands. The person who scopes your project is the one who writes the code.",
+    "tags": {
+      "senior": "Senior-led",
+      "partners": "Partner network",
+      "bilingual": "Bilingual EN/ES",
+      "production": "Ships to production"
+    }
   },
   "Agent": {
     "title": "Talk to my AI agent",

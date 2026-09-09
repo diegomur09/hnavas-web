@@ -58,7 +58,18 @@
   "Platforms": {
     "eyebrow": "Herramientas & plataformas",
     "title": "Construido sobre un stack que escala",
-    "subtitle": "Las plataformas y tecnologías con las que entrego cada día — desde serverless en AWS hasta no-code y low-code rápidos."
+    "subtitle": "Las plataformas y tecnologías con las que entregamos cada día, desde serverless en AWS hasta no-code y low-code rápidos."
+  },
+  "Studio": {
+    "eyebrow": "Estudio de software en Denver",
+    "title": "Un estudio hecho para llevar software a producción",
+    "body": "HNavas Systems es un estudio de software en Denver, dirigido por perfil senior. Diseñamos, construimos y operamos sistemas en producción: nube AWS, automatización con IA y full-stack web. Nos aliamos con estudios de confianza como DevMellio cuando un proyecto necesita más manos. Quien define tu proyecto es quien escribe el código.",
+    "tags": {
+      "senior": "Dirigido por senior",
+      "partners": "Red de partners",
+      "bilingual": "Bilingüe EN/ES",
+      "production": "Entrega a producción"
+    }
   },
   "Agent": {
     "title": "Habla con mi agente de IA",
