@@ -1,0 +1,60 @@
+name: CI
+
+# main = production, qa = testing environment.
+on:
+  push:
+    branches: [main, qa]
+  pull_request:
+    branches: [main, qa]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+
+  deploy:
+    needs: build
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write # OIDC — no AWS keys stored in GitHub
+      contents: read
+    environment: ${{ github.ref_name == 'main' && 'production' || 'qa' }}
+    env:
+      # Per-environment: prod build points at the prod backend, qa at the qa backend.
+      NEXT_PUBLIC_AGENT_URL: ${{ vars.NEXT_PUBLIC_AGENT_URL }}
+      # Auth UI flag. Production sets this var to "false" to hide the auth UI and
+      # show the "Start your project" CTA instead. QA leaves it unset → empty
+      # string → AUTH_ENABLED stays true → full sign in / sign up for review.
+      NEXT_PUBLIC_ENABLE_AUTH: ${{ vars.NEXT_PUBLIC_ENABLE_AUTH }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE }}
+          aws-region: us-east-1
+      - name: Sync static export to S3
+        run: aws s3 sync ./out "s3://${{ vars.S3_BUCKET }}" --delete
+      - name: Fix Content-Type on extensionless metadata images
+        run: |
+          for loc in en es; do
+            for img in opengraph-image twitter-image; do
+              aws s3 cp "s3://${{ vars.S3_BUCKET }}/$loc/$img" "s3://${{ vars.S3_BUCKET }}/$loc/$img" \
+                --content-type image/png --metadata-directive REPLACE --only-show-errors
+            done
+          done
+      - name: Invalidate CloudFront cache
+        run: aws cloudfront create-invalidation --distribution-id "${{ vars.CLOUDFRONT_ID }}" --paths "/*"
