@@ -298,6 +298,47 @@
     "stackTitle": "Stack principal",
     "differentiator": "Bilingüe EN/ES · local en Denver · entrega a producción"
   },
+  "Skills": {
+    "eyebrow": "Habilidades",
+    "title": "Las áreas en las que he desarrollado experiencia",
+    "subtitle": "Cada área viene de trabajo real con clientes, no de un certificado de curso.",
+    "salesforce": {
+      "title": "Salesforce",
+      "desc": "Implementaciones de Service Cloud y Experience Cloud: correo de soporte convertido en casos, portales de autoservicio para clientes, Flows y despliegues de sandbox a producción con aprobación UAT."
+    },
+    "seo": {
+      "title": "SEO y GEO",
+      "desc": "SEO técnico y local para que te encuentren: datos estructurados, sitemaps, hreflang, páginas por ciudad, Perfil de Empresa en Google y contenido que los asistentes de IA pueden citar."
+    },
+    "web": {
+      "title": "Desarrollo Web",
+      "desc": "Sitios y aplicaciones web rápidas y enfocadas en conversión con Next.js, React o WordPress, optimizadas para Core Web Vitals y accesibilidad."
+    },
+    "cloud": {
+      "title": "Cloud y AWS",
+      "desc": "Backends serverless corriendo en producción: Lambda, DynamoDB, API Gateway, CloudFront y Cognito, desplegados como infraestructura como código."
+    },
+    "ai": {
+      "title": "Automatización con IA",
+      "desc": "Agentes, chatbots con RAG y flujos de correo personalizados construidos directamente sobre las APIs de Claude y OpenAI."
+    },
+    "apps": {
+      "title": "Móvil, No-Code y Low-Code",
+      "desc": "Apps de campo que reemplazan el papel, desde React Native a medida hasta desarrollos rápidos en AppSheet y Base44 con reportes automáticos."
+    },
+    "payments": {
+      "title": "Pagos e Integraciones",
+      "desc": "Checkouts con Stripe y Square, webhooks y APIs que conectan pagos, CRMs y herramientas internas de punta a punta."
+    },
+    "devops": {
+      "title": "DevOps y Entregas",
+      "desc": "Pipelines de CI/CD, entornos separados de producción y QA, y despliegues repetibles para que cada lanzamiento sea tranquilo."
+    },
+    "i18n": {
+      "title": "Bilingüe e i18n",
+      "desc": "Fluido en inglés y español, construyo sitios totalmente bilingües y atiendo al mercado hispano de Denver sin perder nada en la traducción."
+    }
+  },
   "Contact": {
     "eyebrow": "Hablemos",
     "title": "Cuéntame sobre tu proyecto",

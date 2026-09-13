@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Navbar } from "@/components/Navbar";
 import { About } from "@/components/About";
+import { Skills } from "@/components/Skills";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
@@ -35,6 +36,7 @@ export default async function AboutPage({
       <Navbar />
       <main className="pt-16">
         <About />
+        <Skills />
         <Contact />
       </main>
       <Footer />

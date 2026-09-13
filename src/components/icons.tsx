@@ -41,6 +41,27 @@ const paths: Record<string, React.ReactNode> = {
       <path d="m21 21-4.3-4.3" />
     </>
   ),
+  code: <path d="m16 18 6-6-6-6M8 6l-6 6 6 6" />,
+  headset: (
+    <>
+      <path d="M3 14v-2a9 9 0 0 1 18 0v2" />
+      <path d="M21 16a2 2 0 0 1-2 2h-1v-6h1a2 2 0 0 1 2 2v2ZM3 16a2 2 0 0 0 2 2h1v-6H5a2 2 0 0 0-2 2v2Z" />
+    </>
+  ),
+  branch: (
+    <>
+      <circle cx="6" cy="5" r="2" />
+      <circle cx="6" cy="19" r="2" />
+      <circle cx="18" cy="7" r="2" />
+      <path d="M6 7v10M18 9a6 6 0 0 1-6 6H6" />
+    </>
+  ),
+  globe: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
+    </>
+  ),
 };
 
 export function ServiceIcon({ name }: { name: string }) {

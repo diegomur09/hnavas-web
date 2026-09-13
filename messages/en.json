@@ -298,6 +298,47 @@
     "stackTitle": "Core stack",
     "differentiator": "Bilingual EN/ES · Denver-local · ships to production"
   },
+  "Skills": {
+    "eyebrow": "Skills",
+    "title": "What I've been building expertise in",
+    "subtitle": "Each area below comes from real client work, not a course certificate.",
+    "salesforce": {
+      "title": "Salesforce",
+      "desc": "Service Cloud and Experience Cloud implementations: support email into cases, customer self-service portals, Flows, and sandbox to production rollouts with UAT sign-off."
+    },
+    "seo": {
+      "title": "SEO & GEO",
+      "desc": "Technical and local SEO that gets found: structured data, sitemaps, hreflang, city landing pages, Google Business Profile, and content that AI assistants can cite."
+    },
+    "web": {
+      "title": "Web Development",
+      "desc": "Fast, conversion-focused sites and web apps in Next.js, React or WordPress, tuned for Core Web Vitals and accessibility."
+    },
+    "cloud": {
+      "title": "Cloud & AWS",
+      "desc": "Serverless backends running in production: Lambda, DynamoDB, API Gateway, CloudFront and Cognito, deployed as infrastructure as code."
+    },
+    "ai": {
+      "title": "AI Automation",
+      "desc": "Agents, RAG chatbots and personalized email pipelines built directly on the Claude and OpenAI APIs."
+    },
+    "apps": {
+      "title": "Mobile, No-Code & Low-Code",
+      "desc": "Field apps that replace paper, from custom React Native to fast AppSheet and Base44 builds with automated reports."
+    },
+    "payments": {
+      "title": "Payments & Integrations",
+      "desc": "Stripe and Square checkouts, webhooks and APIs that connect payments, CRMs and internal tools end to end."
+    },
+    "devops": {
+      "title": "DevOps & Delivery",
+      "desc": "CI/CD pipelines, separate production and QA environments, and repeatable deploys so releases stay boring."
+    },
+    "i18n": {
+      "title": "Bilingual & i18n",
+      "desc": "Fluent in English and Spanish, building fully bilingual sites and serving Denver's Hispanic market without losing anything in translation."
+    }
+  },
   "Contact": {
     "eyebrow": "Let's talk",
     "title": "Tell me about your project",
