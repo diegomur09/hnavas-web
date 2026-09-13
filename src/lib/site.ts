@@ -300,6 +300,7 @@ export type SkillId =
   | "salesforce"
   | "seo"
   | "web"
+  | "wordpress"
   | "cloud"
   | "ai"
   | "apps"
@@ -321,7 +322,12 @@ export const SKILLS: { id: SkillId; icon: string; items: string[] }[] = [
   {
     id: "web",
     icon: "code",
-    items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "WordPress", "Core Web Vitals", "Accessibility"],
+    items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Core Web Vitals", "Accessibility"],
+  },
+  {
+    id: "wordpress",
+    icon: "wordpress",
+    items: ["WordPress", "PHP", "Themes", "Plugins", "Redesigns", "PageSpeed / LCP"],
   },
   {
     id: "cloud",

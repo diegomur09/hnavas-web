@@ -56,6 +56,12 @@ const paths: Record<string, React.ReactNode> = {
       <path d="M6 7v10M18 9a6 6 0 0 1-6 6H6" />
     </>
   ),
+  wordpress: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M4.5 8.5 9 20M9.5 8.5l4 11.5M13.5 8.5 17 18l2.5-8M3.5 8.5h8M13 8.5h4" />
+    </>
+  ),
   globe: (
     <>
       <circle cx="12" cy="12" r="9" />

@@ -314,6 +314,10 @@
       "title": "Desarrollo Web",
       "desc": "Sitios y aplicaciones web rápidas y enfocadas en conversión con Next.js, React o WordPress, optimizadas para Core Web Vitals y accesibilidad."
     },
+    "wordpress": {
+      "title": "WordPress",
+      "desc": "Rediseños en WordPress, trabajo con temas y plugins, y optimización de rendimiento. En el sitio de un festival bajé el LCP de 14.9s a 4.6s y subí el PageSpeed móvil de 46 a 72."
+    },
     "cloud": {
       "title": "Cloud y AWS",
       "desc": "Backends serverless corriendo en producción: Lambda, DynamoDB, API Gateway, CloudFront y Cognito, desplegados como infraestructura como código."
