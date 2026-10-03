@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { localePath } from "@/i18n/paths";
 import { SITE, assetUrl } from "@/lib/site";
 import { useAuth } from "@/context/AuthContext";
 import { AUTH_ENABLED } from "@/lib/config";
@@ -23,7 +24,7 @@ export function Navbar() {
 
   // Section anchors are prefixed with the home path so they also work when the
   // navbar is rendered on a separate page (e.g. /about) — no broken anchors.
-  const home = `/${locale}`;
+  const home = localePath(locale);
   const links = [
     { href: `${home}#work`, label: t("work") },
     { href: `${home}#services`, label: t("services") },

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
+import { languageAlternates, localePath } from "@/i18n/paths";
 import { Navbar } from "@/components/Navbar";
 import { About } from "@/components/About";
 import { Skills } from "@/components/Skills";
@@ -17,8 +18,8 @@ export async function generateMetadata({
     title: t("title"),
     description: t("body"),
     alternates: {
-      canonical: `/${locale}/about/`,
-      languages: { en: "/en/about/", es: "/es/about/" },
+      canonical: localePath(locale, "/about/"),
+      languages: languageAlternates("/about/"),
     },
   };
 }

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
+import { languageAlternates, localePath, localeUrl } from "@/i18n/paths";
 import { SITE } from "@/lib/site";
 import { AuthProvider } from "@/context/AuthContext";
 import { AuthModal } from "@/components/AuthModal";
@@ -64,13 +65,13 @@ export async function generateMetadata({
     authors: [{ name: SITE.person, url: SITE.url }],
     creator: SITE.person,
     alternates: {
-      canonical: `/${locale}/`,
-      languages: { en: "/en/", es: "/es/" },
+      canonical: localePath(locale),
+      languages: languageAlternates(),
     },
     openGraph: {
       type: "website",
       locale: locale === "es" ? "es_US" : "en_US",
-      url: `${SITE.url}/${locale}/`,
+      url: localeUrl(locale),
       siteName: SITE.name,
       title: t("homeTitle"),
       description: t("homeDescription"),

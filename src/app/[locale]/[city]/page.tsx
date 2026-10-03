@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { languageAlternates, localePath, localeUrl } from "@/i18n/paths";
 import { Navbar } from "@/components/Navbar";
 import { Services } from "@/components/Services";
 import { Work } from "@/components/Work";
@@ -38,13 +39,13 @@ export async function generateMetadata({
     title: t("metaTitle", { city: city.name }),
     description: copy.intro,
     alternates: {
-      canonical: `/${locale}/${city.slug}/`,
-      languages: Object.fromEntries(LOCALES.map((l) => [l, `/${l}/${city.slug}/`])),
+      canonical: localePath(locale, `/${city.slug}/`),
+      languages: languageAlternates(`/${city.slug}/`),
     },
     openGraph: {
       title: t("metaTitle", { city: city.name }),
       description: copy.intro,
-      url: `${SITE.url}/${locale}/${city.slug}/`,
+      url: localeUrl(locale, `/${city.slug}/`),
       type: "website",
     },
   };
@@ -110,7 +111,7 @@ export default async function CityPage({
             <p className="mt-4 text-sm text-secondary">
               <span className="font-semibold text-primary">{t("areasLabel")}:</span> {copy.areas}
             </p>
-            <a href={`/${locale}#contact`} className="btn-primary mt-8 inline-block px-6 py-3 text-sm">
+            <a href={`${localePath(locale)}#contact`} className="btn-primary mt-8 inline-block px-6 py-3 text-sm">
               {t("cta")}
             </a>
           </div>

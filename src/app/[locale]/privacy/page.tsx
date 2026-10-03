@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
+import { languageAlternates, localePath } from "@/i18n/paths";
 import { Footer } from "@/components/Footer";
 import { SITE } from "@/lib/site";
 
@@ -13,7 +14,10 @@ export async function generateMetadata({
   return {
     // Brand suffix is added by the layout's title template — keep this bare.
     title: t("title"),
-    alternates: { canonical: `/${locale}/privacy/`, languages: { en: "/en/privacy/", es: "/es/privacy/" } },
+    alternates: {
+      canonical: localePath(locale, "/privacy/"),
+      languages: languageAlternates("/privacy/"),
+    },
   };
 }
 
@@ -40,7 +44,7 @@ export default async function PrivacyPage({
   return (
     <>
       <main className="mx-auto max-w-3xl px-5 py-20">
-        <a href={`/${locale}/`} className="text-sm text-brand-300 transition hover:text-brand-400">
+        <a href={localePath(locale)} className="text-sm text-brand-300 transition hover:text-brand-400">
           {t("back")}
         </a>
 
