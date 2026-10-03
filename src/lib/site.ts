@@ -293,4 +293,72 @@ export const STACK: { group: string; items: string[] }[] = [
   { group: "CRM", items: ["Salesforce Service Cloud", "Experience Cloud", "Email-to-Case", "Flows"] },
 ];
 
+// Skill areas shown on the About page. Titles and blurbs live in the message
+// catalogs under Skills.<id>; the tool chips are proper nouns, so they stay here.
+// Every area maps to shipped work in PROJECTS above.
+export type SkillId =
+  | "salesforce"
+  | "seo"
+  | "web"
+  | "wordpress"
+  | "cloud"
+  | "ai"
+  | "apps"
+  | "payments"
+  | "devops"
+  | "i18n";
+
+export const SKILLS: { id: SkillId; icon: string; items: string[] }[] = [
+  {
+    id: "salesforce",
+    icon: "headset",
+    items: ["Service Cloud", "Experience Cloud", "Email-to-Case", "Flows", "Profiles & sharing", "Sandbox → Prod", "UAT"],
+  },
+  {
+    id: "seo",
+    icon: "search",
+    items: ["Technical SEO", "Local SEO", "Google Business Profile", "Schema / JSON-LD", "Sitemaps + hreflang", "GEO for AI search"],
+  },
+  {
+    id: "web",
+    icon: "code",
+    items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Core Web Vitals", "Accessibility"],
+  },
+  {
+    id: "wordpress",
+    icon: "wordpress",
+    items: ["WordPress", "PHP", "Themes", "Plugins", "Redesigns", "PageSpeed / LCP"],
+  },
+  {
+    id: "cloud",
+    icon: "cloud",
+    items: ["Lambda", "DynamoDB", "API Gateway", "S3 + CloudFront", "Cognito", "SES", "EventBridge", "CDK"],
+  },
+  {
+    id: "ai",
+    icon: "sparkles",
+    items: ["Claude API", "OpenAI API", "RAG", "AI agents + tools", "Email personalization"],
+  },
+  {
+    id: "apps",
+    icon: "smartphone",
+    items: ["React Native / Expo", "AppSheet", "Apps Script", "Base44", "Automated PDFs"],
+  },
+  {
+    id: "payments",
+    icon: "plug",
+    items: ["Stripe", "Square", "Webhooks", "REST + WebSocket", "FastAPI", "Node.js"],
+  },
+  {
+    id: "devops",
+    icon: "branch",
+    items: ["GitHub Actions", "CI/CD", "Prod + QA environments", "AWS Amplify", "Vercel"],
+  },
+  {
+    id: "i18n",
+    icon: "globe",
+    items: ["English", "Español", "next-intl", "Bilingual content", "Hispanic market"],
+  },
+];
+
 export const LOCALES = ["en", "es"] as const;

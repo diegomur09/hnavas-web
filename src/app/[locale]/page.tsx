@@ -3,6 +3,7 @@ import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { Stats } from "@/components/Stats";
 import { Platforms } from "@/components/Platforms";
+import { Studio } from "@/components/Studio";
 import { Services } from "@/components/Services";
 import { Work } from "@/components/Work";
 import { Faq } from "@/components/Faq";
@@ -23,10 +24,11 @@ export default async function HomePage({
       <Navbar />
       <main>
         <Hero />
+        <Studio />
+        <Platforms />
         <Stats />
         <Work />
         <Services />
-        <Platforms />
         <Faq />
         <Contact />
       </main>

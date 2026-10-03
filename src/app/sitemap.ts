@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { SITE, LOCALES, SCREENSHOT_SLUGS } from "@/lib/site";
+import { languageAlternateUrls, localeUrl } from "@/i18n/paths";
 import { CITIES } from "@/lib/cities";
 
 // Required for `output: export` — emit a static sitemap.xml at build.
@@ -11,52 +12,35 @@ const SCREENSHOTS = [...SCREENSHOT_SLUGS].map(
   (slug) => `${SITE.url}/screenshots/${slug}.webp`,
 );
 
-// Both locales are real, indexable URLs (localePrefix: "always"), cross-linked
-// with hreflang alternates so Google serves the right language per searcher.
+type Entry = MetadataRoute.Sitemap[number];
+
+// Both locales are real, indexable URLs: English prefix-less (/denver/) and
+// Spanish prefixed (/es/denver/), cross-linked with hreflang + x-default so
+// Google serves the right language per searcher. English carries the higher
+// priority because it's the default locale and the x-default target.
+function localizedEntry(
+  path: string,
+  changeFrequency: Entry["changeFrequency"],
+  priority: number,
+  images?: string[],
+): MetadataRoute.Sitemap {
+  const alternates = { languages: languageAlternateUrls(path) };
+  return LOCALES.map((locale) => ({
+    url: localeUrl(locale, path),
+    lastModified: new Date(),
+    changeFrequency,
+    priority: locale === "en" ? priority : Math.round((priority - 0.1) * 10) / 10,
+    alternates,
+    ...(images ? { images } : {}),
+  }));
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
-  const homeLanguages = Object.fromEntries(LOCALES.map((l) => [l, `${SITE.url}/${l}/`]));
-  const aboutLanguages = Object.fromEntries(LOCALES.map((l) => [l, `${SITE.url}/${l}/about/`]));
-  const privacyLanguages = Object.fromEntries(LOCALES.map((l) => [l, `${SITE.url}/${l}/privacy/`]));
-
-  const home = LOCALES.map((locale) => ({
-    url: `${SITE.url}/${locale}/`,
-    lastModified,
-    changeFrequency: "monthly" as const,
-    priority: locale === "en" ? 1 : 0.9,
-    alternates: { languages: homeLanguages },
-    images: SCREENSHOTS,
-  }));
-
-  const about = LOCALES.map((locale) => ({
-    url: `${SITE.url}/${locale}/about/`,
-    lastModified,
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-    alternates: { languages: aboutLanguages },
-  }));
-
-  const privacy = LOCALES.map((locale) => ({
-    url: `${SITE.url}/${locale}/privacy/`,
-    lastModified,
-    changeFrequency: "yearly" as const,
-    priority: 0.3,
-    alternates: { languages: privacyLanguages },
-  }));
-
-  // Local-SEO city landing pages: one URL per locale, cross-linked by hreflang.
-  const cities = CITIES.flatMap((city) => {
-    const languages = Object.fromEntries(
-      LOCALES.map((l) => [l, `${SITE.url}/${l}/${city.slug}/`]),
-    );
-    return LOCALES.map((locale) => ({
-      url: `${SITE.url}/${locale}/${city.slug}/`,
-      lastModified,
-      changeFrequency: "monthly" as const,
-      priority: 0.8,
-      alternates: { languages },
-    }));
-  });
-
-  return [...home, ...about, ...privacy, ...cities];
+  return [
+    ...localizedEntry("/", "monthly", 1, SCREENSHOTS),
+    ...localizedEntry("/about/", "monthly", 0.7),
+    ...localizedEntry("/privacy/", "yearly", 0.3),
+    // Local-SEO city landing pages.
+    ...CITIES.flatMap((city) => localizedEntry(`/${city.slug}/`, "monthly", 0.8)),
+  ];
 }
