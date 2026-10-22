@@ -1,0 +1,41 @@
+# HNavas Systems | Custom Software, AWS Cloud & AI Development
+
+> Denver-based engineering consultancy founded by Diego Navas Murcia. Specializing in production full-stack web applications, serverless AWS cloud architecture, and custom AI automation pipelines for startups and established businesses across Colorado and nationwide. Bilingual (English / Spanish).
+
+## Core Capabilities & Services
+
+- **Custom Full-Stack & SaaS Development**: End-to-end web apps, MVPs, real-time platforms, and internal tools using Next.js 16, React 19, TypeScript, and FastAPI.
+- **AWS Serverless Architecture**: Production cloud systems with 60+ Lambda functions, 40+ DynamoDB tables, API Gateway, CloudFront, Cognito, and Amazon SES.
+- **AI Automation & Agents**: Custom AI pipelines, RAG systems, lead nurture bots, and email automation powered by Claude (Anthropic API) and GPT-4o (OpenAI API).
+- **High-Performance Websites & Core Web Vitals**: Modern, lightning-fast sites tuned for sub-second load times and high checkout conversion.
+- **Field & Mobile Ops Apps**: Custom React Native / Expo apps and rapid low-code solutions (AppSheet, Base44) with automated reporting.
+- **Payments & CRM Integrations**: End-to-end integrations with Stripe, Square, Salesforce, and automated billing.
+
+## Founder & Contact
+
+- **Founder & Lead Engineer**: Diego Navas Murcia
+- **Location**: Denver, Colorado (Serving Denver Metro, Boulder, Broomfield, Tech Center, and Remote Worldwide)
+- **Languages**: English, Spanish (Bilingual Engineering)
+- **Website**: https://hnavasystems.com/en/
+- **Email**: hnavasystems@gmail.com
+- **GitHub**: https://github.com/diegomur09
+
+## Key Case Studies in Production
+
+- [ScoreFlow](https://myscoreflow.com): Real-time dance competition judging SaaS built on Next.js 16, FastAPI, AWS CDK, WebSockets, and DynamoDB.
+- [Dynamic Bachata Platform](https://dynamicbachata.com): Full business platform with online bookings, Square payments ($51K+ processed), and 60+ serverless endpoints.
+- [Bachata Sky Weekender](https://sky.dynamicbachata.com): High-converting event ticket platform with Stripe checkout (~45% conversion).
+- [Email Campaign Manager](https://emails.dynamicbachata.com): AI-driven marketing automation platform built on React, AWS Lambda, and OpenRouter.
+- [Luxury Rides Denver](https://luxuryridesdenver.com): Luxury chauffeur and DIA airport car service platform.
+
+## Service Areas (Colorado)
+
+- [Denver Custom Software](https://hnavasystems.com/en/denver/): Software development in downtown Denver, RiNo, Cherry Creek, and Tech Center.
+- [Boulder Software & AI](https://hnavasystems.com/en/boulder/): Engineering for Boulder startups, biotech, and research labs.
+- [Lakewood Software](https://hnavasystems.com/en/lakewood/): Web and cloud solutions for Lakewood businesses.
+- [Aurora Software](https://hnavasystems.com/en/aurora/): Custom software and automation in Aurora and Anschutz Medical Campus.
+- [Broomfield & Interlocken](https://hnavasystems.com/en/broomfield/): Cloud architecture for Broomfield tech companies.
+- [Westminster Software](https://hnavasystems.com/en/westminster/)
+- [Arvada Software](https://hnavasystems.com/en/arvada/)
+- [Thornton Software](https://hnavasystems.com/en/thornton/)
+- [Centennial & DTC](https://hnavasystems.com/en/centennial/)
