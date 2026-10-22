@@ -240,14 +240,14 @@
         "personalized": "copy con IA"
       }
     },
-    "petary": {
-      "title": "MyPetary Store",
-      "category": "E-commerce de afiliados",
-      "summary": "Una tienda bilingüe de afiliados de Amazon de ropa, perfumes y accesorios para hombre — un catálogo curado con una experiencia de compra limpia, monetizada con el programa Amazon Associates.",
+    "fence-houston": {
+      "title": "Fence Installation Houston",
+      "category": "Captación de clientes bilingüe",
+      "summary": "Un sitio bilingüe (EN/ES) de captación de clientes para instalación y reparación de cercas en el área de Houston: 84 páginas de ciudades, servicios, costos y permisos, una calculadora de precio y un formulario de cotización en dos pasos que entrega cada solicitud por correo. Recibió su primera solicitud real de un cliente dos semanas después del lanzamiento.",
       "metrics": {
-        "affiliate": "tienda Associates",
-        "category": "moda masculina",
-        "bilingual": "EN/ES"
+        "pages": "páginas",
+        "areas": "ciudades del área",
+        "bilingual": "bilingüe"
       }
     },
     "ccc-field-app": {

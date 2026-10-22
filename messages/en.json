@@ -240,14 +240,14 @@
         "personalized": "AI copy"
       }
     },
-    "petary": {
-      "title": "MyPetary Store",
-      "category": "Affiliate e-commerce",
-      "summary": "A bilingual Amazon-affiliate storefront for men's clothing, perfumes and accessories — a curated catalog with a clean shopping experience, monetized through the Amazon Associates program.",
+    "fence-houston": {
+      "title": "Fence Installation Houston",
+      "category": "Bilingual lead generation",
+      "summary": "A bilingual (EN/ES) lead-generation site for fence installation and repair across Greater Houston: 84 pages of city, service, cost and permit guides, a fence cost calculator and a two-step quote form that delivers every request by email. It brought in its first real customer request two weeks after launch.",
       "metrics": {
-        "affiliate": "Associates store",
-        "category": "menswear",
-        "bilingual": "EN/ES"
+        "pages": "pages",
+        "areas": "Houston-area cities",
+        "bilingual": "bilingual"
       }
     },
     "ccc-field-app": {
