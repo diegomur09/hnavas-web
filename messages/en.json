@@ -42,8 +42,8 @@
   },
   "Hero": {
     "badge": "Bilingual · AWS-native · Denver, CO",
-    "title": "Software that ships,",
-    "titleAccent": "infrastructure that scales.",
+    "title": "Websites, Apps & Custom Software Development",
+    "titleAccent": "in Denver",
     "subtitle": "I design and build production full-stack apps, AI automation and serverless AWS systems — for businesses that need real results, in English or Spanish.",
     "ctaPrimary": "Start a project",
     "ctaSecondary": "See the work",
@@ -389,8 +389,8 @@
     "back": "← Back to home"
   },
   "Meta": {
-    "homeTitle": "Custom Software, AWS & AI Development — Denver",
-    "homeDescription": "Denver-based bilingual engineer building custom software, full-stack web apps, AWS cloud systems and AI automation. SaaS, MVPs and integrations that ship."
+    "homeTitle": "Websites, Apps & Custom Software Development in Denver",
+    "homeDescription": "Denver software studio building websites, web and mobile apps, custom software, AWS cloud systems and AI automation. Bilingual, in English or Spanish."
   },
   "City": {
     "eyebrow": "Local software development",

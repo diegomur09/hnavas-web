@@ -42,8 +42,8 @@
   },
   "Hero": {
     "badge": "Bilingüe · AWS-native · Denver, CO",
-    "title": "Software que se lanza,",
-    "titleAccent": "infraestructura que escala.",
+    "title": "Páginas web, apps y software a medida",
+    "titleAccent": "en Denver",
     "subtitle": "Diseño y construyo apps full-stack en producción, automatización con IA y sistemas serverless en AWS — para negocios que necesitan resultados reales, en inglés o español.",
     "ctaPrimary": "Iniciar proyecto",
     "ctaSecondary": "Ver proyectos",
@@ -389,8 +389,8 @@
     "back": "← Volver al inicio"
   },
   "Meta": {
-    "homeTitle": "Desarrollo de Software, AWS e IA — Denver",
-    "homeDescription": "Ingeniero bilingüe en Denver: software a medida, apps web full-stack, sistemas en AWS y automatización con IA. SaaS, MVPs e integraciones listas para producción."
+    "homeTitle": "Páginas Web, Apps y Software a Medida en Denver",
+    "homeDescription": "Estudio de software en Denver: páginas web, apps web y móviles, software a medida, sistemas en AWS y automatización con IA. Bilingüe, en inglés o español."
   },
   "City": {
     "eyebrow": "Desarrollo de software local",

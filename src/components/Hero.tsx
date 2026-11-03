@@ -25,7 +25,8 @@ export function Hero() {
               paint from the server HTML instead of waiting on hydration. */}
           <h1 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight text-primary sm:text-5xl lg:text-6xl">
             {t("title")}{" "}
-            <span className="text-gradient">{t("titleAccent")}</span>
+            {/* nowrap keeps the location ("in Denver") on one line. */}
+            <span className="text-gradient whitespace-nowrap">{t("titleAccent")}</span>
           </h1>
 
           <p className="reveal reveal-2 mt-6 max-w-xl text-base leading-relaxed text-body sm:text-lg">

@@ -45,6 +45,7 @@ export async function generateMetadata({
     // Low domain authority → lead with service-modifier + local + long-tail
     // terms we can realistically rank for, not generic high-KD head terms.
     keywords: [
+      "website development Denver",
       "custom software development Denver",
       "software development company Denver",
       "web application development Denver",
@@ -58,6 +59,7 @@ export async function generateMetadata({
       "MVP development for startups",
       "bilingual software developer Denver",
       "hire software developer Denver",
+      "páginas web en Denver",
       "desarrollo de software a medida Denver",
       "desarrollador de software bilingüe",
       "automatización con IA Denver",
@@ -90,6 +92,7 @@ export async function generateMetadata({
 }
 
 const SERVICE_TYPES = [
+  "Website design & development",
   "Custom software development",
   "Full-stack web application development",
   "SaaS development",
