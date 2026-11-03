@@ -4,7 +4,7 @@ import { join } from "node:path";
 import { routing } from "@/i18n/routing";
 import { SITE, STATS } from "@/lib/site";
 
-export const alt = "HNavas Systems — Custom software, AWS cloud & AI automation in Denver";
+export const alt = "HNavas Systems: websites, apps & custom software development in Denver";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -16,11 +16,11 @@ export function generateStaticParams() {
 const COPY: Record<string, { role: string; tagline: string }> = {
   en: {
     role: "Full-Stack & Cloud Engineer · Denver, CO",
-    tagline: "Custom software, AWS cloud & AI automation",
+    tagline: "Websites, apps & custom software",
   },
   es: {
     role: "Ingeniero Full-Stack & Cloud · Denver, CO",
-    tagline: "Software a medida, nube AWS y automatización con IA",
+    tagline: "Páginas web, apps y software a medida",
   },
 };
 
@@ -61,7 +61,7 @@ export default async function Image({
         <img src={logoSrc} width={300} height={169} alt={SITE.name} />
 
         <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
-          <div style={{ fontSize: "68px", fontWeight: 800, lineHeight: 1.05, maxWidth: "1000px" }}>
+          <div style={{ fontSize: "68px", fontWeight: 800, lineHeight: 1.05, maxWidth: "760px" }}>
             {c.tagline}
           </div>
           <div style={{ fontSize: "30px", color: "#9aa0b4" }}>

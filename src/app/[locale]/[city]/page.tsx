@@ -69,7 +69,7 @@ export default async function CityPage({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
-    serviceType: "Custom software development",
+    serviceType: ["Website design & development", "Custom software development"],
     name: t("metaTitle", { city: city.name }),
     url: `${SITE.url}/${locale}/${city.slug}/`,
     provider: {
