@@ -56,24 +56,43 @@ export type ContactPayload = {
   locale: string;
 };
 
+// The agent's answer plus the token that lets /speak read that exact text aloud.
+export type ChatReply = { reply: string; speakToken?: string };
+
 // Rejects with a coded Error so callers can tell "backend not configured /
 // unavailable" (demo mode) apart from a real failure.
 export function sendChatMessage(
   messages: ChatMessage[],
   locale: string,
   visitorId?: string,
-): Promise<string> {
+): Promise<ChatReply> {
   if (!AGENT_URL) return Promise.reject(new Error("agent-not-configured"));
+  // Only role + content: the API rejects any extra field (e.g. a speakToken
+  // kept on a message in the UI).
+  const history = messages.map(({ role, content }) => ({ role, content }));
   return fetch(`${AGENT_URL}/chat`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ messages, locale, visitorId }),
+    body: JSON.stringify({ messages: history, locale, visitorId }),
   })
-    .then((res) => checkResponse<{ reply?: string }>(res, "agent"))
-    .then((data: { reply?: string }) => {
+    .then((res) => checkResponse<{ reply?: string; speakToken?: string }>(res, "agent"))
+    .then((data) => {
       if (!data.reply) return Promise.reject(new Error("agent-empty"));
-      return data.reply;
+      return { reply: data.reply, speakToken: data.speakToken };
     });
+}
+
+// POST /speak — the MP3 (base64) of one agent reply, read by Amazon Polly.
+// The API only speaks text that comes with its speakToken from /chat.
+export function speakReply(text: string, token: string): Promise<string> {
+  if (!AGENT_URL) return Promise.reject(new Error("agent-not-configured"));
+  return fetch(`${AGENT_URL}/speak`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ text, token }),
+  })
+    .then((res) => checkResponse<{ audio: string }>(res, "speak"))
+    .then((data) => data.audio);
 }
 
 export function sendContactForm(payload: ContactPayload): Promise<{ ok: boolean }> {

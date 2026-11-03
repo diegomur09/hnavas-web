@@ -76,6 +76,10 @@
     "subtitle": "Conoce mi trabajo y puede definir tu proyecto en segundos.",
     "placeholder": "Pregunta por precios, tiempos o qué puedo construir…",
     "send": "Enviar",
+    "listen": "Escuchar",
+    "stop": "Detener",
+    "dictate": "Dicta tu pregunta",
+    "listening": "Escuchando...",
     "greeting": "¡Hola! Soy el agente de IA de Diego. Cuéntame sobre tu proyecto — ¿qué quieres construir?",
     "starters": [
       "¿Puedes construir un SaaS con pagos?",

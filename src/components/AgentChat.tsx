@@ -1,9 +1,9 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { motion } from "framer-motion";
-import { sendChatMessage, type ChatMessage } from "@/lib/api";
+import { sendChatMessage, speakReply, type ChatMessage } from "@/lib/api";
 import { VISITOR_KEY } from "@/lib/config";
 
 // A stable, anonymous id stored in the browser so the agent can recognize a
@@ -30,6 +30,34 @@ function isDemoModeError(error: unknown): boolean {
   return reason === "agent-not-configured" || reason === "agent-503";
 }
 
+// A chat message as the UI keeps it: agent replies from the API carry the
+// token /speak needs to read them aloud (the greeting and demo replies don't).
+type UiMessage = ChatMessage & { speakToken?: string };
+
+// Minimal shape of the browser's speech recognition (Web Speech API), used for
+// free dictation. Chrome, Edge and Safari expose it; Firefox does not.
+type Recognizer = {
+  lang: string;
+  interimResults: boolean;
+  onresult: ((event: { results: ArrayLike<ArrayLike<{ transcript: string }>> }) => void) | null;
+  onend: (() => void) | null;
+  onerror: (() => void) | null;
+  start: () => void;
+  stop: () => void;
+};
+
+function getRecognizer(): (new () => Recognizer) | undefined {
+  if (typeof window === "undefined") return undefined;
+  const w = window as unknown as {
+    SpeechRecognition?: new () => Recognizer;
+    webkitSpeechRecognition?: new () => Recognizer;
+  };
+  return w.SpeechRecognition ?? w.webkitSpeechRecognition;
+}
+
+// Browser support never changes while the page is open, so nothing to subscribe to.
+const noSubscribe = () => () => {};
+
 export function AgentChat() {
   const t = useTranslations("Agent");
   const locale = useLocale();
@@ -38,14 +66,64 @@ export function AgentChat() {
   // The greeting is derived from the active locale (so it translates on
   // language switch); state only holds the actual exchange.
   const greeting: ChatMessage = { role: "assistant", content: t("greeting") };
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [messages, setMessages] = useState<UiMessage[]>([]);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  // Read-aloud: one reply plays at a time; `speaking` is its index in the
+  // conversation (null when silent).
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [speaking, setSpeaking] = useState<number | null>(null);
+
+  // Dictation: only offered where the browser supports it. The server snapshot
+  // (false) keeps the server HTML and hydration in sync; the browser then
+  // reads the real support.
+  const canDictate = useSyncExternalStore(noSubscribe, () => Boolean(getRecognizer()), () => false);
+  const [listening, setListening] = useState(false);
+
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
   }, [messages, busy]);
+
+  // Stop any reply still playing when the chat unmounts.
+  useEffect(() => () => audioRef.current?.pause(), []);
+
+  async function play(index: number, message: UiMessage) {
+    audioRef.current?.pause();
+    if (speaking === index || !message.speakToken) {
+      setSpeaking(null); // a second tap on the same reply stops it
+      return;
+    }
+    setSpeaking(index);
+    try {
+      const audio = await speakReply(message.content, message.speakToken);
+      const player = new Audio(`data:audio/mpeg;base64,${audio}`);
+      audioRef.current = player;
+      player.onended = () => setSpeaking(null);
+      await player.play();
+    } catch {
+      setSpeaking(null);
+    }
+  }
+
+  // Puts what the visitor said in the input box, so they can check it before
+  // sending (recognition can mishear names).
+  function dictate() {
+    const Recognition = getRecognizer();
+    if (!Recognition || listening) return;
+    const recognizer = new Recognition();
+    recognizer.lang = locale === "es" ? "es-US" : "en-US";
+    recognizer.interimResults = false;
+    recognizer.onresult = (event) => {
+      const transcript = event.results[0]?.[0]?.transcript ?? "";
+      setInput((current) => `${current} ${transcript}`.trim());
+    };
+    recognizer.onend = () => setListening(false);
+    recognizer.onerror = () => setListening(false);
+    setListening(true);
+    recognizer.start();
+  }
 
   async function send(text: string) {
     const clean = text.trim();
@@ -57,8 +135,8 @@ export function AgentChat() {
     setBusy(true);
 
     try {
-      const reply = await sendChatMessage([greeting, ...next], locale, getVisitorId());
-      setMessages((m) => [...m, { role: "assistant", content: reply }]);
+      const { reply, speakToken } = await sendChatMessage([greeting, ...next], locale, getVisitorId());
+      setMessages((m) => [...m, { role: "assistant", content: reply, speakToken }]);
     } catch (error) {
       // No backend → demo replies; a real failure → tell the user.
       const content = isDemoModeError(error) ? buildDemoReply(clean, locale) : t("error");
@@ -68,7 +146,7 @@ export function AgentChat() {
     }
   }
 
-  const conversation = [greeting, ...messages];
+  const conversation: UiMessage[] = [greeting, ...messages];
 
   return (
     <div className="glass-card flex h-[26rem] flex-col overflow-hidden">
@@ -101,6 +179,17 @@ export function AgentChat() {
               }`}
             >
               {message.content}
+              {message.speakToken && (
+                <button
+                  type="button"
+                  onClick={() => play(index, message)}
+                  aria-label={speaking === index ? t("stop") : t("listen")}
+                  className="mt-1.5 flex items-center gap-1 text-[11px] text-subtle transition hover:text-primary"
+                >
+                  <span aria-hidden="true">{speaking === index ? "■" : "🔊"}</span>
+                  {speaking === index ? t("stop") : t("listen")}
+                </button>
+              )}
             </div>
           </motion.div>
         ))}
@@ -146,6 +235,20 @@ export function AgentChat() {
             placeholder={t("placeholder")}
             className="flex-1 rounded-lg bg-transparent px-2 py-1 text-sm text-primary placeholder:text-subtle focus:outline-none focus:ring-1 focus:ring-brand-400/60"
           />
+          {canDictate && (
+            <button
+              type="button"
+              onClick={dictate}
+              disabled={busy || listening}
+              aria-label={listening ? t("listening") : t("dictate")}
+              title={listening ? t("listening") : t("dictate")}
+              className={`rounded-lg px-2 py-1.5 text-sm transition disabled:opacity-60 ${
+                listening ? "animate-pulse text-brand-400" : "text-subtle hover:text-primary"
+              }`}
+            >
+              <span aria-hidden="true">🎤</span>
+            </button>
+          )}
           <button
             type="submit"
             disabled={busy || !input.trim()}

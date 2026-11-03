@@ -76,6 +76,10 @@
     "subtitle": "It knows my work and can scope your project in seconds.",
     "placeholder": "Ask about pricing, timelines, or what I can build…",
     "send": "Send",
+    "listen": "Listen",
+    "stop": "Stop",
+    "dictate": "Dictate your question",
+    "listening": "Listening...",
     "greeting": "Hi! I'm Diego's AI agent. Tell me about your project — what are you trying to build?",
     "starters": [
       "Can you build a SaaS with payments?",
