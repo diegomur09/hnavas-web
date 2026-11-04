@@ -23,8 +23,10 @@ export const AUTH_TOKEN_KEY = "hnavas_auth_token";
 export const PASSWORD_MIN_LENGTH = 8;
 export const NAME_MIN_LENGTH = 2;
 
-// Google Analytics 4 measurement ID (e.g. "G-ABC123XYZ"), set per environment
-// at build time. Unset (local, QA) means no analytics script at all. Only a
-// well-formed GA4 ID is accepted because it is written into an inline script.
-const rawGaId = process.env.NEXT_PUBLIC_GA_ID ?? "";
-export const GA_ID = /^G-[A-Z0-9]{4,20}$/.test(rawGaId) ? rawGaId : undefined;
+// Google tag ID, set per environment at build time: the GTM-... ID Google
+// gives for a Google tag / Tag Manager container (production uses
+// GTM-TXFX3C67, which sends to GA4 G-B3MQG08955), or a plain GA4 G-... ID.
+// Unset (local, QA) means no analytics script at all. Only a well-formed ID
+// is accepted because it is written into an inline script.
+const rawTagId = process.env.NEXT_PUBLIC_GOOGLE_TAG_ID ?? "";
+export const GOOGLE_TAG_ID = /^(G|GTM)-[A-Z0-9]{4,20}$/.test(rawTagId) ? rawTagId : undefined;
