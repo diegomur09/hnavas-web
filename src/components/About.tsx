@@ -16,9 +16,10 @@ export async function About() {
           <span className="data-mono text-xs uppercase tracking-widest text-brand-400">
             {t("eyebrow")}
           </span>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-primary sm:text-4xl">
+          {/* The About route's only heading at this level, so it is the page's H1. */}
+          <h1 className="mt-3 text-3xl font-bold tracking-tight text-primary sm:text-4xl">
             {t("title")}
-          </h2>
+          </h1>
           <p className="data-mono mt-2 text-sm text-secondary">{t("role")}</p>
 
           <p className="mt-6 max-w-xl text-base leading-relaxed text-body">

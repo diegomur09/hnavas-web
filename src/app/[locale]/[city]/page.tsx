@@ -117,7 +117,7 @@ export default async function CityPage({
           </div>
         </section>
 
-        <Services />
+        <Services cityName={city.name} />
         <Work />
         <Faq />
         <Contact />

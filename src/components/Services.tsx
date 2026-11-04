@@ -3,12 +3,15 @@ import { SERVICES } from "@/lib/site";
 import { AnimatedSection } from "./AnimatedSection";
 import { ServiceIcon } from "./icons";
 
-export async function Services() {
+// On a city page the heading names the city ("... Services in Aurora"), so
+// each page's H2 matches how people search for these services locally.
+export async function Services({ cityName }: { cityName?: string } = {}) {
   const t = await getTranslations("Services");
+  const title = cityName ? t("titleCity", { city: cityName }) : t("title");
 
   return (
     <AnimatedSection id="services" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-24">
-      <SectionHeading eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} />
+      <SectionHeading eyebrow={t("eyebrow")} title={title} subtitle={t("subtitle")} />
 
       <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {SERVICES.map((s) => (
