@@ -96,6 +96,26 @@ html {
   [role="button"]:not([aria-disabled="true"]) {
     cursor: pointer;
   }
+
+  /* Phones zoom the page on a quick double tap; buttons and links never need
+     that (e.g. tapping Listen, then Stop, on the chat). Pinch-zoom still works. */
+  button,
+  a,
+  [role="button"] {
+    touch-action: manipulation;
+  }
+}
+
+/* iPhone Safari zooms the whole page when a field with text under 16px gets
+   focus, and the chat and forms use 14px. On touch screens fields use 16px so
+   the page keeps its size. Unlayered on purpose: it must beat the `text-sm`
+   utility, and utilities outrank anything in @layer base. */
+@media (pointer: coarse) {
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+  }
 }
 
 body {
