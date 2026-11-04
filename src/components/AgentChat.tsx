@@ -38,6 +38,7 @@ type UiMessage = ChatMessage & { speakToken?: string };
 // free dictation. Chrome, Edge and Safari expose it; Firefox does not.
 type Recognizer = {
   lang: string;
+  continuous: boolean;
   interimResults: boolean;
   onresult: ((event: { results: ArrayLike<ArrayLike<{ transcript: string }>> }) => void) | null;
   onend: (() => void) | null;
@@ -54,6 +55,28 @@ function getRecognizer(): (new () => Recognizer) | undefined {
   };
   return w.SpeechRecognition ?? w.webkitSpeechRecognition;
 }
+
+// Which language to listen in. The visitor's own last message decides when it
+// is clear; otherwise the phone or browser language (a better guess for how
+// someone speaks than the page they landed on: the English home page gets
+// Spanish speakers too); the page locale is the last resort.
+function dictationLang(messages: UiMessage[], locale: string): string {
+  const lastUser = [...messages].reverse().find((m) => m.role === "user")?.content ?? "";
+  const es = (lastUser.match(/[áéíóúñ¿¡]|\b(que|para|con|los|las|una|del|quiero|tengo|necesito|puedo|hola)\b/gi) ?? []).length;
+  const en = (lastUser.match(/\b(the|and|you|with|for|your|can|is|are|how|what|need|want|hi)\b/gi) ?? []).length;
+  if (es !== en) return es > en ? "es-US" : "en-US";
+  const device = typeof navigator === "undefined" ? "" : navigator.language.toLowerCase();
+  if (device.startsWith("es")) return "es-US";
+  if (device.startsWith("en")) return "en-US";
+  return locale === "es" ? "es-US" : "en-US";
+}
+
+// iPhone/iPad Safari repeats words in continuous mode, so there it listens one
+// phrase at a time; other browsers keep listening until the visitor taps again.
+const isAppleMobile = () =>
+  typeof navigator !== "undefined" && /iPhone|iPad|iPod/.test(navigator.userAgent);
+
+const MAX_DICTATION_MS = 30_000; // never leave the microphone open by accident
 
 // Browser support never changes while the page is open, so nothing to subscribe to.
 const noSubscribe = () => () => {};
@@ -129,6 +152,7 @@ export function AgentChat() {
   const canDictate = useSyncExternalStore(noSubscribe, () => Boolean(getRecognizer()), () => false);
   const [listening, setListening] = useState(false);
   const [micError, setMicError] = useState<string | null>(null);
+  const recognizerRef = useRef<Recognizer | null>(null);
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
@@ -157,18 +181,33 @@ export function AgentChat() {
 
   // Puts what the visitor said in the input box, so they can check it before
   // sending (recognition can mishear names).
+  // Tap to start, tap again to stop. The words appear in the input while the
+  // visitor speaks, so they can see it is hearing them and fix a misheard word
+  // before sending.
   function dictate() {
+    if (listening) {
+      recognizerRef.current?.stop();
+      return;
+    }
     const Recognition = getRecognizer();
-    if (!Recognition || listening) return;
+    if (!Recognition) return;
     setMicError(null);
+    const before = input.trim();
     const recognizer = new Recognition();
-    recognizer.lang = locale === "es" ? "es-US" : "en-US";
-    recognizer.interimResults = false;
+    recognizer.lang = dictationLang(messages, locale);
+    recognizer.continuous = !isAppleMobile();
+    recognizer.interimResults = true;
     recognizer.onresult = (event) => {
-      const transcript = event.results[0]?.[0]?.transcript ?? "";
-      setInput((current) => `${current} ${transcript}`.trim());
+      // results holds everything heard in this session, provisional and final.
+      const heard = Array.from(event.results, (result) => result[0]?.transcript ?? "").join(" ");
+      setInput(`${before} ${heard}`.replace(/\s+/g, " ").trim());
     };
-    recognizer.onend = () => setListening(false);
+    const timer = window.setTimeout(() => recognizer.stop(), MAX_DICTATION_MS);
+    recognizer.onend = () => {
+      window.clearTimeout(timer);
+      recognizerRef.current = null;
+      setListening(false);
+    };
     // Tell the visitor why nothing happened instead of failing silently.
     recognizer.onerror = (event) => {
       setListening(false);
@@ -181,6 +220,7 @@ export function AgentChat() {
         setMicError(t("micError"));
       }
     };
+    recognizerRef.current = recognizer;
     setListening(true);
     recognizer.start();
   }
@@ -295,7 +335,10 @@ export function AgentChat() {
         <div className="flex items-center gap-2">
           <input
             value={input}
-            onChange={(e) => setInput(e.target.value)}
+            onChange={(e) => {
+              setInput(e.target.value);
+              setMicError(null);
+            }}
             placeholder={listening ? t("listening") : t("placeholder")}
             className="flex-1 rounded-lg bg-transparent px-2 py-1 text-sm text-primary placeholder:text-subtle focus:outline-none focus:ring-1 focus:ring-brand-400/60"
           />
@@ -303,16 +346,16 @@ export function AgentChat() {
             <button
               type="button"
               onClick={dictate}
-              disabled={busy || listening}
-              aria-label={listening ? t("listening") : t("dictate")}
-              title={listening ? t("listening") : t("dictate")}
+              disabled={busy}
+              aria-label={listening ? t("stopDictation") : t("dictate")}
+              title={listening ? t("stopDictation") : t("dictate")}
               className={`rounded-lg border p-2 transition disabled:opacity-60 ${
                 listening
                   ? "animate-pulse border-brand-400 bg-brand-500/30 text-primary"
                   : "border-brand-400/50 bg-brand-500/10 text-brand-300 hover:bg-brand-500/25 hover:text-primary"
               }`}
             >
-              <MicIcon />
+              {listening ? <StopIcon /> : <MicIcon />}
             </button>
           )}
           <button
