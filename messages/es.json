@@ -80,6 +80,9 @@
     "stop": "Detener",
     "dictate": "Dicta tu pregunta",
     "listening": "Escuchando...",
+    "micDenied": "Tu navegador bloqueó el micrófono. Actívalo en el ícono a la izquierda de la dirección y vuelve a intentar.",
+    "micNoSpeech": "No te escuché. Toca el micrófono y habla de nuevo.",
+    "micError": "El micrófono no funcionó aquí. Puedes escribir tu pregunta.",
     "greeting": "¡Hola! Soy el agente de IA de Diego. Cuéntame sobre tu proyecto — ¿qué quieres construir?",
     "starters": [
       "¿Puedes construir un SaaS con pagos?",

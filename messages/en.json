@@ -80,6 +80,9 @@
     "stop": "Stop",
     "dictate": "Dictate your question",
     "listening": "Listening...",
+    "micDenied": "Your browser blocked the microphone. Allow it from the icon left of the address bar, then try again.",
+    "micNoSpeech": "I didn't hear anything. Tap the mic and try again.",
+    "micError": "The microphone didn't work here. You can type your question instead.",
     "greeting": "Hi! I'm Diego's AI agent. Tell me about your project — what are you trying to build?",
     "starters": [
       "Can you build a SaaS with payments?",

@@ -41,7 +41,7 @@ type Recognizer = {
   interimResults: boolean;
   onresult: ((event: { results: ArrayLike<ArrayLike<{ transcript: string }>> }) => void) | null;
   onend: (() => void) | null;
-  onerror: (() => void) | null;
+  onerror: ((event: { error: string }) => void) | null;
   start: () => void;
   stop: () => void;
 };
@@ -81,6 +81,7 @@ export function AgentChat() {
   // reads the real support.
   const canDictate = useSyncExternalStore(noSubscribe, () => Boolean(getRecognizer()), () => false);
   const [listening, setListening] = useState(false);
+  const [micError, setMicError] = useState<string | null>(null);
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
@@ -112,6 +113,7 @@ export function AgentChat() {
   function dictate() {
     const Recognition = getRecognizer();
     if (!Recognition || listening) return;
+    setMicError(null);
     const recognizer = new Recognition();
     recognizer.lang = locale === "es" ? "es-US" : "en-US";
     recognizer.interimResults = false;
@@ -120,7 +122,18 @@ export function AgentChat() {
       setInput((current) => `${current} ${transcript}`.trim());
     };
     recognizer.onend = () => setListening(false);
-    recognizer.onerror = () => setListening(false);
+    // Tell the visitor why nothing happened instead of failing silently.
+    recognizer.onerror = (event) => {
+      setListening(false);
+      if (event.error === "aborted") return;
+      if (event.error === "not-allowed" || event.error === "service-not-allowed") {
+        setMicError(t("micDenied"));
+      } else if (event.error === "no-speech") {
+        setMicError(t("micNoSpeech"));
+      } else {
+        setMicError(t("micError"));
+      }
+    };
     setListening(true);
     recognizer.start();
   }
@@ -184,9 +197,13 @@ export function AgentChat() {
                   type="button"
                   onClick={() => play(index, message)}
                   aria-label={speaking === index ? t("stop") : t("listen")}
-                  className="mt-1.5 flex items-center gap-1 text-[11px] text-subtle transition hover:text-primary"
+                  className={`mt-2 inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium transition ${
+                    speaking === index
+                      ? "border-brand-400 bg-brand-500/30 text-primary"
+                      : "border-brand-400/50 bg-brand-500/10 text-brand-300 hover:bg-brand-500/25 hover:text-primary"
+                  }`}
                 >
-                  <span aria-hidden="true">{speaking === index ? "■" : "🔊"}</span>
+                  {speaking === index ? <StopIcon /> : <SpeakerIcon />}
                   {speaking === index ? t("stop") : t("listen")}
                 </button>
               )}
@@ -232,7 +249,7 @@ export function AgentChat() {
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder={t("placeholder")}
+            placeholder={listening ? t("listening") : t("placeholder")}
             className="flex-1 rounded-lg bg-transparent px-2 py-1 text-sm text-primary placeholder:text-subtle focus:outline-none focus:ring-1 focus:ring-brand-400/60"
           />
           {canDictate && (
@@ -242,11 +259,13 @@ export function AgentChat() {
               disabled={busy || listening}
               aria-label={listening ? t("listening") : t("dictate")}
               title={listening ? t("listening") : t("dictate")}
-              className={`rounded-lg px-2 py-1.5 text-sm transition disabled:opacity-60 ${
-                listening ? "animate-pulse text-brand-400" : "text-subtle hover:text-primary"
+              className={`rounded-lg border p-2 transition disabled:opacity-60 ${
+                listening
+                  ? "animate-pulse border-brand-400 bg-brand-500/30 text-primary"
+                  : "border-brand-400/50 bg-brand-500/10 text-brand-300 hover:bg-brand-500/25 hover:text-primary"
               }`}
             >
-              <span aria-hidden="true">🎤</span>
+              <MicIcon />
             </button>
           )}
           <button
@@ -257,9 +276,39 @@ export function AgentChat() {
             {t("send")}
           </button>
         </div>
+        {micError && <p className="px-2 pt-1.5 text-xs text-brand-300">{micError}</p>}
         <p className="px-2 pt-1.5 text-[10px] text-subtle">{t("disclaimer")}</p>
       </form>
     </div>
+  );
+}
+
+// Small stroke icons for the voice buttons; they take the button's text color.
+function SpeakerIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M11 5 6 9H3v6h3l5 4V5Z" />
+      <path d="M15.5 8.5a5 5 0 0 1 0 7" />
+      <path d="M18.5 5.5a9 9 0 0 1 0 13" />
+    </svg>
+  );
+}
+
+function StopIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor">
+      <rect x="6" y="6" width="12" height="12" rx="2" />
+    </svg>
+  );
+}
+
+function MicIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="9" y="3" width="6" height="11" rx="3" />
+      <path d="M5 11a7 7 0 0 0 14 0" />
+      <path d="M12 18v3" />
+    </svg>
   );
 }
 
