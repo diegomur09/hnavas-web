@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { type ReactNode, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { motion } from "framer-motion";
 import { sendChatMessage, speakReply, type ChatMessage } from "@/lib/api";
 import { VISITOR_KEY } from "@/lib/config";
@@ -57,6 +57,53 @@ function getRecognizer(): (new () => Recognizer) | undefined {
 
 // Browser support never changes while the page is open, so nothing to subscribe to.
 const noSubscribe = () => () => {};
+
+// Agent replies are plain text with a little markdown. Turn [label](url), bare
+// URLs, emails and **bold** into real elements so links can be opened. Built
+// as React nodes (never innerHTML), so the text stays escaped, and only
+// http(s) URLs become links.
+const RICH =
+  /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)|\*\*([^*]+)\*\*|(https?:\/\/[^\s<]+)|([\w.+-]+@[\w-]+(?:\.[\w-]+)+)/g;
+
+function renderRich(text: string): ReactNode[] {
+  const nodes: ReactNode[] = [];
+  let last = 0;
+  for (const match of text.matchAll(RICH)) {
+    const [whole, label, labelUrl, bold, bareUrl, email] = match;
+    const start = match.index ?? 0;
+    let end = start + whole.length;
+    if (start > last) nodes.push(text.slice(last, start));
+    if (label && labelUrl) {
+      nodes.push(<RichLink key={start} href={labelUrl}>{label}</RichLink>);
+    } else if (bold) {
+      nodes.push(<strong key={start} className="font-semibold text-primary">{bold}</strong>);
+    } else if (bareUrl) {
+      // A sentence-ending "." or ")" belongs to the text, not the URL.
+      const url = bareUrl.replace(/[.,;:!?)]+$/, "");
+      end = start + url.length;
+      nodes.push(<RichLink key={start} href={url}>{url.replace(/^https?:\/\//, "")}</RichLink>);
+    } else if (email) {
+      nodes.push(<RichLink key={start} href={`mailto:${email}`}>{email}</RichLink>);
+    }
+    last = end;
+  }
+  if (last < text.length) nodes.push(text.slice(last));
+  return nodes;
+}
+
+function RichLink({ href, children }: { href: string; children: ReactNode }) {
+  const external = href.startsWith("http");
+  return (
+    <a
+      href={href}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noopener noreferrer" : undefined}
+      className="break-all text-brand-300 underline underline-offset-2 transition hover:text-primary"
+    >
+      {children}
+    </a>
+  );
+}
 
 export function AgentChat() {
   const t = useTranslations("Agent");
@@ -185,13 +232,13 @@ export function AgentChat() {
             className={message.role === "user" ? "flex justify-end" : "flex justify-start"}
           >
             <div
-              className={`max-w-[82%] rounded-2xl px-3.5 py-2 text-sm leading-relaxed ${
+              className={`max-w-[82%] whitespace-pre-line rounded-2xl px-3.5 py-2 text-sm leading-relaxed ${
                 message.role === "user"
                   ? "bg-brand-500/15 text-primary"
                   : "bg-white/4 text-secondary"
               }`}
             >
-              {message.content}
+              {message.role === "assistant" ? renderRich(message.content) : message.content}
               {message.speakToken && (
                 <button
                   type="button"
