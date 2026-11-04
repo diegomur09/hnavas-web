@@ -197,7 +197,7 @@ export function AgentChat() {
                   type="button"
                   onClick={() => play(index, message)}
                   aria-label={speaking === index ? t("stop") : t("listen")}
-                  className={`mt-2 inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium transition ${
+                  className={`mt-2 flex w-fit items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium transition ${
                     speaking === index
                       ? "border-brand-400 bg-brand-500/30 text-primary"
                       : "border-brand-400/50 bg-brand-500/10 text-brand-300 hover:bg-brand-500/25 hover:text-primary"
