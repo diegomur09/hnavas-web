@@ -9,6 +9,7 @@ import { SITE } from "@/lib/site";
 import { AuthProvider } from "@/context/AuthContext";
 import { AuthModal } from "@/components/AuthModal";
 import { MotionProvider } from "@/components/MotionProvider";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { AUTH_ENABLED } from "@/lib/config";
 import "../globals.css";
 
@@ -207,6 +208,7 @@ export default async function LocaleLayout({
             </AuthProvider>
           </MotionProvider>
         </NextIntlClientProvider>
+        <GoogleAnalytics />
       </body>
     </html>
   );

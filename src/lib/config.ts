@@ -22,3 +22,9 @@ export const AUTH_TOKEN_KEY = "hnavas_auth_token";
 // sends a request that the API would reject (see backend validation.js).
 export const PASSWORD_MIN_LENGTH = 8;
 export const NAME_MIN_LENGTH = 2;
+
+// Google Analytics 4 measurement ID (e.g. "G-ABC123XYZ"), set per environment
+// at build time. Unset (local, QA) means no analytics script at all. Only a
+// well-formed GA4 ID is accepted because it is written into an inline script.
+const rawGaId = process.env.NEXT_PUBLIC_GA_ID ?? "";
+export const GA_ID = /^G-[A-Z0-9]{4,20}$/.test(rawGaId) ? rawGaId : undefined;

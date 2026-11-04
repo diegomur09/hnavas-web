@@ -34,6 +34,9 @@ jobs:
       # show the "Start your project" CTA instead. QA leaves it unset → empty
       # string → AUTH_ENABLED stays true → full sign in / sign up for review.
       NEXT_PUBLIC_ENABLE_AUTH: ${{ vars.NEXT_PUBLIC_ENABLE_AUTH }}
+      # Google Analytics 4 ID. Only the production environment sets it, so QA
+      # visits never mix into the site's real numbers.
+      NEXT_PUBLIC_GA_ID: ${{ vars.NEXT_PUBLIC_GA_ID }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
