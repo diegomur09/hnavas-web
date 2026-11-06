@@ -91,4 +91,37 @@ jobs:
             done
           done
       - name: Invalidate CloudFront cache
-        run: aws cloudfront create-invalidation --distribution-id "${{ vars.CLOUDFRONT_ID }}" --paths "/*"
+        id: invalidate
+        run: |
+          ID=$(aws cloudfront create-invalidation --distribution-id "${{ vars.CLOUDFRONT_ID }}" \
+            --paths "/*" --query Invalidation.Id --output text)
+          echo "id=$ID" >> "$GITHUB_OUTPUT"
+      # IndexNow tells Bing (and the other IndexNow engines) that pages changed,
+      # so Bing, and ChatGPT search and Copilot that read its index, recrawl in
+      # minutes instead of whenever they next pass by. Production only.
+      # The key is public by design: the engine fetches keyLocation and checks
+      # it serves the same value, which proves we control the host. The file
+      # lives in public/, so the key below and that file name must match.
+      # Every sitemap URL is sent: the sitemap already dates every page with
+      # the build date, and the list is small. A failure here only warns; it
+      # never marks the deploy as failed.
+      - name: Notify IndexNow
+        if: github.ref_name == 'main'
+        continue-on-error: true
+        env:
+          INDEXNOW_KEY: 861b7dad876cfd4c15a60d71307dfb6b
+          SITE: https://hnavasystems.com
+        run: |
+          # Ping only once CloudFront serves the new pages.
+          aws cloudfront wait invalidation-completed \
+            --distribution-id "${{ vars.CLOUDFRONT_ID }}" --id "${{ steps.invalidate.outputs.id }}"
+          LIVE_KEY=$(curl -fsS "$SITE/$INDEXNOW_KEY.txt")
+          [ "$LIVE_KEY" = "$INDEXNOW_KEY" ] || { echo "::error::$SITE/$INDEXNOW_KEY.txt does not serve the key"; exit 1; }
+          grep -o '<loc>[^<]*</loc>' out/sitemap.xml | sed 's/<[^>]*>//g' > urls.txt
+          jq -R . urls.txt | jq -s --arg key "$INDEXNOW_KEY" --arg site "$SITE" \
+            '{host: ($site | sub("^https://"; "")), key: $key, keyLocation: "\($site)/\($key).txt", urlList: .}' > indexnow.json
+          CODE=$(curl -sS -o response.txt -w '%{http_code}' -X POST https://api.indexnow.org/indexnow \
+            -H 'Content-Type: application/json; charset=utf-8' --data @indexnow.json)
+          echo "IndexNow: HTTP $CODE for $(wc -l < urls.txt) URLs"
+          # 200 = received, 202 = received and the key is still being checked.
+          case "$CODE" in 200|202) ;; *) cat response.txt; exit 1 ;; esac
