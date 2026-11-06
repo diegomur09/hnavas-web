@@ -6,8 +6,12 @@ export const SITE = {
   person: "Diego Navas Murcia",
   role: "Full-Stack & Cloud Engineer",
   tagline: "Production AWS apps, AI automation, and software that ships.",
-  location: "Denver / Broomfield, CO",
+  location: "Denver, CO",
   email: "hnavasystems@gmail.com",
+  // Public profiles that identify the same person/business (schema.org sameAs,
+  // llms.txt). Search engines and AI assistants use them to tie mentions together.
+  githubUrl: "https://github.com/diegomur09",
+  linkedinUrl: "https://www.linkedin.com/in/diegonamu",
   url: "https://hnavasystems.com",
   // Public Cal.com booking link (same one the AI agent shares).
   calendarUrl: "https://cal.com/diego-navas-murcia-6a7b9n",

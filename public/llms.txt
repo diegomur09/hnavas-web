@@ -1,41 +1,54 @@
-# HNavas Systems | Custom Software, AWS Cloud & AI Development
+# HNavas Systems | Websites, Custom Software, AWS Cloud & AI Automation in Denver
 
-> Denver-based engineering consultancy founded by Diego Navas Murcia. Specializing in production full-stack web applications, serverless AWS cloud architecture, and custom AI automation pipelines for startups and established businesses across Colorado and nationwide. Bilingual (English / Spanish).
+> HNavas Systems is a software development studio in Denver, Colorado, founded and run by Diego Navas Murcia, a bilingual (English/Spanish) full-stack and cloud engineer. It builds business websites, custom web apps and SaaS, AWS serverless systems and AI automation for small and mid-sized businesses in the Denver metro, and remotely across the US.
 
-## Core Capabilities & Services
+## Services
 
-- **Custom Full-Stack & SaaS Development**: End-to-end web apps, MVPs, real-time platforms, and internal tools using Next.js 16, React 19, TypeScript, and FastAPI.
-- **AWS Serverless Architecture**: Production cloud systems with 60+ Lambda functions, 40+ DynamoDB tables, API Gateway, CloudFront, Cognito, and Amazon SES.
-- **AI Automation & Agents**: Custom AI pipelines, RAG systems, lead nurture bots, and email automation powered by Claude (Anthropic API) and GPT-4o (OpenAI API).
-- **High-Performance Websites & Core Web Vitals**: Modern, lightning-fast sites tuned for sub-second load times and high checkout conversion.
-- **Field & Mobile Ops Apps**: Custom React Native / Expo apps and rapid low-code solutions (AppSheet, Base44) with automated reporting.
-- **Payments & CRM Integrations**: End-to-end integrations with Stripe, Square, Salesforce, and automated billing.
+- **Website design & development**: Fast, mobile-first business websites in English, Spanish or both, built with Next.js or WordPress, with lead forms, structured data and Search Console set up.
+- **Custom software & SaaS development**: Customer portals, booking and payments, dashboards, internal tools and real-time platforms built with Next.js, React, TypeScript, Python and FastAPI.
+- **AWS cloud architecture & consulting**: Serverless systems on Lambda, DynamoDB, API Gateway, CloudFront, Cognito, S3 and SES: 60+ Lambda functions and 40 database tables built and run across production and QA environments.
+- **AI automation & chatbots**: AI agents that answer customers from a business's own information, RAG search, lead capture and email automation, built on the Claude (Anthropic) and OpenAI APIs.
+- **Payments & CRM integrations**: Stripe, Square and Salesforce (Service Cloud and Experience Cloud) integrations, automated billing and support workflows.
+- **Field & no-code apps**: Rapid low-code apps (AppSheet, Base44) with automated reports for field teams.
+- **Local SEO & Google Business Profile**: Profile setup, technical SEO fixes and Search Console for local service businesses.
 
-## Founder & Contact
+## About
 
-- **Founder & Lead Engineer**: Diego Navas Murcia
-- **Location**: Denver, Colorado (Serving Denver Metro, Boulder, Broomfield, Tech Center, and Remote Worldwide)
-- **Languages**: English, Spanish (Bilingual Engineering)
-- **Website**: https://hnavasystems.com/en/
+- **Founder & lead engineer**: Diego Navas Murcia
+- **Based in**: Denver, Colorado. Works in person across the Denver metro and remotely anywhere in the US.
+- **Languages**: English and Spanish (projects can run fully in either)
+- **Website**: https://hnavasystems.com/ (Spanish: https://hnavasystems.com/es/)
+- **Book a call**: https://cal.com/diego-navas-murcia-6a7b9n
 - **Email**: hnavasystems@gmail.com
+- **LinkedIn**: https://www.linkedin.com/in/diegonamu
 - **GitHub**: https://github.com/diegomur09
 
-## Key Case Studies in Production
+## Work in production
 
-- [ScoreFlow](https://myscoreflow.com): Real-time dance competition judging SaaS built on Next.js 16, FastAPI, AWS CDK, WebSockets, and DynamoDB.
-- [Dynamic Bachata Platform](https://dynamicbachata.com): Full business platform with online bookings, Square payments ($51K+ processed), and 60+ serverless endpoints.
-- [Bachata Sky Weekender](https://sky.dynamicbachata.com): High-converting event ticket platform with Stripe checkout (~45% conversion).
-- [Email Campaign Manager](https://emails.dynamicbachata.com): AI-driven marketing automation platform built on React, AWS Lambda, and OpenRouter.
-- [Luxury Rides Denver](https://luxuryridesdenver.com): Luxury chauffeur and DIA airport car service platform.
+- [AI sales agent](https://hnavasystems.com/): The chat on hnavasystems.com answers in English and Spanish from real project history, captures leads, shares a booking link and reads its answers aloud.
+- [ScoreFlow](https://myscoreflow.com): Real-time dance competition judging SaaS built on Next.js, FastAPI, AWS CDK, WebSockets and DynamoDB.
+- [Dynamic Bachata platform](https://dynamicbachata.com): Dance school platform with online bookings and Square payments: $51K+ processed, 200+ customers, 864 transactions.
+- [Bachata Sky Weekender](https://sky.dynamicbachata.com): Event ticket platform with Stripe checkout (~45% conversion).
+- [Email Campaign Manager](https://emails.dynamicbachata.com): AI-assisted email marketing platform built on React and AWS Lambda.
+- [Houston fence lead-generation site](https://mypetary.com): Bilingual lead-generation website for fence installation in Greater Houston, with city, cost and permit guides, a price calculator and a quote form.
+- [Luxury Rides Denver](https://luxuryridesdenver.com): Luxury chauffeur and DIA airport car service website.
 
-## Service Areas (Colorado)
+## Common questions
 
-- [Denver Custom Software](https://hnavasystems.com/en/denver/): Software development in downtown Denver, RiNo, Cherry Creek, and Tech Center.
-- [Boulder Software & AI](https://hnavasystems.com/en/boulder/): Engineering for Boulder startups, biotech, and research labs.
-- [Lakewood Software](https://hnavasystems.com/en/lakewood/): Web and cloud solutions for Lakewood businesses.
-- [Aurora Software](https://hnavasystems.com/en/aurora/): Custom software and automation in Aurora and Anschutz Medical Campus.
-- [Broomfield & Interlocken](https://hnavasystems.com/en/broomfield/): Cloud architecture for Broomfield tech companies.
-- [Westminster Software](https://hnavasystems.com/en/westminster/)
-- [Arvada Software](https://hnavasystems.com/en/arvada/)
-- [Thornton Software](https://hnavasystems.com/en/thornton/)
-- [Centennial & DTC](https://hnavasystems.com/en/centennial/)
+- **How much does a project cost?** It depends on scope. A focused website or automation is a smaller fixed project; a full custom app or SaaS is larger and usually phased. Every project gets a clear estimate after a first call.
+- **How long does it take?** Small sites and automations typically ship in 1 to 3 weeks. Custom apps and SaaS are delivered in phases, so working software is visible early.
+- **Do you work with businesses outside Denver?** Yes. In person across the Denver metro when it helps, and remotely across Colorado and the US with the same process.
+- **Do you work in Spanish?** Yes. Projects can run entirely in English or Spanish, and sites can be built bilingual.
+- **Do you support what you build?** Yes. Maintenance, monitoring and new features, including the AWS infrastructure, from the same engineer who built it.
+
+## Service areas (Colorado)
+
+- [Denver](https://hnavasystems.com/denver/): Software development in downtown Denver, RiNo, Cherry Creek and the Tech Center.
+- [Boulder](https://hnavasystems.com/boulder/): Engineering for Boulder startups, biotech and research labs.
+- [Lakewood](https://hnavasystems.com/lakewood/): Web and cloud solutions for Lakewood businesses.
+- [Aurora](https://hnavasystems.com/aurora/): Custom software and automation in Aurora and the Anschutz Medical Campus area.
+- [Broomfield & Interlocken](https://hnavasystems.com/broomfield/): Cloud architecture for Broomfield tech companies.
+- [Westminster](https://hnavasystems.com/westminster/)
+- [Arvada](https://hnavasystems.com/arvada/)
+- [Thornton](https://hnavasystems.com/thornton/)
+- [Centennial & DTC](https://hnavasystems.com/centennial/)

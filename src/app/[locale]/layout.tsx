@@ -125,7 +125,7 @@ const jsonLd = {
       ],
       serviceType: SERVICE_TYPES,
       knowsLanguage: ["en", "es"],
-      sameAs: ["https://github.com/diegomur09"],
+      sameAs: [SITE.githubUrl],
       founder: { "@id": `${SITE.url}/#person` },
       address: { "@type": "PostalAddress", addressLocality: "Denver", addressRegion: "CO", addressCountry: "US" },
       makesOffer: SERVICE_TYPES.map((s) => ({
@@ -142,7 +142,7 @@ const jsonLd = {
       email: SITE.email,
       worksFor: { "@id": `${SITE.url}/#business` },
       knowsLanguage: ["en", "es"],
-      sameAs: ["https://github.com/diegomur09"],
+      sameAs: [SITE.linkedinUrl, SITE.githubUrl],
       knowsAbout: [
         "Full-stack development",
         "Next.js",

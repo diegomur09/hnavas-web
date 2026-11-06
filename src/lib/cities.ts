@@ -147,12 +147,12 @@ export const CITIES: City[] = [
     county: "Broomfield County",
     en: {
       intro:
-        "Broomfield's Interlocken business park and growing tech scene are right in my backyard. I partner directly with local companies — no agency middlemen — to build production web apps, cloud systems and AI automation that ship.",
+        "Broomfield's Interlocken business park and growing tech scene are a short drive up US-36 from my Denver base. I partner directly with local companies, with no agency middlemen, to build production web apps, cloud systems and AI automation that ship.",
       areas: "Serving Interlocken, Arista, Broomfield Town Center and the US-36 / Northwest Parkway area.",
     },
     es: {
       intro:
-        "El parque empresarial de Interlocken y la creciente escena tecnológica de Broomfield están justo en mi zona. Colaboro directamente con las empresas locales — sin intermediarios de agencia — para construir aplicaciones web en producción, sistemas en la nube y automatización con IA que se entregan.",
+        "El parque empresarial de Interlocken y la creciente escena tecnológica de Broomfield están a pocos minutos de Denver por la US-36. Colaboro directamente con las empresas locales, sin intermediarios de agencia, para construir aplicaciones web en producción, sistemas en la nube y automatización con IA que se entregan.",
       areas: "Damos servicio a Interlocken, Arista, Broomfield Town Center y la zona de US-36 / Northwest Parkway.",
     },
   },

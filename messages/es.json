@@ -303,7 +303,7 @@
     "eyebrow": "Sobre mí",
     "title": "Diego Navas Murcia",
     "role": "Ingeniero Full-Stack & Cloud",
-    "body": "Soy ingeniero full-stack y cloud basado en Denver/Broomfield, Colorado, con tres años construyendo software que corre en producción. Trabajo de forma nativa con AWS — Lambda, DynamoDB, SES, S3, CloudFront, Cognito y API Gateway — y construyo automatización directamente contra las APIs de Claude y OpenAI. Trabajo con fluidez en inglés y español, lo que significa que puedo atender a los negocios de Denver y a su mercado hispano sin perder nada en la traducción. Del lado enterprise, implemento Salesforce Service Cloud y Experience Cloud, conectando el correo de soporte, los casos y los portales de clientes en un solo flujo.",
+    "body": "Soy ingeniero full-stack y cloud basado en Denver, Colorado, con tres años construyendo software que corre en producción. Trabajo de forma nativa con AWS (Lambda, DynamoDB, SES, S3, CloudFront, Cognito y API Gateway) y construyo automatización directamente contra las APIs de Claude y OpenAI. Trabajo con fluidez en inglés y español, lo que significa que puedo atender a los negocios de Denver y a su mercado hispano sin perder nada en la traducción. Del lado enterprise, implemento Salesforce Service Cloud y Experience Cloud, conectando el correo de soporte, los casos y los portales de clientes en un solo flujo.",
     "stackTitle": "Stack principal",
     "differentiator": "Bilingüe EN/ES · local en Denver · entrega a producción"
   },
@@ -427,7 +427,7 @@
       },
       {
         "q": "¿Trabajas con empresas fuera de Denver?",
-        "a": "Sí. Estoy en el área metropolitana de Denver (Broomfield) y trabajo en persona con clientes locales cuando ayuda, pero entrego de forma remota en todo Colorado y EE. UU. — el proceso es el mismo en ambos casos."
+        "a": "Sí. Estoy en Denver y trabajo en persona con clientes locales cuando ayuda, pero entrego de forma remota en todo Colorado y EE. UU. El proceso es el mismo en ambos casos."
       },
       {
         "q": "¿Trabajas en inglés y español?",

@@ -303,7 +303,7 @@
     "eyebrow": "About",
     "title": "Diego Navas Murcia",
     "role": "Full-Stack & Cloud Engineer",
-    "body": "I'm a full-stack and cloud engineer based in Denver/Broomfield, Colorado, with three years building software that runs in production. I work natively with AWS — Lambda, DynamoDB, SES, S3, CloudFront, Cognito and API Gateway — and I build automation directly against the Claude and OpenAI APIs. I work fluently in English and Spanish, which means I can serve Denver's businesses and its Hispanic market without losing anything in translation. On the enterprise side, I implement Salesforce Service Cloud and Experience Cloud, wiring support email, cases and customer portals into one flow.",
+    "body": "I'm a full-stack and cloud engineer based in Denver, Colorado, with three years building software that runs in production. I work natively with AWS (Lambda, DynamoDB, SES, S3, CloudFront, Cognito and API Gateway) and I build automation directly against the Claude and OpenAI APIs. I work fluently in English and Spanish, which means I can serve Denver's businesses and its Hispanic market without losing anything in translation. On the enterprise side, I implement Salesforce Service Cloud and Experience Cloud, wiring support email, cases and customer portals into one flow.",
     "stackTitle": "Core stack",
     "differentiator": "Bilingual EN/ES · Denver-local · ships to production"
   },
@@ -427,7 +427,7 @@
       },
       {
         "q": "Do you work with businesses outside Denver?",
-        "a": "Yes. I'm based in the Denver metro (Broomfield) and work with local clients in person when it helps, but I deliver remotely across Colorado and the US — the process is the same either way."
+        "a": "Yes. I'm based in Denver and work with local clients in person when it helps, but I deliver remotely across Colorado and the US. The process is the same either way."
       },
       {
         "q": "Do you work in both English and Spanish?",
