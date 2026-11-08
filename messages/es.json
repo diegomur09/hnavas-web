@@ -112,7 +112,7 @@
     },
     "ai": {
       "title": "Automatización con IA y chatbots para negocios",
-      "desc": "Pipelines de email personalizado, generación de contenido, chatbots y flujos de nurture construidos directo sobre Claude y OpenAI.",
+      "desc": "Chatbots, pipelines de email personalizado, generación de contenido y flujos de nurture construidos sobre Claude, ChatGPT y Gemini, más imágenes y video con IA para marketing.",
       "proof": "Sistema de re-engagement con IA usando Claude Haiku + SES en cron diario."
     },
     "web": {
@@ -134,7 +134,8 @@
       "title": "Servicios de SEO local y perfil de Google Business",
       "desc": "SEO local, Google Business Profile y SEO técnico/GEO para que clientes y asistentes de IA te encuentren.",
       "proof": "Un punto de entrada recurrente y económico que crece con el tiempo."
-    }
+    },
+    "learnMore": "Ver más"
   },
   "Work": {
     "eyebrow": "Trabajo seleccionado",
@@ -438,5 +439,22 @@
         "a": "Sí. Puedo mantener, monitorear y ampliar lo que construyo — incluida la infraestructura de AWS — para que tengas una sola persona responsable de todo el sistema, no una entrega a un desconocido."
       }
     ]
+  },
+  "ServicePage": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "eyebrow": "Servicios · Denver, CO",
+    "cta": "Pide una cotización gratis",
+    "bookCall": "Agenda una llamada",
+    "whenEyebrow": "¿Es para ti?",
+    "includedEyebrow": "Qué recibes",
+    "platformsEyebrow": "Plataformas",
+    "processEyebrow": "Proceso",
+    "workEyebrow": "Proyectos reales",
+    "relatedTitle": "Otros servicios",
+    "hubMetaTitle": "Servicios de Diseño Web y Software en Denver",
+    "hubMetaDescription": "Páginas web, software a la medida, AWS y Google Cloud, automatización con IA, pagos, CRM y SEO local para negocios de Denver, en inglés o español.",
+    "hubH1": "Servicios de diseño web, software y automatización con IA en Denver",
+    "hubIntro": "Cada servicio está respaldado por trabajo que ya funciona en producción. Elige el que necesitas, o cuéntame el problema y te recomiendo la forma más sencilla de resolverlo."
   }
 }

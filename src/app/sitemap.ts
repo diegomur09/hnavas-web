@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { SITE, LOCALES, SCREENSHOT_SLUGS } from "@/lib/site";
 import { languageAlternateUrls, localeUrl } from "@/i18n/paths";
 import { CITIES } from "@/lib/cities";
+import { SERVICE_PAGES } from "@/lib/services";
 
 // Required for `output: export` — emit a static sitemap.xml at build.
 export const dynamic = "force-static";
@@ -38,6 +39,9 @@ function localizedEntry(
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...localizedEntry("/", "monthly", 1, SCREENSHOTS),
+    ...localizedEntry("/services/", "monthly", 0.8),
+    // Service landing pages: the main targets for "{service} Denver" searches.
+    ...SERVICE_PAGES.flatMap((page) => localizedEntry(`/services/${page.slug}/`, "monthly", 0.9)),
     ...localizedEntry("/about/", "monthly", 0.7),
     ...localizedEntry("/privacy/", "yearly", 0.3),
     // Local-SEO city landing pages.

@@ -112,7 +112,7 @@
     },
     "ai": {
       "title": "AI Automation & Chatbots for Business",
-      "desc": "Personalized email pipelines, content generation, chatbots and lead-nurture flows built directly on Claude and OpenAI.",
+      "desc": "Chatbots, personalized email pipelines, content generation and lead-nurture flows built on Claude, ChatGPT and Gemini, plus AI images and video for marketing.",
       "proof": "AI re-engagement system using Claude Haiku + SES on a daily cron."
     },
     "web": {
@@ -134,7 +134,8 @@
       "title": "Local SEO Services & Google Business Profile",
       "desc": "Local SEO, Google Business Profile and technical SEO/GEO so customers and AI assistants can find you.",
       "proof": "A low-cost recurring entry point that compounds over time."
-    }
+    },
+    "learnMore": "Learn more"
   },
   "Work": {
     "eyebrow": "Selected work",
@@ -438,5 +439,22 @@
         "a": "Yes. I can maintain, monitor and extend what I build — including the AWS infrastructure — so you have one accountable person for the whole system, not a handoff to a stranger."
       }
     ]
+  },
+  "ServicePage": {
+    "home": "Home",
+    "services": "Services",
+    "eyebrow": "Services · Denver, CO",
+    "cta": "Get a free estimate",
+    "bookCall": "Book a call",
+    "whenEyebrow": "Is it for you",
+    "includedEyebrow": "What you get",
+    "platformsEyebrow": "Platforms",
+    "processEyebrow": "Process",
+    "workEyebrow": "Real projects",
+    "relatedTitle": "Other services",
+    "hubMetaTitle": "Web Design & Software Services in Denver",
+    "hubMetaDescription": "Website design, custom software, AWS and Google Cloud, AI automation, payment and CRM integrations and local SEO for Denver businesses, in English or Spanish.",
+    "hubH1": "Web design, software & AI automation services in Denver",
+    "hubIntro": "Every service below is backed by work already running in production. Pick the one you need, or tell me the problem and I'll recommend the simplest way to solve it."
   }
 }

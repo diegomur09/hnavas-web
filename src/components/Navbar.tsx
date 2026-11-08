@@ -27,7 +27,7 @@ export function Navbar() {
   const home = localePath(locale);
   const links = [
     { href: `${home}#work`, label: t("work") },
-    { href: `${home}#services`, label: t("services") },
+    { href: "/services", label: t("services"), internal: true },
     { href: "/about", label: t("about"), internal: true },
     { href: `${home}#contact`, label: t("contact") },
   ];

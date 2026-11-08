@@ -1,17 +1,44 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { SITE, assetUrl } from "@/lib/site";
 import { CITIES } from "@/lib/cities";
+import { SERVICE_PAGES } from "@/lib/services";
 
 export async function Footer() {
   const t = await getTranslations("Footer");
   const tc = await getTranslations("City");
+  const tsp = await getTranslations("ServicePage");
+  const locale = await getLocale();
   const year = new Date().getFullYear();
 
   return (
     <footer className="border-t border-white/6">
-      {/* Areas served — internal links to the local-SEO city pages. */}
+      {/* Services: the hub and every service page, linked from every page. */}
       <div className="mx-auto max-w-6xl px-5 pt-12">
+        <h2 className="text-xs font-semibold uppercase tracking-widest text-secondary">
+          {tsp("services")}
+        </h2>
+        <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
+          <li>
+            <Link href="/services" className="text-sm text-body transition hover:text-brand-300">
+              {tsp("services")}
+            </Link>
+          </li>
+          {SERVICE_PAGES.map((page) => (
+            <li key={page.slug}>
+              <Link
+                href={`/services/${page.slug}`}
+                className="text-sm text-body transition hover:text-brand-300"
+              >
+                {(locale === "es" ? page.es : page.en).breadcrumb}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Areas served — internal links to the local-SEO city pages. */}
+      <div className="mx-auto max-w-6xl px-5 pt-10">
         <h2 className="text-xs font-semibold uppercase tracking-widest text-secondary">
           {tc("areasLabel")}
         </h2>

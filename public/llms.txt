@@ -4,13 +4,15 @@
 
 ## Services
 
-- **Website design & development**: Fast, mobile-first business websites in English, Spanish or both, built with Next.js or WordPress, with lead forms, structured data and Search Console set up.
+- **[Website design & development](https://hnavasystems.com/services/web-design/)**: Fast, mobile-first business websites in English, Spanish or both, built with Next.js, WordPress, Shopify, Wix or Base44, with lead forms, structured data and Search Console set up.
 - **Custom software & SaaS development**: Customer portals, booking and payments, dashboards, internal tools and real-time platforms built with Next.js, React, TypeScript, Python and FastAPI.
-- **AWS cloud architecture & consulting**: Serverless systems on Lambda, DynamoDB, API Gateway, CloudFront, Cognito, S3 and SES: 60+ Lambda functions and 40 database tables built and run across production and QA environments.
-- **AI automation & chatbots**: AI agents that answer customers from a business's own information, RAG search, lead capture and email automation, built on the Claude (Anthropic) and OpenAI APIs.
+- **AWS & Google Cloud architecture**: Serverless systems on Lambda, DynamoDB, API Gateway, CloudFront, Cognito, S3 and SES: 60+ Lambda functions and 40 database tables built and run across production and QA environments.
+- **AI automation & chatbots**: AI agents that answer customers from a business's own information, RAG search, lead capture and email automation, built on Claude (Anthropic), ChatGPT (OpenAI) and Gemini (Google), plus AI-generated images and video for marketing.
 - **Payments & CRM integrations**: Stripe, Square and Salesforce (Service Cloud and Experience Cloud) integrations, automated billing and support workflows.
 - **Field & no-code apps**: Rapid low-code apps (AppSheet, Base44) with automated reports for field teams.
 - **Local SEO & Google Business Profile**: Profile setup, technical SEO fixes and Search Console for local service businesses.
+
+All services: https://hnavasystems.com/services/
 
 ## About
 

@@ -71,7 +71,7 @@ export default async function CityPage({
     "@type": "Service",
     serviceType: ["Website design & development", "Custom software development"],
     name: t("metaTitle", { city: city.name }),
-    url: `${SITE.url}/${locale}/${city.slug}/`,
+    url: localeUrl(locale, `/${city.slug}/`),
     provider: {
       "@type": "ProfessionalService",
       name: SITE.name,

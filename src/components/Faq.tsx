@@ -6,10 +6,11 @@ type QA = { q: string; a: string };
 
 // FAQ section. Uses native <details>/<summary> so it works without client JS
 // (good for a static export) and stays accessible. Emits FAQPage JSON-LD so the
-// questions can show as rich results in Google.
-export async function Faq() {
+// questions can show as rich results in Google. Service pages pass their own
+// questions and title; everywhere else it shows the general site FAQ.
+export async function Faq({ items: own, title }: { items?: QA[]; title?: string } = {}) {
   const t = await getTranslations("Faq");
-  const items = t.raw("items") as QA[];
+  const items = own ?? (t.raw("items") as QA[]);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -27,7 +28,7 @@ export async function Faq() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <SectionHeading eyebrow={t("eyebrow")} title={t("title")} />
+      <SectionHeading eyebrow={t("eyebrow")} title={title ?? t("title")} />
 
       <div className="mt-10 space-y-3">
         {items.map((item) => (

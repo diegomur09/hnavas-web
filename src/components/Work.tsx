@@ -1,5 +1,5 @@
 import { getTranslations } from "next-intl/server";
-import { FEATURED_PROJECTS, MORE_PROJECTS, assetUrl, getScreenshotUrl, type Project } from "@/lib/site";
+import { FEATURED_PROJECTS, MORE_PROJECTS, PROJECTS, assetUrl, getScreenshotUrl, type Project } from "@/lib/site";
 import { AnimatedSection } from "./AnimatedSection";
 import { SectionHeading } from "./Services";
 
@@ -54,6 +54,37 @@ export async function Work() {
             <MiniCard key={p.slug} project={p} t={t} tProjects={tProjects} />
           ))}
         </div>
+      </div>
+    </AnimatedSection>
+  );
+}
+
+// A chosen set of projects in the given order, for service pages ("Websites
+// I've built"). Same cards as the home page, so the facts never drift.
+export async function ProjectList({
+  slugs,
+  eyebrow,
+  title,
+  subtitle,
+}: {
+  slugs: string[];
+  eyebrow: string;
+  title: string;
+  subtitle?: string;
+}) {
+  const t = await getTranslations("Work");
+  const tProjects = await getTranslations("Projects");
+  const projects = slugs
+    .map((slug) => PROJECTS.find((p) => p.slug === slug))
+    .filter((p): p is Project => Boolean(p));
+
+  return (
+    <AnimatedSection id="work" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-24">
+      <SectionHeading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+      <div className="mt-12 grid gap-4">
+        {projects.map((p) => (
+          <CompactCard key={p.slug} project={p} t={t} tProjects={tProjects} />
+        ))}
       </div>
     </AnimatedSection>
   );
