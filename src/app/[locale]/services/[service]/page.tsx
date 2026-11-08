@@ -168,7 +168,8 @@ export default async function ServiceLandingPage({
         {copy.platforms && copy.platformsTitle && (
           <AnimatedSection className="mx-auto max-w-6xl px-5 py-20">
             <SectionHeading eyebrow={t("platformsEyebrow")} title={copy.platformsTitle} subtitle={copy.platformsIntro} />
-            <div className="mt-10 grid gap-4 lg:grid-cols-3">
+            {/* Four cards read better as 2x2 than as 3 + 1 orphan */}
+            <div className={`mt-10 grid gap-4 ${copy.platforms.length === 4 ? "sm:grid-cols-2" : "lg:grid-cols-3"}`}>
               {copy.platforms.map((p) => (
                 <div key={p.title} className="glass-card p-6">
                   <h3 className="text-base font-semibold text-primary">{p.title}</h3>
