@@ -1,95 +1,97 @@
-// /colombia/ (EN) and /es/colombia/ (ES): one page for Colombian companies that
-// sell, or want to sell, in the United States. Decided 14-16 Nov 2026 (Diego
-// chose "option A": not the local Colombian SMB market). Spanish is the main
-// language here; the English version exists so the language switch works and
-// for teams that read English.
+// /colombia/ (EN) and /es/colombia/ (ES): software, websites and AI for
+// businesses in Colombia, as clients. Diego set the focus on 16 Nov 2026:
+// "vender para Colombia", not Colombian companies selling in the US. Work is
+// remote, in Spanish, from Denver. Spanish is the main version; the English one
+// exists so the language switch works.
 //
 // Same rules as services.ts: every claim must be true. Diego studied civil
-// engineering in Colombia (Cvs fact bank); no currency or prices until he decides.
+// engineering in Colombia (Cvs fact bank), so the copy says he trained there,
+// not his nationality. No prices or currency until he decides, no WhatsApp
+// contact or Colombian payment gateways named until he confirms them.
 
 import type { ServicePageCopy } from "./services";
 
-// metaTitle is used as an absolute title (no "| HNavas Systems" suffix) so
-// "Colombia" and "EE.UU." fit in what Google shows.
-export const COLOMBIA_PROJECTS = ["fence-houston", "sky-weekender", "dynamic-bachata", "salesforce-portal"];
+// Mixed on purpose: business systems, AI and the no-code field app (closest to
+// Colombian construction and inspection firms). All are live US projects.
+export const COLOMBIA_PROJECTS = ["dynamic-bachata", "ai-agent", "ccc-field-app", "scoreflow"];
 
 export const COLOMBIA_COPY: Record<"en" | "es", ServicePageCopy> = {
   es: {
-    metaTitle: "Software y Páginas Web para Vender en EE.UU. desde Colombia",
+    metaTitle: "Desarrollo de Software y Páginas Web en Colombia",
     metaDescription:
-      "Sitios bilingües, software, AWS, IA y Salesforce para empresas colombianas que venden en EE.UU., con un ingeniero formado en Colombia que vive en Denver.",
+      "Software a la medida, páginas web, chatbots con IA, AWS y Salesforce para empresas en Colombia, con un ingeniero formado en Colombia que trabaja desde Denver.",
     breadcrumb: "Colombia",
-    h1: "Páginas web y software para empresas colombianas que venden en Estados Unidos",
+    h1: "Desarrollo de software, páginas web e IA para empresas en Colombia",
     intro:
-      "Ayudo a empresas colombianas a vender en Estados Unidos con sitios en inglés y español escritos para el comprador de allá, software a la medida, AWS, chatbots con IA y Salesforce. Me formé como ingeniero en Colombia y trabajo desde Denver, Colorado: hablamos en español y conozco cómo busca y compra el cliente de EE.UU.",
-    whenTitle: "Para quién es",
+      "Construyo software a la medida, páginas web, chatbots con IA y sistemas en la nube para empresas en Colombia, con los mismos estándares que uso con mis clientes en Estados Unidos. Me formé como ingeniero en Colombia y trabajo desde Denver, Colorado: todo el proceso es en español y por videollamada, con empresas de Bogotá, Medellín, Cali, Barranquilla o cualquier ciudad del país.",
+    whenTitle: "Cuándo te sirve",
     when: [
       {
-        title: "Exportadoras y fabricantes",
-        body: "Tu producto ya se vende afuera, pero tu sitio está pensado para Colombia. Un sitio en inglés con fichas claras, certificaciones y un formulario para distribuidores te pone frente al comprador de EE.UU.",
+        title: "Tu operación vive en Excel y WhatsApp",
+        body: "Pedidos, inventario, citas o cobros repartidos entre hojas de cálculo, chats y papel. Una aplicación a la medida pone todo en un solo lugar, evita errores y te ahorra horas cada semana.",
       },
       {
-        title: "BPO, contact centers y servicios profesionales",
-        body: "Atiendes clientes de EE.UU. y tu sitio, tu soporte y tus procesos tienen que verse y funcionar como los de una empresa de allá, incluido Salesforce para manejar los casos.",
+        title: "Inspecciones y reportes en papel",
+        body: "Constructoras, interventorías, inmobiliarias y equipos de mantenimiento que llenan formatos a mano. Construí una app de inspección que reemplazó el papel en más de 100 propiedades y genera los reportes en PDF automáticamente.",
       },
       {
-        title: "Startups y empresas de software",
-        body: "Construyes un producto para el mercado de EE.UU. y necesitas llevarlo a producción en AWS, con ambientes de producción y de pruebas desde el primer día.",
+        title: "Tu página web no te trae clientes",
+        body: "O todavía no tienes página. Un sitio rápido en el celular, con un formulario claro y bien configurado para Google, convierte visitas en solicitudes.",
       },
       {
-        title: "Negocios que reciben clientes de EE.UU.",
-        body: "Turismo, salud, educación o finca raíz: si tus clientes vienen de Estados Unidos, tu sitio tiene que responderles en inglés, cargar rápido allá y aparecer cuando buscan en Google.",
+        title: "Respondes lo mismo todo el día",
+        body: "Precios, horarios, disponibilidad. Un chatbot con IA que conoce tu negocio responde al instante, a cualquier hora, y te pasa los clientes interesados.",
       },
     ],
-    includedTitle: "Lo que necesita tu sitio para vender en EE.UU.",
+    includedTitle: "Qué recibes",
     included: [
       {
-        title: "Inglés escrito para el comprador de allá",
-        body: "Textos pensados para cómo busca y decide un cliente de EE.UU., no traducidos palabra por palabra del español.",
+        title: "Alcance y cotización por escrito",
+        body: "Antes de empezar sabes qué se construye, en qué orden y cuánto cuesta.",
       },
       {
-        title: "Rápido en Estados Unidos",
-        body: "Hosting en AWS con CloudFront, que entrega tus páginas desde servidores cerca de tus clientes.",
+        title: "Funciona en celular y computador",
+        body: "Aplicaciones y páginas pensadas primero para el celular, que es donde están tus clientes y tu equipo.",
       },
       {
-        title: "Encontrable en Google de EE.UU.",
-        body: "Títulos, datos estructurados, sitemap y Search Console configurados para búsquedas en inglés.",
+        title: "Conectado con lo que ya usas",
+        body: "Integraciones con tus pasarelas de pago, correo, hojas de cálculo y CRM, para que nadie tenga que copiar datos a mano.",
       },
       {
-        title: "Español también, sin perder nada",
-        body: "Una versión real en español para tu mercado en Colombia o para hispanos en EE.UU., cada idioma con su propia página indexable.",
+        title: "Seguro y en la nube",
+        body: "Hosting en AWS o Google Cloud, claves fuera del código, un ambiente de pruebas separado de producción e inicio de sesión con roles.",
       },
       {
-        title: "Atención en el horario de tus clientes",
-        body: "Formularios que llegan a tu correo y, si lo quieres, un chatbot con IA que responde en inglés a cualquier hora y toma los datos del cliente.",
+        title: "Todo en español",
+        body: "Reuniones, documentos, capacitación y soporte en español, en un horario que se cruza casi por completo con el tuyo.",
       },
       {
-        title: "Confianza y accesibilidad",
-        body: "Accesibilidad (WCAG) y señales de confianza como casos de éxito y reseñas, que el comprador de EE.UU. espera ver.",
+        title: "Soporte después del lanzamiento",
+        body: "Arreglos, mejoras y nuevas funciones del mismo ingeniero que lo construyó.",
       },
     ],
-    platformsTitle: "Lo que hago para empresas colombianas",
+    platformsTitle: "Lo que hago para empresas en Colombia",
     platformsIntro: "Cada servicio tiene su propia página con detalles, proyectos y preguntas frecuentes.",
     platforms: [
       {
-        title: "Páginas web bilingües",
-        body: "Sitios rápidos en inglés y español en Next.js, WordPress, Shopify, Wix o Base44.",
-        href: "/services/web-design/",
-      },
-      {
         title: "Software a la medida",
-        body: "Portales de clientes, sistemas de reservas y pagos, paneles y productos SaaS.",
+        body: "Aplicaciones web, portales de clientes, sistemas de reservas y pagos, paneles y productos SaaS.",
         href: "/services/custom-software/",
       },
       {
-        title: "AWS y Google Cloud",
-        body: "Aplicaciones serverless, migraciones y hosting en la nube con los costos bajo control.",
-        href: "/services/cloud-services/",
+        title: "Páginas web",
+        body: "Sitios rápidos en Next.js, WordPress, Shopify, Wix o Base44, en español, inglés o ambos.",
+        href: "/services/web-design/",
       },
       {
         title: "Automatización con IA",
-        body: "Chatbots que atienden a tus clientes en inglés y español, seguimientos automáticos y contenido con IA.",
+        body: "Chatbots que responden con la información de tu negocio, seguimientos automáticos y contenido con IA.",
         href: "/services/ai-automation/",
+      },
+      {
+        title: "AWS y Google Cloud",
+        body: "Aplicaciones serverless, migraciones a la nube y costos bajo control.",
+        href: "/services/cloud-services/",
       },
       {
         title: "Salesforce",
@@ -100,134 +102,134 @@ export const COLOMBIA_COPY: Record<"en" | "es", ServicePageCopy> = {
     processTitle: "Cómo trabajamos a distancia",
     process: [
       {
-        title: "Llamada gratis por video, en español",
-        body: "Me cuentas de tu empresa, a quién le vendes en EE.UU. y qué necesitas. Sin costo y sin compromiso.",
+        title: "Llamada gratis por videollamada",
+        body: "Me cuentas de tu empresa y del problema que quieres resolver. Sin costo y sin compromiso.",
       },
       {
         title: "Alcance y cotización por escrito",
         body: "Qué se construye, en qué orden y cuánto cuesta, antes de empezar.",
       },
       {
-        title: "Avances que revisas en vivo",
-        body: "Ves el sitio o la aplicación funcionando en un ambiente de pruebas y pides cambios antes de publicar.",
+        title: "Una primera versión que puedes probar",
+        body: "Ves la aplicación o la página funcionando en un ambiente de pruebas y pides cambios antes de publicar.",
       },
       {
         title: "Lanzamiento",
-        body: "Dominio, hosting, formularios, Search Console y Analytics configurados y probados.",
+        body: "Dominio, hosting, formularios y analítica configurados y probados, y tu equipo preparado para usarlo.",
       },
       {
         title: "Soporte después",
-        body: "Ajustes, mejoras y nuevas funciones del mismo ingeniero, por correo o videollamada.",
+        body: "Ajustes, mejoras y nuevas funciones por correo o videollamada.",
       },
     ],
     processNote:
       "Colombia va 2 horas adelante de Denver entre noviembre y marzo y 1 hora el resto del año, así que nuestras jornadas se cruzan casi por completo.",
-    workTitle: "Proyectos para el mercado de EE.UU.",
-    workSubtitle: "Construidos y funcionando en Estados Unidos, en inglés, en español o en los dos.",
-    faqTitle: "Preguntas de empresas colombianas",
+    workTitle: "Proyectos en producción",
+    workSubtitle: "Sistemas que funcionan hoy con usuarios, pagos e IA reales.",
+    faqTitle: "Preguntas de empresas en Colombia",
     faq: [
       {
-        q: "¿Trabajas con empresas que están en Colombia?",
-        a: "Sí. Trabajo a distancia, con videollamadas en español, documentos compartidos y versiones de prueba que revisas desde tu navegador. Vivo en Denver, Colorado, y me formé como ingeniero en Colombia.",
+        q: "¿Trabajas con empresas en Colombia aunque vivas en Denver?",
+        a: "Sí. Trabajo a distancia con empresas de cualquier ciudad del país, con videollamadas en español, documentos compartidos y versiones de prueba que revisas desde tu navegador. Me formé como ingeniero en Colombia y vivo en Denver, Colorado.",
       },
       {
-        q: "¿Cuál es la diferencia de horario con Denver?",
+        q: "¿Cuál es la diferencia de horario?",
         a: "Colombia va 2 horas adelante de Denver entre noviembre y marzo, y 1 hora el resto del año, porque Colombia no cambia la hora y Denver sí. Las jornadas laborales se cruzan casi por completo.",
       },
       {
-        q: "¿Por qué no traducir mi sitio actual al inglés?",
-        a: "Porque el comprador de EE.UU. busca con otras palabras, compara distinto y espera ver otra información. Un sitio pensado para ese mercado, con textos escritos en inglés y SEO para las búsquedas de allá, funciona mejor que una traducción literal.",
+        q: "¿Cuánto cuesta un software a la medida o una página web?",
+        a: "Depende del alcance: cuántas pantallas o páginas, qué integraciones y cuánto tiene que funcionar desde el primer día. Después de una llamada gratis recibes una cotización por escrito antes de empezar.",
       },
       {
-        q: "¿Puedo tener el sitio en inglés y en español?",
-        a: "Sí. Cada idioma tiene su propia página que Google puede indexar, con un selector de idioma en cada página. El sitio de cercas en Houston que construí funciona completo en los dos idiomas.",
+        q: "¿Puedo empezar con algo pequeño?",
+        a: "Sí. Puedes empezar con una página, una automatización o una primera versión de la aplicación, y crecer por fases cuando veas resultados.",
       },
       {
-        q: "¿Me ayudas a aparecer en Google en Estados Unidos?",
-        a: "Sí. El sitio sale con lo técnico listo para Google y Bing en EE.UU., y puedo seguir con SEO: páginas por servicio y por ciudad, datos estructurados y seguimiento en Search Console. Nadie puede garantizar una posición, pero la parte técnica no te va a frenar.",
+        q: "¿Qué gano trabajando con un ingeniero que trabaja en Estados Unidos?",
+        a: "Los mismos estándares que uso con mis clientes allá: ambientes de pruebas y de producción separados, seguridad desde el inicio y experiencia real con pagos, nube e IA en producción. La plataforma que construí para un estudio de baile, por ejemplo, ha procesado $51K en 864 transacciones.",
       },
       {
-        q: "¿Cuánto cuesta?",
-        a: "Depende del alcance: cuántas páginas e idiomas, y si necesitas software, IA o Salesforce. Después de una llamada gratis recibes una cotización por escrito antes de empezar.",
+        q: "¿Mi página va a aparecer en Google en Colombia?",
+        a: "Va a estar construida para que la encuentren: páginas indexables, títulos y descripciones, datos estructurados y un sitemap enviado a Google Search Console. El posicionamiento toma semanas y nadie puede garantizar un lugar, pero la parte técnica no te va a frenar.",
       },
     ],
   },
   en: {
-    metaTitle: "Software & Websites for Colombian Companies Selling in the US",
+    metaTitle: "Software Development & Websites in Colombia",
     metaDescription:
-      "Bilingual websites, custom software, AWS, AI and Salesforce for Colombian companies selling in the US, from a Colombia-trained engineer based in Denver.",
+      "Custom software, websites, AI chatbots, AWS and Salesforce for businesses in Colombia, from a Colombia-trained engineer working from Denver.",
     breadcrumb: "Colombia",
-    h1: "Websites and software for Colombian companies selling in the US",
+    h1: "Software development, websites and AI for businesses in Colombia",
     intro:
-      "I help Colombian companies sell in the United States with English and Spanish websites written for US buyers, custom software, AWS, AI chatbots and Salesforce. I trained as an engineer in Colombia and work from Denver, Colorado: we can talk in Spanish, and I know how US customers search and buy.",
-    whenTitle: "Who it's for",
+      "I build custom software, websites, AI chatbots and cloud systems for businesses in Colombia, to the same standards I use with my clients in the United States. I trained as an engineer in Colombia and work from Denver, Colorado: the whole process runs in Spanish over video calls, with companies in Bogotá, Medellín, Cali, Barranquilla or anywhere else in the country.",
+    whenTitle: "When it helps",
     when: [
       {
-        title: "Exporters and manufacturers",
-        body: "Your product already sells abroad, but your website was made for Colombia. An English site with clear product pages, certifications and a distributor form puts you in front of US buyers.",
+        title: "Your operation runs on Excel and WhatsApp",
+        body: "Orders, inventory, appointments or payments spread across spreadsheets, chats and paper. A custom app puts everything in one place, stops mistakes and saves hours every week.",
       },
       {
-        title: "BPOs, contact centers and professional services",
-        body: "You serve US clients, so your website, your support and your processes have to look and work like a US company's, including Salesforce to manage cases.",
+        title: "Inspections and reports on paper",
+        body: "Construction firms, inspectors, property managers and maintenance teams filling in forms by hand. I built an inspection app that replaced paper across 100+ properties and generates the PDF reports automatically.",
       },
       {
-        title: "Startups and software companies",
-        body: "You're building a product for the US market and need it in production on AWS, with production and test environments from day one.",
+        title: "Your website doesn't bring in customers",
+        body: "Or you don't have one yet. A site that's fast on phones, with a clear form and set up properly for Google, turns visits into requests.",
       },
       {
-        title: "Businesses with US customers",
-        body: "Tourism, health, education or real estate: if your customers come from the United States, your site has to answer them in English, load fast there and show up when they search on Google.",
+        title: "You answer the same questions all day",
+        body: "Prices, hours, availability. An AI chatbot that knows your business answers instantly, at any hour, and passes interested customers to you.",
       },
     ],
-    includedTitle: "What your website needs to sell in the US",
+    includedTitle: "What you get",
     included: [
       {
-        title: "English written for US buyers",
-        body: "Copy built around how US customers search and decide, not translated word for word from Spanish.",
+        title: "Written scope and estimate",
+        body: "Before work starts you know what gets built, in what order and what it costs.",
       },
       {
-        title: "Fast in the United States",
-        body: "Hosting on AWS with CloudFront, which serves your pages from servers close to your customers.",
+        title: "Works on phones and computers",
+        body: "Apps and sites designed for phones first, which is where your customers and your team are.",
       },
       {
-        title: "Findable on US Google",
-        body: "Titles, structured data, a sitemap and Search Console set up for English searches.",
+        title: "Connected to what you already use",
+        body: "Integrations with your payment gateways, email, spreadsheets and CRM, so nobody copies data by hand.",
       },
       {
-        title: "Spanish too, with nothing lost",
-        body: "A real Spanish version for your market in Colombia or for Hispanics in the US, each language with its own indexable page.",
+        title: "Secure and in the cloud",
+        body: "Hosting on AWS or Google Cloud, keys kept out of the code, a test environment separate from production and role-based sign-in.",
       },
       {
-        title: "Reachable in your customers' hours",
-        body: "Forms that reach your inbox and, if you want one, an AI chatbot that answers in English at any hour and takes the customer's details.",
+        title: "All in Spanish",
+        body: "Meetings, documents, training and support in Spanish, in working hours that overlap almost completely with yours.",
       },
       {
-        title: "Trust and accessibility",
-        body: "Accessibility (WCAG) and trust signals like case studies and reviews, which US buyers expect to see.",
+        title: "Support after launch",
+        body: "Fixes, improvements and new features from the same engineer who built it.",
       },
     ],
-    platformsTitle: "What I do for Colombian companies",
+    platformsTitle: "What I do for businesses in Colombia",
     platformsIntro: "Each service has its own page with details, projects and common questions.",
     platforms: [
       {
-        title: "Bilingual websites",
-        body: "Fast English and Spanish sites on Next.js, WordPress, Shopify, Wix or Base44.",
-        href: "/services/web-design/",
-      },
-      {
         title: "Custom software",
-        body: "Customer portals, booking and payment systems, dashboards and SaaS products.",
+        body: "Web apps, customer portals, booking and payment systems, dashboards and SaaS products.",
         href: "/services/custom-software/",
       },
       {
-        title: "AWS & Google Cloud",
-        body: "Serverless apps, migrations and cloud hosting with costs under control.",
-        href: "/services/cloud-services/",
+        title: "Websites",
+        body: "Fast sites on Next.js, WordPress, Shopify, Wix or Base44, in Spanish, English or both.",
+        href: "/services/web-design/",
       },
       {
         title: "AI automation",
-        body: "Chatbots that answer your customers in English and Spanish, automatic follow-ups and AI content.",
+        body: "Chatbots that answer from your business's own information, automatic follow-ups and AI content.",
         href: "/services/ai-automation/",
+      },
+      {
+        title: "AWS & Google Cloud",
+        body: "Serverless apps, cloud migrations and costs under control.",
+        href: "/services/cloud-services/",
       },
       {
         title: "Salesforce",
@@ -238,55 +240,55 @@ export const COLOMBIA_COPY: Record<"en" | "es", ServicePageCopy> = {
     processTitle: "How we work remotely",
     process: [
       {
-        title: "Free video call, in Spanish or English",
-        body: "Tell me about your company, who you sell to in the US and what you need. No cost and no commitment.",
+        title: "Free video call",
+        body: "Tell me about your company and the problem you want to solve. No cost and no commitment.",
       },
       {
         title: "Written scope and estimate",
         body: "What gets built, in what order and what it costs, before work starts.",
       },
       {
-        title: "Progress you review live",
-        body: "You see the site or app working in a test environment and ask for changes before anything goes live.",
+        title: "A first version you can try",
+        body: "You see the app or site working in a test environment and ask for changes before anything goes live.",
       },
       {
         title: "Launch",
-        body: "Domain, hosting, forms, Search Console and Analytics set up and tested.",
+        body: "Domain, hosting, forms and analytics set up and tested, and your team ready to use it.",
       },
       {
         title: "Support afterwards",
-        body: "Adjustments, improvements and new features from the same engineer, by email or video call.",
+        body: "Adjustments, improvements and new features by email or video call.",
       },
     ],
     processNote:
       "Colombia is 2 hours ahead of Denver from November to March and 1 hour ahead the rest of the year, so our working days overlap almost completely.",
-    workTitle: "Projects for the US market",
-    workSubtitle: "Built and running in the United States, in English, Spanish or both.",
-    faqTitle: "Questions from Colombian companies",
+    workTitle: "Projects in production",
+    workSubtitle: "Systems running today with real users, payments and AI.",
+    faqTitle: "Questions from businesses in Colombia",
     faq: [
       {
-        q: "Do you work with companies based in Colombia?",
-        a: "Yes. I work remotely, with video calls in Spanish, shared documents and test versions you review in your browser. I live in Denver, Colorado, and trained as an engineer in Colombia.",
+        q: "Do you work with companies in Colombia even though you live in Denver?",
+        a: "Yes. I work remotely with companies anywhere in the country, with video calls in Spanish, shared documents and test versions you review in your browser. I trained as an engineer in Colombia and live in Denver, Colorado.",
       },
       {
-        q: "What is the time difference with Denver?",
+        q: "What is the time difference?",
         a: "Colombia is 2 hours ahead of Denver from November to March and 1 hour ahead the rest of the year, because Colombia doesn't change its clocks and Denver does. Working days overlap almost completely.",
       },
       {
-        q: "Why not just translate my current site into English?",
-        a: "Because US buyers search with different words, compare differently and expect different information. A site built for that market, with copy written in English and SEO for US searches, works better than a literal translation.",
+        q: "How much does custom software or a website cost?",
+        a: "It depends on the scope: how many screens or pages, which integrations and how much has to work on day one. After a free call you get a written estimate before any work starts.",
       },
       {
-        q: "Can my site be in English and Spanish?",
-        a: "Yes. Each language gets its own page that Google can index, with a language switch on every page. The Houston fence site I built runs fully in both languages.",
+        q: "Can I start with something small?",
+        a: "Yes. You can start with a website, one automation or a first version of the app, and grow in phases once you see results.",
       },
       {
-        q: "Can you help me show up on Google in the United States?",
-        a: "Yes. The site launches with the technical side ready for Google and Bing in the US, and I can continue with SEO: service and city pages, structured data and Search Console tracking. Nobody can guarantee a position, but the technical side won't hold you back.",
+        q: "What do I gain from an engineer who works in the United States?",
+        a: "The same standards I use with clients there: separate test and production environments, security from the start and real experience with payments, cloud and AI in production. The platform I built for a dance studio, for example, has processed $51K across 864 transactions.",
       },
       {
-        q: "How much does it cost?",
-        a: "It depends on the scope: how many pages and languages, and whether you need software, AI or Salesforce. After a free call you get a written estimate before any work starts.",
+        q: "Will my website show up on Google in Colombia?",
+        a: "It will be built to be found: indexable pages, titles and descriptions, structured data and a sitemap submitted to Google Search Console. Rankings take weeks and nobody can honestly guarantee a position, but the technical side won't hold you back.",
       },
     ],
   },

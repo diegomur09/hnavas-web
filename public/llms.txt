@@ -17,7 +17,7 @@ All services: https://hnavasystems.com/services/
 ## About
 
 - **Founder & lead engineer**: Diego Navas Murcia
-- **Based in**: Denver, Colorado. Works in person across the Denver metro, remotely anywhere in the US, and remotely with Colombian companies that sell in the US.
+- **Based in**: Denver, Colorado. Works in person across the Denver metro, remotely anywhere in the US, and remotely with businesses anywhere in Colombia.
 - **Languages**: English and Spanish (projects can run fully in either)
 - **Website**: https://hnavasystems.com/ (Spanish: https://hnavasystems.com/es/)
 - **Book a call**: https://cal.com/diego-navas-murcia-6a7b9n
@@ -57,4 +57,4 @@ All services: https://hnavasystems.com/services/
 
 ## Colombia
 
-- [Colombian companies selling in the US](https://hnavasystems.com/es/colombia/) (English: https://hnavasystems.com/colombia/): Bilingual websites written for US buyers, custom software, AWS, AI chatbots and Salesforce, worked remotely with video calls in Spanish. Diego trained as an engineer in Colombia; Colombia is 1 to 2 hours ahead of Denver depending on the season.
+- [Software development in Colombia](https://hnavasystems.com/es/colombia/) (English: https://hnavasystems.com/colombia/): Custom software, websites, AI chatbots, AWS and Salesforce for businesses in Colombia (Bogotá, Medellín, Cali, Barranquilla and the rest of the country), worked remotely in Spanish over video calls. Diego trained as an engineer in Colombia; Colombia is 1 to 2 hours ahead of Denver depending on the season.

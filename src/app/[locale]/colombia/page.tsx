@@ -9,8 +9,9 @@ import { COLOMBIA_COPY, COLOMBIA_PROJECTS } from "@/lib/colombia";
 import { servicePageFor } from "@/lib/services";
 import { SITE, SERVICES } from "@/lib/site";
 
-// /es/colombia/ (and /colombia/ in English): Colombian companies that sell in
-// the US. Not a city page: it sits outside [city] and the CITIES list.
+// /es/colombia/ (and /colombia/ in English): software, websites and AI for
+// businesses in Colombia, worked remotely from Denver. Not a city page: it sits
+// outside [city] and the CITIES list.
 const PATH = "/colombia/";
 
 function copyFor(locale: string) {
@@ -25,8 +26,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const copy = copyFor(locale);
   return {
-    // Absolute: the brand suffix would push "Colombia" out of the visible title.
-    title: { absolute: copy.metaTitle },
+    title: copy.metaTitle,
     description: copy.metaDescription,
     alternates: {
       canonical: localePath(locale, PATH),
@@ -57,15 +57,12 @@ export default async function ColombiaPage({
     "@context": "https://schema.org",
     "@type": "Service",
     "@id": `${localeUrl(locale, PATH)}#service`,
-    serviceType: "Website and software development for Colombian companies selling in the United States",
+    serviceType: "Software, website and AI development for businesses in Colombia",
     name: copy.h1,
     description: copy.metaDescription,
     url: localeUrl(locale, PATH),
     provider: { "@id": `${SITE.url}/#business` },
-    areaServed: [
-      { "@type": "Country", name: "Colombia" },
-      { "@type": "Country", name: "United States" },
-    ],
+    areaServed: { "@type": "Country", name: "Colombia" },
     availableLanguage: ["es", "en"],
   };
 
@@ -81,7 +78,7 @@ export default async function ColombiaPage({
       <main className="pt-16">
         <ServiceLanding
           locale={locale}
-          eyebrow={locale === "es" ? "Colombia → Estados Unidos" : "Colombia → United States"}
+          eyebrow={locale === "es" ? "Servicios · Colombia" : "Services · Colombia"}
           crumbs={[
             { name: t("home"), path: "/" },
             { name: copy.breadcrumb, path: PATH },
