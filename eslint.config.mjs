@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // CloudFront Function source: CloudFront calls handler(), not our code.
+    "infra/**",
   ]),
 ]);
 
