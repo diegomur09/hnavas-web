@@ -7,7 +7,11 @@ static export. It was created by hand in the console and lived only in AWS until
 What it does:
 - `www.hnavasystems.com/*` → 301 to `https://hnavasystems.com/*` (one host).
 - Legacy `/en/*` URLs → 301 to the same page without the prefix.
-- Adds the trailing slash to extensionless page URLs.
+- Adds the trailing slash to extensionless page URLs, English and Spanish
+  (`/es/colombia` → `/es/colombia/`, `/en/denver` → `/denver/` in one hop). The
+  share images (`/es/opengraph-image`, `/en/twitter-image`) are the only
+  extensionless files and pass through. Before 16 Nov 2026 Spanish URLs without
+  the slash returned 404.
 - Rewrites public URLs onto the S3 objects (`/denver/` → `/en/denver/index.html`).
 - Every redirect keeps the query string, so UTM tags reach Analytics.
 

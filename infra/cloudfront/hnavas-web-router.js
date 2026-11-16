@@ -5,6 +5,10 @@
 
 var APEX = 'hnavasystems.com';
 
+// The only extensionless objects in the export that are files, not pages:
+// the share images (/en/opengraph-image, /es/twitter-image, ...).
+var META_IMAGE = /\/(opengraph|twitter)-image[^\/]*$/;
+
 function handler(event) {
   var request = event.request;
   var uri = request.uri;
@@ -44,16 +48,16 @@ function handler(event) {
     return redirect('/es/', query);
   }
 
-  // Extensionless page request missing its trailing slash → add it. Metadata
-  // image objects (/en/opengraph-image, /es/twitter-image) are also
-  // extensionless, so they're excluded and pass straight through below.
+  // Extensionless page request missing its trailing slash → add it, in
+  // English and Spanish alike (/es/colombia → /es/colombia/), and drop the
+  // legacy /en prefix in the same hop (/en/denver → /denver/). The share
+  // images are extensionless objects, so they pass straight through below.
   if (
     !uri.endsWith('/') &&
-    !uri.startsWith('/en/') &&
-    !uri.startsWith('/es/') &&
-    uri.lastIndexOf('.') <= uri.lastIndexOf('/')
+    uri.lastIndexOf('.') <= uri.lastIndexOf('/') &&
+    !META_IMAGE.test(uri)
   ) {
-    return redirect(uri + '/', query);
+    return redirect((uri.startsWith('/en/') ? uri.substring(3) : uri) + '/', query);
   }
 
   // --- Rewrites: public URL → the object that holds the page. ---
