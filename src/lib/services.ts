@@ -9,7 +9,8 @@
 
 import type { ServiceId } from "./site";
 
-type Item = { title: string; body: string };
+// `href` (locale-free path) turns the card title into a link; used on /colombia/.
+type Item = { title: string; body: string; href?: string };
 type QA = { q: string; a: string };
 
 export type ServicePageCopy = {

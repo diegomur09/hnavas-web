@@ -53,6 +53,12 @@ export async function Footer() {
               </Link>
             </li>
           ))}
+          {/* Not a city: remote work for Colombian companies selling in the US. */}
+          <li>
+            <Link href="/colombia" className="text-sm text-body transition hover:text-brand-300">
+              Colombia
+            </Link>
+          </li>
         </ul>
       </div>
 

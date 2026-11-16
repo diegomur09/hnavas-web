@@ -46,5 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...localizedEntry("/privacy/", "yearly", 0.3),
     // Local-SEO city landing pages.
     ...CITIES.flatMap((city) => localizedEntry(`/${city.slug}/`, "monthly", 0.8)),
+    // Colombian companies selling in the US (Spanish is the main version).
+    ...localizedEntry("/colombia/", "monthly", 0.7),
   ];
 }
